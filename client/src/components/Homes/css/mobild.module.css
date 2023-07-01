@@ -1,0 +1,10 @@
+.temp{
+    animation : w .4s;
+
+}
+
+@keyframes w{
+    from {
+        transform : translateX(100%);
+    }
+}

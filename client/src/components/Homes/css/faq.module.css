@@ -1,0 +1,12 @@
+
+.show {
+    animation : a .7s;
+    height : 100%
+}
+
+@keyframes a {
+    from{
+        opacity : 0;
+    }
+}
+

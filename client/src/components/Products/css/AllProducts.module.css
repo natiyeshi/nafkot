@@ -1,0 +1,29 @@
+
+
+
+.scroller::-webkit-scrollbar {
+    height: 8px;
+  }
+
+.scroller::-webkit-scrollbar-thumb {
+    background: #E13C51;
+    border-radius: 10vh;
+    border: 3px solid #f6f7ed;
+ }
+
+ 
+.scroller::-webkit-scrollbar-track {
+    background:white;
+}
+
+@media only screen and (max-width: 950px) {
+    .scroller{
+        padding-left:150px
+    }
+}
+
+@media only screen and (max-width: 580px) {
+    .scroller{
+        padding-left:350px;
+    }
+}

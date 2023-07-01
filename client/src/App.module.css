@@ -1,0 +1,10 @@
+
+.show{
+    animation : ss .6s;    
+}
+
+@keyframes ss{
+    from{
+        transform: translateY(-100%);
+    }
+}

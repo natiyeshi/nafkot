@@ -1,0 +1,28 @@
+
+.show{
+    transition: scale 0.3s ease;
+    animation : slider .5s;
+}
+
+
+@keyframes slider{
+    from{
+        transform: scale(0);
+        opacity: 0;
+    }
+}
+
+/* 
+.close{
+    transition: scale 0.3s ease;
+    animation : slider .5s;
+}
+
+
+@keyframes slider{
+    from{
+        transform: scale(0);
+        opacity: 0;
+    }
+} */
+

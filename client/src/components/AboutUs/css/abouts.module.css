@@ -1,0 +1,26 @@
+
+.rotatePic {
+    color : yellow;
+    transform-origin: middle;
+    animation : rotate  infinite 30s;
+}
+
+@keyframes rotate{
+    to{
+        transform: rotate(360deg);
+    }
+}
+
+.slide{
+    transition: transform 0.3s ease;
+    animation : slider 1s;
+}
+
+
+@keyframes slider{
+    from{
+        transform: translate(-50%,-50%);
+        opacity: 0;
+    }
+}
+
