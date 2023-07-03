@@ -33,19 +33,19 @@ const Nav = ({pass}) => {
                 <NavLink    to="/products" className={checkLink}>Products</NavLink >
                 <NavLink    to="/aboutus" className={checkLink}>About us</NavLink >
                 <NavLink    to="/howto" className={checkLink}>How to order</NavLink >
-                <a href="/#faq" className={"my-auto max-xl:hidden duration-200  hover:translate-y-[-10%] "}>FAQS</a >
+                <a href="/#faq" className={"my-auto max-xl:hidden duration-200  hover:text-redd "}>FAQS</a >
             </div>
 
             <div className='w-1/4 max-xl:w-2/4 flex justify-around max-xl:justify-end max-xl:gap-7 '>
                 
                 <div className="flex max-xl:hidden">
-                    <div className='my-auto cursor-pointer' onClick={()=>setLoginNow(true)}>Login </div> <pre className='my-auto'> / </pre>
-                    <div className='my-auto cursor-pointer' onClick={()=>setRegisterNow(true)}>Register</div>
+                    <div className='my-auto cursor-pointer hover:text-redd duration-200' onClick={()=>setLoginNow(true)}>Login </div> <pre className='my-auto'> / </pre>
+                    <div className='my-auto cursor-pointer hover:text-redd duration-200' onClick={()=>setRegisterNow(true)}>Register</div>
                 </div>
 
                 <a href="" className='my-auto flex gap-1'>
                     <img src={cart} alt="" />
-                    <NavLink to={"/cart"} className={({isActive}) => isActive ? 'text-redd font-extrabold my-auto' : 'my-auto'}>
+                    <NavLink to={"/cart"} className={({isActive}) => isActive ? 'text-redd  duration-200 hover:text-redd font-extrabold my-auto' : 'my-auto duration-200 hover:text-redd'}>
                          cart
                     </NavLink>
                 </a>
