@@ -2,6 +2,7 @@ import React from 'react'
 import Box from './Box'
 import Shoa from "../../assets/shoa.svg"
 import Hilton from "../../assets/Hilton.svg"
+import dummyProduct from '../../dummyProduct'
 
 const Product = ({related}) => {
   const temp = related === undefined || related == false
@@ -35,12 +36,9 @@ const Product = ({related}) => {
         </div>
 
         <div className='grid mt-2 grid-cols-3 max-lg:px-4 gap-3 max-md:grid-cols-2 max-sm:grid-cols-1 justify-around'>
-            <Box />
-            <Box />
-            <Box />
-            <Box />
-            <Box />
-            <Box />
+            {
+                dummyProduct.map(values => <Box key={values._id} {...values} />)
+            }
         </div>
         <div className='my-5 text-2xl   text-center flex flex-col gap-10'>
             <h1 className='font-semibold'>Partners</h1>

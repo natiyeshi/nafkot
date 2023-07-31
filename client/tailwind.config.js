@@ -12,7 +12,9 @@ export default {
     extend: {
       colors:{
         'redd':'#E13C51',
-        'dark':"#222222"
+        'dark':"#222222",
+        'sdark': "#222338",
+        'mdark': "#1B1C31"
       },
       width:{
         "c72" : "72%",

@@ -4,6 +4,8 @@ import Shoa from "../../assets/shoa.svg"
 import Hilton from "../../assets/Hilton.svg"
 import css from "./css/AllProducts.module.css"
 
+import dummyProduct from '../../dummyProduct'
+
 const AllProducts = () => {
   return (
     <div className='  w-c72 max-md:w-full mx-auto mt-10 flex flex-col gap-3 overflow-x-hidden'>
@@ -33,22 +35,10 @@ const AllProducts = () => {
 
 
         <div className='grid mt-2 mb-10 grid-cols-3 max-lg:px-4 gap-3 max-md:grid-cols-2 max-sm:grid-cols-1 justify-around'>
-            <Box />
-            <Box />
-            <Box />
-            <Box />
-            <Box />
-            <Box />
-            <Box />
-            <Box />
-            <Box />
-            <Box />
-            <Box />
-            <Box />
-            <Box />
-            <Box /> 
-            <Box />
-            <Box />
+            {
+                dummyProduct.map(values =>  <Box key={values._id} {...values} />)
+            }
+            
         </div>
        
 
