@@ -1,15 +1,18 @@
-import css from './App.module.css'
-import { Route , Routes, } from 'react-router-dom'
-import Home from './components/Homes/home'
-import Detail from "./components/Detail"
-import Cart from "./components/Cart"
-import AboutUs from "./components/AboutUs"
-import HowTo from "./components/HowTo"
-import Products from "./components/Products"
 import { useEffect,useState } from 'react'
-import Nav from './components/Homes/Nav'
-import Dashbord from './Admin/components/Dashbord/Dashbord'
-import Product from './Admin/components/Products/index'
+
+import css from './css/App.module.css'
+import { Route , Routes, } from 'react-router-dom'
+
+import Home from './pages/Homes'
+import Detail from "./pages/Detail"
+import Cart from "./pages/Cart"
+import AboutUs from "./pages/AboutUs"
+import HowTo from "./pages/HowTo"
+import Products from "./pages/Products"
+import Nav from './pages/common/components/Nav'
+
+import Dashbord from './Admin/pages/Dashbord/components/Dashbord'
+import Product from './Admin/pages/Products'
 
 function App() {
   const [displayElement, setDisplayElement] = useState(false);

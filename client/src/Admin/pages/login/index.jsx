@@ -1,13 +1,12 @@
 import React from 'react'
-import Logo from "../assets/images/Vector (6).svg"
-import Close from "../assets/images/Vector (7).svg"
-import css from "./css/css.module.css"
+import Logo from "../../../assets/images/Vector (6).svg"
+import Close from "../../../assets/images/Vector (7).svg"
 
-const Login = ({setLoginNow}) => {
+const index = () => {
   return (
     <div className='fixed flex  w-screen h-screen  bg-gray-900 bg-opacity-90 top-0 z-10'>
         
-        <div className={'m-auto w-1/3 max-lg:w-1/2 max-md:w-4/6 max-sm:w-11/12 h-4/6 p-3 bg-white '+css.show}>
+        <div className={'m-auto w-1/3 max-lg:w-1/2 max-md:w-4/6 max-sm:w-11/12 h-4/6 p-3 bg-white '}>
             
             <div className='flex justify-between p-5'>
                 
@@ -49,4 +48,4 @@ const Login = ({setLoginNow}) => {
   )
 }
 
-export default Login
+export default index

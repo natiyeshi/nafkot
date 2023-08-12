@@ -1,6 +1,6 @@
 import React from 'react'
-import Login from './Login'
-import Main from './components/common/Main'
+import Login from './pages/login'
+import Main from './pages/Dashbord'
 
 const index = () => {
   return (

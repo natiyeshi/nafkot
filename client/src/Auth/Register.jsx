@@ -1,7 +1,7 @@
 import React from 'react'
-import Logo from "../assets/Vector (6).svg"
-import Close from "../assets/Vector (7).svg"
-import css from "./css.module.css"
+import Logo from "../assets/images/Vector (6).svg"
+import Close from "../assets/images/Vector (7).svg"
+import css from "./css/css.module.css"
 
 const Register = ({setRegisterNow}) => {
   return (
