@@ -2,7 +2,7 @@ export default [
     {
         _id : 1,
         title : "fasika package",
-        tag : "hodiday",
+        tag : "valentine",
         price : 1000,
         items : [
             {
@@ -50,7 +50,7 @@ export default [
     {
         _id : 5,
         title : "arefa package",
-        tag : "other",
+        tag : "holiday",
         price : 800,
         items : [
             {
@@ -65,7 +65,7 @@ export default [
     {
         _id : 6,
         title : "Beg",
-        tag : "single",
+        tag : "birthday",
         price : 400,
         items : [
             {

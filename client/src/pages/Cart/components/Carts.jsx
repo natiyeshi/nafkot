@@ -1,14 +1,24 @@
 import React from 'react'
 import Cart from './Cart'
-import {GrClose as Close} from 'react-icons/gr'
+
 import { useSelector  } from 'react-redux'
 
+import { getCart } from '../../../store/features/cartslice/cartSlice'
+
+import { increaseAmount,decreaseAmount } from '../../../store/features/cartslice/cartSlice'
+import { useDispatch } from 'react-redux'
+
 const Carts = () => {
-  const {total,cartItems} = useSelector(store => store.cart)
+  const {total,cartItems} = useSelector(getCart)
   let cartsDiv = [];
   
+  const dispatch = useDispatch()
+  
+  const addItemAmount = (id) => dispatch(increaseAmount(id))
+  const removeItemAmount = (id) => dispatch(decreaseAmount(id))
+
   for(let i in cartItems){
-     cartsDiv.push(<Cart key={i} {...cartItems[i]} />)  
+     cartsDiv.push(<Cart key={i}  {...cartItems[i]} removeItemAmount={removeItemAmount} addItemAmount={addItemAmount} />)  
   }
   
   return (
@@ -16,8 +26,12 @@ const Carts = () => {
         <h1 className='text-center w-2/3 text-xl font-semibold my-5 max-sm:mx-auto'>Carts</h1>
         <div  className='flex gap-5 max-lg:flex-col'>
             <div className=' flex flex-col gap-3 grow '>
-             {cartsDiv}
-                {/* <p className='m-auto text-xl font-semibold text-gray-400 opacity-80'> Your Cart is empty !!! </p> */}
+             {
+             cartsDiv.length > 0 
+             ? cartsDiv
+             : <p className='m-auto text-xl font-semibold text-gray-400 opacity-80'> Your Cart is empty !!! </p> 
+
+            }
 
             </div>
 

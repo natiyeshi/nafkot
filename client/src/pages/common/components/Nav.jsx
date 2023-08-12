@@ -7,8 +7,12 @@ import Login from '../../../Auth/Login'
 import Register from '../../../Auth/Register'
 import Mobile from '../../Homes/components/Mobile'
 
+import { getCart } from '../../../store/features/cartslice/cartSlice'
+import { useSelector } from 'react-redux'
 const Nav = ({pass}) => {
-
+ 
+  const {cartItems,_} = useSelector(getCart)
+  const cartLength = Object.keys(cartItems).length
   let checkLink = ({isActive}) =>  isActive ? 'my-auto max-xl:hidden text-redd duration-200 hover:text-redd' : ' duration-200  hover:text-redd my-auto max-xl:hidden'
   const [loginNow,setLoginNow] = useState(false) 
   const [registerNow,setRegisterNow] = useState(false) 
@@ -43,10 +47,22 @@ const Nav = ({pass}) => {
                     <div className='my-auto cursor-pointer hover:text-redd duration-200' onClick={()=>setRegisterNow(true)}>Register</div>
                 </div>
 
-                <a href="" className='my-auto flex gap-1'>
-                    <img src={cart} alt="" />
-                    <NavLink to={"/cart"} className={({isActive}) => isActive ? 'text-redd  duration-200 hover:text-redd font-extrabold my-auto' : 'my-auto duration-200 hover:text-redd'}>
-                         cart
+                <a href="" className='my-auto  gap-1'>
+                    <NavLink to={"/cart"} className={({isActive}) => isActive ? 'text-redd   duration-200 hover:text-redd  flex gap-1 font-extrabold ' : ' flex gap-1 duration-200 hover:text-redd'}>
+                        <div className='relative'>
+                        {cartLength > 0 &&
+                            <div className='absolute bg-gray-500 flex w-4 h-4 rounded-full -bottom-1 -left-2'>
+                                <small className='m-auto text-white'>
+                                    {cartLength}
+                                </small>
+                            </div>
+                        }
+                            <img src={cart} alt="" />
+                        </div>
+           
+
+                        <p className='my-auto'>cart</p>
+                         
                     </NavLink>
                 </a>
 
