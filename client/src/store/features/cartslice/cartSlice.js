@@ -52,13 +52,20 @@ const cartSlice = createSlice({
 
 
 export const getCart = state => state.cart
+export const getCartId = state =>{
+    let cartIds = []
+    for(let id in state.cart.cartItems){
+        cartIds.push(id)
+    }
+    return cartIds
+}
 
 export const { increaseAmount,decreaseAmount } = cartSlice.actions
 export default cartSlice.reducer
 
 
 /** `
-{
+cart = {
     cartItems : {
         id : {
             data : {}
