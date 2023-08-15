@@ -9,6 +9,7 @@ import Mobile from '../../Homes/components/Mobile'
 
 import { getCart } from '../../../store/features/cartslice/cartSlice'
 import { useSelector } from 'react-redux'
+
 const Nav = ({pass}) => {
  
   const {cartItems,_} = useSelector(getCart)
@@ -20,24 +21,28 @@ const Nav = ({pass}) => {
 
   return (
     <div className={'z-10 bg-white font-semibold shadow-sm '+pass}>
+
         <Mobile show={show} setShow={setShow} loginNow={loginNow} setLoginNow={setLoginNow} setRegisterNow={setRegisterNow}/>
-        <div className=" bg-dark w-full font-medium text-white text-center py-1">
+        
+        <div className=" bg-dark w-full font-medium text-small text-white text-center py-1">
             This April, celebrate Fasika with a gift that makes your family happy!
         </div>
 
         {loginNow && <Login setLoginNow={setLoginNow} />  }
         {registerNow && <Register setRegisterNow={setRegisterNow} />  }
 
-        <div className='w-full px-c14 max-xl:px-3 py-2 flex uppercase  border-b border-red border-opacity-10' >
+        <div className='w-full  px-c14 max-xl:px-3 py-3 flex uppercase  border-b border-red border-opacity-10' >
             
-            <div className='w-3/4 flex gap-12 '>
+            <img src={Logo} width="100px" alt="" />
 
-                <img src={Logo} width="100px" alt="" />
+            <div className='w-3/4 justify-center flex gap-12 '>
+
                 <NavLink    to="/"  className={checkLink} >Home</NavLink >
                 <NavLink    to="/products" className={checkLink}>Products</NavLink >
                 <NavLink    to="/aboutus" className={checkLink}>About us</NavLink >
                 <NavLink    to="/howto" className={checkLink}>How to order</NavLink >
                 <a href="/#faq" className={"my-auto max-xl:hidden duration-200  hover:text-redd "}>FAQS</a >
+            
             </div>
 
             <div className='w-1/4 max-xl:w-2/4 flex justify-around max-xl:justify-end max-xl:gap-7 '>

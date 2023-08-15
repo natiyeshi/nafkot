@@ -16,7 +16,7 @@ const Testimonial = () => {
                
             </div>
 
-            <div className='bg-white  flex-shrink-0 p-2 px-3 flex flex-col basis-1/3 max-sm:basis-3/4 max-md:basis-7/12 gap-2 w-full rounded-sm'>
+            <div className='bg-white py-7 justify-center flex-shrink-0  p-2 px-3 flex flex-col basis-1/3 max-sm:basis-3/4 max-md:basis-7/12 gap-2 w-full rounded-sm'>
                 <div className='flex gap-3 '>
                     <div className='flex my-auto'>
                         <Star className='text-yellow-300 my-auto text-lg' />
@@ -35,7 +35,7 @@ const Testimonial = () => {
                 <h3 className='text-normal text-l font-bold'>Efrata Mulugeta</h3>
             </div>
 
-            <div className='bg-white  flex-shrink-0 p-2 px-3 max-sm:basis-3/4 flex flex-col basis-1/3 max-md:basis-7/12 gap-2 w-full rounded-sm'>
+            <div className='bg-white py-7 justify-center  flex-shrink-0 p-2 px-3 max-sm:basis-3/4 flex flex-col basis-1/3 max-md:basis-7/12 gap-2 w-full rounded-sm'>
                 <div className='flex gap-3 '>
                     <div className='flex my-auto'>
                         <Star className='text-yellow-300 my-auto text-lg' />
@@ -53,7 +53,7 @@ const Testimonial = () => {
                 </p>
                 <h3 className='text-normal font-bold'>Efrata Mulugeta</h3>
             </div>
-            <div className='bg-white  flex-shrink-0 p-2 px-3 max-sm:basis-3/4 flex flex-col basis-1/3 max-md:basis-7/12 gap-2 w-full rounded-sm'>
+            <div className='bg-white py-7 justify-center  flex-shrink-0 p-2 px-3 max-sm:basis-3/4 flex flex-col basis-1/3 max-md:basis-7/12 gap-2 w-full rounded-sm'>
                 <div className='flex gap-3 '>
                     <div className='flex my-auto'>
                         <Star className='text-yellow-300 my-auto text-lg' />
@@ -71,7 +71,7 @@ const Testimonial = () => {
                 </p>
                 <h3 className='text-normal font-bold'>Efrata Mulugeta</h3>
             </div>
-            <div className='bg-white  flex-shrink-0 p-2 px-3 max-sm:basis-3/4 flex flex-col basis-1/3 max-md:basis-7/12 gap-2 w-full rounded-sm'>
+            <div className='bg-white py-7 justify-center  flex-shrink-0 p-2 px-3 max-sm:basis-3/4 flex flex-col basis-1/3 max-md:basis-7/12 gap-2 w-full rounded-sm'>
                 <div className='flex gap-3 '>
                     <div className='flex my-auto'>
                         <Star className='text-yellow-300 my-auto text-lg' />

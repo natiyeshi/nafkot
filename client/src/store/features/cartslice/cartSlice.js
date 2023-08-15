@@ -43,8 +43,19 @@ const cartSlice = createSlice({
                 state.cartItems = remove(state.cartItems,id)
             }
         },
-        remove(state,action){
+        removeCartItem(state,action){
             const id = action.payload
+            state.total -= Number(state.cartItems[id].data.price) * Number(state.cartItems[id].amount)
+            state.cartItems = remove(state.cartItems,id)
+        },
+        addToCart(state,action){
+            const data = action.payload
+            if(state.cartItems[data._id] == null){
+                state.cartItems[data._id] = {
+                    data,amount : 1 
+                }
+                state.total += data.price
+            }
         }
 
     }
@@ -52,15 +63,17 @@ const cartSlice = createSlice({
 
 
 export const getCart = state => state.cart
-export const getCartId = state =>{
+
+
+export const getCartIds = state =>{
     let cartIds = []
     for(let id in state.cart.cartItems){
-        cartIds.push(id)
+        cartIds.push(Number(id))
     }
     return cartIds
 }
 
-export const { increaseAmount,decreaseAmount } = cartSlice.actions
+export const { increaseAmount,decreaseAmount,removeCartItem,addToCart } = cartSlice.actions
 export default cartSlice.reducer
 
 

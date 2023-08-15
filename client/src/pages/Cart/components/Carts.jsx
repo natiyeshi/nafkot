@@ -5,7 +5,7 @@ import { useSelector  } from 'react-redux'
 
 import { getCart } from '../../../store/features/cartslice/cartSlice'
 
-import { increaseAmount,decreaseAmount } from '../../../store/features/cartslice/cartSlice'
+import { increaseAmount,decreaseAmount,removeCartItem } from '../../../store/features/cartslice/cartSlice'
 import { useDispatch } from 'react-redux'
 
 const Carts = () => {
@@ -16,9 +16,10 @@ const Carts = () => {
   
   const addItemAmount = (id) => dispatch(increaseAmount(id))
   const removeItemAmount = (id) => dispatch(decreaseAmount(id))
-
+  const removeCart = (id) => dispatch(removeCartItem(id))
+  
   for(let i in cartItems){
-     cartsDiv.push(<Cart key={i}  {...cartItems[i]} removeItemAmount={removeItemAmount} addItemAmount={addItemAmount} />)  
+     cartsDiv.push(<Cart key={i}  {...cartItems[i]} removeCart={removeCart} removeItemAmount={removeItemAmount} addItemAmount={addItemAmount} />)  
   }
   
   return (

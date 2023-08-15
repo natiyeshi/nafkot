@@ -5,8 +5,7 @@ import plus from "../../../assets/images/faq plus (1).svg"
 import minus from "../../../assets/images/faq minus.svg"
 
 
-const Cart = ({data,amount,removeItemAmount,addItemAmount}) => {
-
+const Cart = ({data,amount,removeItemAmount,addItemAmount,removeCart}) => {
   
   let desc = "";
   for(let item of data.items){
@@ -25,7 +24,7 @@ const Cart = ({data,amount,removeItemAmount,addItemAmount}) => {
                 <div className='text-lg font-semibold '>{amount}</div>
                 <img onClick={() => addItemAmount(data._id)} src={plus} width={"20px"} className='cursor-pointer' alt="" />
             </div>
-            <Close className='absolute cursor-pointer right-0 me-2 mt-2 text-xl  text-redd duration-200 hover:rotate-90'/>
+            <Close onClick={()=>removeCart(data._id)} className='absolute cursor-pointer right-0 me-2 mt-2 text-xl  text-redd duration-200 hover:rotate-90'/>
             <div className='absolute bottom-0 right-4 mb-2'> <span className='font-semibold '>${data.price} </span> Inc VAT </div>
         </div>
     </div>

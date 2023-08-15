@@ -33,4 +33,18 @@ export default [
         ]
         
     },
+    {
+        _id : 1,
+        title : "fasika package",
+        tag : "valentine",
+        price : 1000,
+        items : [
+            {
+                img : "https://res.cloudinary.com/de7yugvwl/image/upload/v1690830593/nafktot/v1gwk0sagpmihxpbhtqj.png",
+                name : "doro",
+                amount : 3
+            }
+        ]
+        
+    },
 ]

@@ -30,11 +30,11 @@ function App() {
   
   const nav = displayElement ? <Nav pass={" sticky top-0 left-0 w-full "+css.show } /> : <></>
   
-  return (<div className='text-normal  font-medium'>
+  return (<div className='text-normal  font-medium '>
       <Routes >
 
         <Route path="/" element={<>{nav}<Home /></> }  />
-        <Route path="/detail" element={<>{nav}<Detail /></>}  />
+        <Route path="/detail/:id" element={<>{nav}<Detail /></>}  />
         <Route path="/cart" element={<>{nav}<Cart /></>}  />
         <Route path="/aboutus" element={<>{nav}<AboutUs /></>}  />
         <Route path="/howto" element={<>{nav}<HowTo /></>}  />

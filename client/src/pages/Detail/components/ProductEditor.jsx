@@ -2,10 +2,33 @@ import React,{useState} from 'react'
 import {BiLeftArrowAlt as LeftArrow} from "react-icons/bi"
 import {BiRightArrowAlt as RightArrow} from "react-icons/bi"
 import {AiOutlineCheck as Check} from "react-icons/ai"
+
 import plus from "../../../assets/images/faq plus (1).svg"
 import minus from "../../../assets/images/faq minus.svg"
+import { useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { getCart,addToCart,increaseAmount,decreaseAmount } from '../../../store/features/cartslice/cartSlice'
+
 
 const productEdit = ({ProductData}) => {
+
+  if(ProductData == undefined) return
+
+  const dispatch = useDispatch()
+
+  const carts= useSelector(getCart)
+  
+  const cart = carts.cartItems[ProductData._id]
+  
+  const increaseAmt = () => dispatch(increaseAmount(ProductData._id))
+  const decreaseAmt = () => dispatch(decreaseAmount(ProductData._id))
+
+  const toCart = () => {
+      dispatch(addToCart(ProductData))
+  }
+
+
   const productItems = ProductData.items
   const [curr,setCurr] = useState(0)
   
@@ -31,7 +54,7 @@ const productEdit = ({ProductData}) => {
 
               {productItems.map((data,i) =>
                  <img 
-                 onClick={() => setCurr(i)} src={data.img} width={"110px"} className='rounded cursor-pointer' alt="" />
+                 onClick={() => setCurr(i)} key={i} src={data.img} width={"110px"} className='rounded cursor-pointer' alt="" />
               )}
 
               <div className='w-98'></div>
@@ -43,8 +66,8 @@ const productEdit = ({ProductData}) => {
               <h3 className='text-2xl font-bold capitalize'>{ProductData.title}</h3>
               <div className='mt-5 text-large'>
                 {
-                  productItems.map((data)=>(
-                    <div className='flex gap-3 relative '> 
+                  productItems.map((data,i)=>(
+                    <div key={i} className='flex gap-3 relative '> 
                       <Check className='mt-1' />
                       {data.name}
                     </div>
@@ -53,16 +76,18 @@ const productEdit = ({ProductData}) => {
                 }
 
               </div>
-              <div className='flex gap-5 mt-5'>
-                <img src={minus} className='cursor-pointer' alt="" />
-                <div className='text-xl font-semibold'>1</div>
-                <img src={plus} className='cursor-pointer' alt="" />
-                <div className='text-large'><span className='text-xl font-semibold'>$400</span> <span>inc</span> Vat </div>
-              </div>
+              { cart !== undefined &&
+                <div className='flex gap-5 mt-5'>
+                  <img  onClick={decreaseAmt} src={minus} className='cursor-pointer' alt="" />
+                  <div className='text-xl font-semibold'>{cart.amount}</div>
+                  <img onClick={increaseAmt} src={plus} className='cursor-pointer' alt="" />
+                  <div className='text-large'><span className='text-xl font-semibold'>${cart.data.price * cart.amount}</span> <span>inc</span> Vat </div>
+                </div>
+              }
 
               <div className='flex max-lg:flex-col max-lg:gap-2  gap-5 mt-6'>
-                <button className='bg-blue-600 py-2 px-7 font-semibold text-large duration-100 hover:bg-blue-400 rounded text-white'>Go to cart</button>
-                <button className='bg-redd py-2 px-7  font-semibold  text-large duration-100 hover:bg-red-400 rounded text-white'>Add to cart</button>
+                <Link  to={"/cart"} className='bg-blue-600 py-2 px-7 text-center font-semibold text-large duration-100 hover:bg-blue-400 rounded text-white'>Go to cart</Link>
+                { cart == undefined && <button onClick={toCart} className='bg-redd py-2 px-7 font-semibold  text-large duration-100 hover:bg-red-400 rounded text-white'>Add to cart</button>}
               </div>
 
         </div>
