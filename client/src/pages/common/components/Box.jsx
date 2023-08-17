@@ -2,18 +2,14 @@ import React, { useState } from 'react'
 
 import {AiTwotoneStar as Star} from "react-icons/ai"
 import { Link } from 'react-router-dom'
-
+import { editDesc } from '../../../core/functions/common'
 
 const Box = ({data,toCart}) => {
   const {title,price,items} = data
   
   const [sendToCart,setSendToCart] = useState(false)
 
-  let desc = "";
-  for(let item of items){
-    desc += item.amount +" "+ item.name+", "  
-  }
-  desc = desc.slice(0,-2)
+  let desc = editDesc(items);
 
   return (
     <div className={`border rounded hover:shadow-xl hover:shadow-slate-300 duration-200 hover:-translate-y-[2px] ${sendToCart && "  hidden "}`}>
@@ -36,7 +32,7 @@ const Box = ({data,toCart}) => {
             <button onClick={() => {
                 toCart(data)
                 setSendToCart(true)
-              }} className='grow py-2 text-center font-semibold duration-100 bg-redd hover:bg-red-700 text-white rounded-tl'>Add to cart</button>
+              }} className='grow py-2 text-center font-semibold duration-100 bg-redd hover:bg-red-700 text-white rounded-tl rounded-br'>Add to cart</button>
         
         </div>
 

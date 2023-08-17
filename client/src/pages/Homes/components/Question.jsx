@@ -1,11 +1,12 @@
 import { useState } from "react"
 import React from 'react'
-import Plus from "../../../assets/images/plus.svg"
+// import Plus from "../../../assets/images/plus.svg"
+import {FiPlusCircle as Plus} from "react-icons/fi"
+import {BiMinusCircle as Minus} from "react-icons/bi"
 import css from "../css/faq.module.css"
 
-const Question = () => {
-  let [bool,setBool] = useState(false)
-  let data = bool == true ? css.show : "h-0"
+const Question = ({bool,setBool,num}) => {
+  let data = num == bool ? css.show : "h-0"
   return (
     
     <div className='flex-shrink-0  overflow-hidden relative bgredd w-9/12  max-md:w-10/12 flex gap-2'>
@@ -20,7 +21,11 @@ const Question = () => {
         </div>
 
         <div className='flex right-0 h-6  cursor-pointer  '>
-            <img src={Plus} alt="" onClick={()=>{setBool(!bool)}} className='' width={70} />
+           {
+            num != bool 
+            ?  <Plus onClick={()=>{setBool(num)}} className='text-xl' width={70} />
+            : <Minus onClick={()=>setBool(-1)} className='text-[22px]' width={78}  /> 
+          }
         </div>
 
     </div>

@@ -13,6 +13,7 @@ import Nav from './pages/common/components/Nav'
 
 import Dashbord from './Admin/pages/Dashbord/components/Dashbord'
 import Product from './Admin/pages/Products'
+import AddProduct from "./Admin/pages/add-product"
 
 function App() {
   const [displayElement, setDisplayElement] = useState(false);
@@ -42,6 +43,7 @@ function App() {
         <Route path="/admin">
           <Route path=""  element={<Dashbord />} />
           <Route path="products"  element={<Product />} />
+          <Route path="addproduct"  element={<AddProduct />} />
         </Route>
         
         <Route path="*" element={<h1 className='text-xl m-10'>Are you lost ? go to <a href="/" className='text-blue-400'>home</a> </h1>}/>
