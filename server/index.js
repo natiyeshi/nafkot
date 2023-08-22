@@ -1,15 +1,40 @@
 require("dotenv").config()
+require("./Config/connectDb")
+
 const express = require("express")
+const morgan = require("morgan")
+const createError = require("http-errors")
+
 const app = express()
-const connectDb = require("./Config/ConnectDb")
-const router = require('./Routers/clientRoute');
+
 app.use(express.json())
+app.use(express.urlencoded({extended:true}))
+app.use(morgan("dev"))
 
-app.use('/api', router);
+const productRoute = require("./Routers/prouductRoute")
 
-app.get("*",(req,res) => res.send("are you lost ?"))
+const PORT = process.env.PORT || 5000
+//configs
+app.use("/",productRoute)
 
-app.listen(4000,()=>{
-    connectDb()
-    console.log(".....running on port 4000")
+app.get("/",(req,res,next)=>{
+    res.send("okkkk") 
+})
+
+app.use((req,res,next) => {
+    next(createError.NotFound("route not found"))
+})
+
+app.use((err,req,res,next) => {
+    res.status(err.status || 500)
+    res.send({
+        error: {
+            "status" : err.status || 500,
+            "message" : err.message || " internale server error",
+        }
+    })
+})
+
+app.listen(PORT,()=>{
+    console.log(`running on port ${PORT}`)
 })

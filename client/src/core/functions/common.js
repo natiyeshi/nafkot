@@ -9,6 +9,25 @@ export const editDesc = (items) => {
     return desc
 }
 
-export const checkString = (data) => {
-    return data.trim() !== "" && data.length > 0
+// check empty
+export const checkString = (data,num = 1) => {
+    return data.trim() !== "" && data.length >= num
+}
+
+// authenticate object and return status and message
+export const validateObject = (data,strLen = 1,num = 1) => { 
+
+    for(let ind of Object.keys(data)){
+        if(typeof data[ind] === "string"){
+            if(!checkString(data[ind],strLen)){
+                return [false,"invalid "+ind]
+            }
+        } else if(typeof data[ind] == "number") {
+            if(data[ind] < num){
+                return [false,"invalid "+ind]
+            }
+        }
+    }
+
+    return [true]
 }

@@ -150,6 +150,8 @@ const From = () => {
         setItem(initialItem)
         setItems([])
         setItemNum(0)
+        setItemErr(initialItemErr)
+        setHeadersErr(initialHeadersErr)
     }
 
     useEffect(() => {
@@ -263,8 +265,8 @@ const From = () => {
                                     () => imgRef.current.click()
                                 }
                                 className={
-                                    `border border-gray-800  ${
-                                        item.img && "bg-gray-800 text-white "
+                                    `border border-gray-800 hover:bg-gray-200 duration-100  ${
+                                        item.img && "bg-gray-800 hover:bg-gray-700 text-white "
                                     } mt-2 py-1 px-5 w-fit cursor-pointer rounded`
                             }>
                                 {
@@ -279,10 +281,10 @@ const From = () => {
                                 itemErr.itemName
                             }
                                 {
-                                itemErr.image
+                                itemErr.img
                             } </div>
                             <button onClick={addMoreItem}
-                                className='bg-transparent border font-semibold px-12 rounded py-2 mb-2 flex'>
+                                className='bg-transparent border hover:bg-gray-200 duration-100 font-semibold px-12 rounded py-2 mb-2 flex'>
 
                                 <p>
                                     Add More Item

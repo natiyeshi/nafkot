@@ -1,14 +1,23 @@
 const mongoose = require("mongoose")
 
-const connectDb = () =>{
-    mongoose.connect(process.env.db_url)
-    const db = mongoose.connection
-    db.on("error",()=>{
-        console.log("not connected")
-    })
-    db.once("open",()=>{
-        console.log("connected")
-    })
-}
+mongoose
+    .connect(process.env.DB_URL_DEV,{dbName : process.env.DB_NAME})
+    .then(() => console.log("connected to Db"))
+    .catch(err => console.log(err.message))
 
-module.exports = connectDb
+mongoose.connection.on("connected",() => {
+    console.log("DB connection sucessfully started :)")
+})
+
+mongoose.connection.on("error",()=>{
+    console.log("connection failed :(");
+})
+
+mongoose.connection.on("disconnected",() => {
+    console.log("Db connection halted !!"); 
+}) 
+
+process.on("SIGINT",async ()=>{
+    await mongoose.connection.close() 
+    process.exit(0)
+})
