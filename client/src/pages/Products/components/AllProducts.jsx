@@ -1,8 +1,17 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 import Product from '../../common/components/Product'
 import WorkWith from '../../common/components/WorkWith'
+import { fetchContent } from '../../../store/features/productslice/productsSlice'
+import { useDispatch } from 'react-redux'
 
 const AllProducts = () => {
+  const dispatch = useDispatch()
+
+  useEffect(()=>{
+    console.log("-----")
+    dispatch(fetchContent())
+  },[])
+  
   return (
     <div className=' pb-20 w-c72 max-md:w-full mx-auto mt-10 flex flex-col gap-3 overflow-x-hidden'>
        

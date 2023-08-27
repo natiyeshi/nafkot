@@ -31,3 +31,51 @@ export const validateObject = (data,strLen = 1,num = 1) => {
 
     return [true]
 }
+
+// clear data from localstorage
+export const removeData = () =>{ 
+    localStorage.removeItem("nafkot-cart-items")
+}
+
+// save data to cart
+export const storeCart  = (cart) => {
+    if(cart == null || cart == undefined){
+        removeData()
+    } else{
+        let string  = JSON.stringify(cart)
+        localStorage.setItem("nafkot-cart-items",string)
+    }
+}
+
+// calculate cart total
+export const calculateTotal = (cartData) => {
+    try{
+        let total = 0;
+        cartData.forEach(element => {
+            total += Number(element.data.price) * Number(element.amount)
+        })
+        return [true,total];
+    }catch(e){
+        removeData()
+        console.log("something goe ... ",e)
+        return 0
+    }
+}
+
+// save data to cart
+export const getCartFromStore  = () => {
+    try{
+        let string = localStorage.getItem("nafkot-cart-items")
+        let cartItems = JSON.parse(string)
+        let [bool,total] = calculateTotal(cartItems)
+        if(bool) {
+            return {cartItems , total}
+        } else{
+            return {cartItems : [],total : 0}
+        }
+    }catch(e){
+        removeData(null)
+        return { cartItems :[], total: 0}
+    }
+}
+

@@ -13,7 +13,9 @@ import { useSelector } from 'react-redux'
 const Nav = ({pass}) => {
  
   const {cartItems,_} = useSelector(getCart)
+  console.log(cartItems,"----")
   const cartLength = Object.keys(cartItems).length
+  
   let checkLink = ({isActive}) =>  isActive ? 'my-auto max-xl:hidden text-redd duration-200 hover:text-redd' : ' duration-200  hover:text-redd my-auto max-xl:hidden'
   const [loginNow,setLoginNow] = useState(false) 
   const [registerNow,setRegisterNow] = useState(false) 

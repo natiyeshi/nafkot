@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React,{useEffect, useState} from 'react'
 import {BiLeftArrowAlt as LeftArrow} from "react-icons/bi"
 import {BiRightArrowAlt as RightArrow} from "react-icons/bi"
 import {AiOutlineCheck as Check} from "react-icons/ai"
@@ -8,7 +8,7 @@ import minus from "../../../assets/images/faq minus.svg"
 import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
-import { getCart,addToCart,increaseAmount,decreaseAmount } from '../../../store/features/cartslice/cartSlice'
+import { getCart,addToCart,increaseAmount,decreaseAmount,getSingleCart } from '../../../store/features/cartslice/cartSlice'
 
 
 const productEdit = ({ProductData}) => {
@@ -17,9 +17,8 @@ const productEdit = ({ProductData}) => {
 
   const dispatch = useDispatch()
 
-  const carts= useSelector(getCart)
-  
-  const cart = carts.cartItems[ProductData._id]
+  const cart= useSelector(state => getSingleCart(state,ProductData._id))
+  console.log("mycart",cart)
   
   const increaseAmt = () => dispatch(increaseAmount(ProductData._id))
   const decreaseAmt = () => dispatch(decreaseAmount(ProductData._id))
@@ -39,7 +38,8 @@ const productEdit = ({ProductData}) => {
   }
   var pad = productItems.length > 4 ? parseInt((productItems).length - 4) * 115 + 120 : 100
   pad = productItems.length < 4 ? 0 : pad
-
+  
+  
   return (
     <div className='grid grid-cols-2 max-md:grid-cols-1 max-md:px-4 px-c14 h-scree select-none h-sreen mt-14 gap-5'>
        

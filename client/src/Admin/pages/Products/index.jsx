@@ -2,13 +2,15 @@ import React from 'react'
 import Bar from '../common/Bar'
 import {AiOutlinePlus as Add} from "react-icons/ai"
 import Product from './components/Product'
-
+import Loading from '../common/components/Error'
+import { Link } from 'react-router-dom'
 
 const index = () => {
     
     return (
-        <div className='flex  bg-blue-50 '>
+        <div className='flex relative bg-blue-50 '>
             <Bar />
+
             <div className='basis-9/12 flex flex-col  p-5 overflow-y-scroll bg-red' style={{maxHeight:"100vh"}}>
             
                 <div className='flex '>
@@ -21,10 +23,10 @@ const index = () => {
 
                     <div className='basis-1/3 flex  '>
                         
-                        <div className='bg-gray-700 text-white cursor-pointer hover:bg-gray-900 px-3 flex gap-3 my-auto py-3 rounded-xl'>
+                        <Link to={"/admin/addproduct"} className='bg-gray-700 text-white cursor-pointer hover:bg-gray-900 px-3 flex gap-3 my-auto py-2 rounded-lg'>
                             Add Products
                             <Add className='text-xl font-bold' />
-                        </div>
+                        </Link>
                     </div>
 
                 </div>

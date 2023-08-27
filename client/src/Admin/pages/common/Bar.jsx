@@ -43,7 +43,7 @@ const Bar = () => {
                 <p className={`${path == "/admin/addproduct" && "text-redd"} group-hover:text-redd duration-200`}>add Product</p>
               </NavLink>
 
-              <NavLink to={"/admin/logout"} className={`${path == "/admin/logout" && "bg-red-400 bg-opacity-20 "} relative group ps-10 transition  duration-200 flex font-bold hover:bg-red-400 hover:bg-opacity-20 cursor-pointer gap-5 px-4 py-3`}>
+              <NavLink to={"/"} className={`${path == "/admin/logout" && "bg-red-400 bg-opacity-20 "} relative group ps-10 transition  duration-200 flex font-bold hover:bg-red-400 hover:bg-opacity-20 cursor-pointer gap-5 px-4 py-3`}>
                 <div className={`${path == "/admin/logout" && "opacity-80 translate-x-0"} absolute left-0  duration-200  top-0 w-1 opacity-0 group-hover:translate-x-0 translate-x-3 group-hover:opacity-80  bg-red-500 h-full`}></div>
                 <L className={`${path == "/admin/logout" && "text-red-700"} my-auto text-xl duration-200 group-hover:text-red-700 `} />
                 <p className={`${path == "/admin/logout" && "text-redd"} group-hover:text-redd duration-200`}>Logout</p>

@@ -1,29 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
 import cartData from "../../../data/dummyCart";
+import {storeCart,getCartFromStore} from "../../../core/functions/common"
 
-let total = 0;
-let cartItems = [];
-
-cartData.forEach(data => {
-    cartItems[data._id] = {
-        data, amount : 1
-    }
-    total += data.price
-})
-
-const remove = (obj,id) =>{
-    let result = {}
-    for(let i in obj){
-        if(i == id) continue
-        result[i] = obj[i]  
-    }
-    return result
-}
+let {cartItems,total} =  getCartFromStore();
 
 const initialState = {
     cartItems,
     total,
 }
+
 
 const cartSlice = createSlice({
     name: "cart",
@@ -31,45 +16,71 @@ const cartSlice = createSlice({
     reducers:{
         increaseAmount(state,action){
             const id = action.payload
-            state.cartItems[id].amount++
-            state.total += Number(state.cartItems[id].data.price)
-
+            console.log(state)
+            state.cartItems.forEach((element,ind) => {
+                if(element.data._id == id){
+                    state.cartItems[ind].amount += 1
+                    state.total += Number(state.cartItems[ind].data.price)
+                } 
+            })
+            
+            storeCart(state.cartItems)
         },
         decreaseAmount(state,action){
             const id = action.payload
-            const num = --state.cartItems[id].amount
-            state.total -= Number(state.cartItems[id].data.price)
-            if(num == 0){
-                state.cartItems = remove(state.cartItems,id)
-            }
+            state.cartItems.forEach((element,ind) => {
+                if(element.data._id == id){
+                    state.total -= Number(state.cartItems[ind].data.price)
+                    if(state.cartItems[ind].amount == 1){
+                        state.cartItems.splice(ind,1)
+                    } else {
+                        state.cartItems[ind].amount -= 1
+                    }
+                } 
+            })
+            storeCart(state.cartItems)
+
         },
         removeCartItem(state,action){
             const id = action.payload
-            state.total -= Number(state.cartItems[id].data.price) * Number(state.cartItems[id].amount)
-            state.cartItems = remove(state.cartItems,id)
+            state.cartItems.forEach((element,ind) => {
+                if(element.data._id == id){
+                    state.total -= Number(state.cartItems[ind].data.price) * Number(state.cartItems[ind].amount)
+                    state.cartItems.splice(ind,1)
+                }
+            })
+            storeCart(state.cartItems)
+
         },
         addToCart(state,action){
+            
             const data = action.payload
-            if(state.cartItems[data._id] == null){
-                state.cartItems[data._id] = {
-                    data,amount : 1 
-                }
-                state.total += data.price
-            }
+            state.cartItems.push({
+                data,amount : 1 
+            })
+            state.total += data.price
+            storeCart(state.cartItems)
         }
 
     }
 })
 
 
-export const getCart = state => state.cart
+export const getCart = state => {
+    return state.cart
+}
 
+export const getSingleCart = (state,id) => {
+    return state.cart.cartItems.find(ele => ele.data._id == id)
+}
+        
 
 export const getCartIds = state =>{
     let cartIds = []
-    for(let id in state.cart.cartItems){
-        cartIds.push(Number(id))
+    for(let element of state.cart.cartItems){
+        cartIds.push(element.data._id)
     }
+    console.log(cartIds)
     return cartIds
 }
 
@@ -79,12 +90,12 @@ export default cartSlice.reducer
 
 /** `
 cart = {
-    cartItems : {
-        id : {
+    cartItems : [
+         {
             data : {}
             amount : number
-        }
-    }
+        },
+    ],
     total : 10
 }
 

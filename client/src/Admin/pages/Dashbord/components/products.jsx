@@ -1,13 +1,26 @@
-import React from 'react'
-import Box from '../../common/components/Box'
+import React, { useEffect, useState } from 'react'
+import DatshbordBox from './DashbordBox'
 import css from "../css/css.module.css"
 import {useSelector} from 'react-redux'
 import { getAdminProducts} from '../../../../store/features/adminproductslice/adminProductsSlice'
+import { Link } from 'react-router-dom'
+import axios from 'axios'
 
 const Products = () => {
+    const [products,setProducts] = useState([])
 
-    const products = useSelector(getAdminProducts)
-
+    useEffect(()=>{
+        async function fetch(){
+            try{
+                const result = await axios.post("http://localhost:4000/getproducts/14")
+                setProducts(result.data)
+            }catch(e){  
+                console.log(e)
+                alert("wow")
+            }
+        }
+        fetch()
+    },[])
     return (
         <div>
 
@@ -16,16 +29,16 @@ const Products = () => {
             </p>
             <div className={`${ css.sc} relative  flex w-11/12 gap-6 h-11/12 overflow-x-auto py-3 my-7`}> 
             {
-                products.map(data => <Box {...data}
+                products.map(data => <DatshbordBox {...data}
                     key={
                         data._id
                     }/>)
             }
-                <div className='border cursor-pointer group shrink-0 flex rounded hover:shadow-lg w-56 shadow-sm shadow-slate-500 hover:shadow-slate-500 duration-200 hover:-translate-y-1 '>
-                    <p className='m-auto text-lg font-bold'>
+                <Link to={"/admin/products"} className='text-blue-500 cursor-pointer group shrink-0 my-auto flex rounded w-56 shadow-sm  duration-200  '>
+                    <p className='m-auto text-lg '>
                         See more products
                     </p>
-                </div>
+                </Link>
             </div>
 
         </div>

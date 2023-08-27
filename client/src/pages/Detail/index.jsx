@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import Nav from '../common/components/Nav'
 import Testimonial from '../common/components/Testimonial'
 import DetailProducts from './components/DetailProducts'
@@ -10,21 +10,30 @@ import ProductData from '../../data/dummyDetail'
 import { useNavigate, useParams } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { getSingleProduct } from '../../store/features/productslice/productsSlice'
+import axios from '../../core/hooks/axios'
 
 const index = () => {
   const { id } = useParams()
-  const data = useSelector(state => getSingleProduct(state,Number(id)))
   const navigator = useNavigate()
+
+  const [productData,setProductData] = useState()
+
   useEffect(()=>{
-    if(data == undefined){
-      navigator("/products")
+    async function fetchProduct(){
+      try{
+        const result = await axios.post("findproduct/"+id)
+        setProductData(result.data)
+      }catch(e){
+        navigator("/products")
+      }
     }
-  },[])
+    fetchProduct()
+  },[id])
   return (
     <div className='text-normal'>
         <Nav />
-        <Navigator ProductData={data} />
-        <ProductEditor ProductData={data} />
+        <Navigator ProductData={productData} />
+        <ProductEditor ProductData={productData} />
         <Testimonial />
         <DetailProducts/>
         <Footer />

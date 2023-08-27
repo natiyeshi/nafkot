@@ -15,7 +15,7 @@ const productSchema = new mongoose.Schema({
   },
   items: {
     type: [],
-    required: true
+    default: []
   }
 });
 

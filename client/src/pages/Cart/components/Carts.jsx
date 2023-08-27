@@ -10,6 +10,7 @@ import { useDispatch } from 'react-redux'
 
 const Carts = () => {
   const {total,cartItems} = useSelector(getCart)
+  console.log(cartItems,"...items")
   let cartsDiv = [];
   
   const dispatch = useDispatch()
@@ -25,8 +26,8 @@ const Carts = () => {
   return (
     <div className='w-full px-c14 max-lg:px-3 mb-6'>
         <h1 className='text-center w-2/3 text-xl font-semibold my-5 max-sm:mx-auto'>Carts</h1>
-        <div  className='flex gap-5 max-lg:flex-col'>
-            <div className=' flex flex-col gap-3 grow '>
+        <div  className='flex gap-10 max-lg:flex-col'>
+            <div className=' flex basis-4/6 flex-col gap-3 grow '>
              {
              cartsDiv.length > 0 
              ? cartsDiv
@@ -36,7 +37,7 @@ const Carts = () => {
 
             </div>
 
-            <div className='bg--500 w-2/6 max-lg:w-full'>
+            <div className='bg--500 basis-2/6 max-lg:w-full'>
                 <div className='border px-2 py-5 max-lg:px-c14 max-sm:px-5'>
                     <div className='flex justify-between'>
                        <h1 className='font-semibold text-lg'>Total Estimate</h1>

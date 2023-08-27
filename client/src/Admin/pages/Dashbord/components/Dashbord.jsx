@@ -16,8 +16,6 @@ const Dashbord = () => {
             </div>
             <Products />
 
-            
-
 
             <div className='bt-red\\'>
                 <h1 className='my-3 font-bold text-lg'>Transactions</h1>
