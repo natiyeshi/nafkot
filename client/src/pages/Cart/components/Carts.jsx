@@ -4,7 +4,7 @@ import Cart from './Cart'
 import { useSelector  } from 'react-redux'
 
 import { getCart } from '../../../store/features/cartslice/cartSlice'
-
+import { Link } from 'react-router-dom'
 import { increaseAmount,decreaseAmount,removeCartItem } from '../../../store/features/cartslice/cartSlice'
 import { useDispatch } from 'react-redux'
 
@@ -44,7 +44,7 @@ const Carts = () => {
                        <div className=''> <span className='font-semibold text-xl'>${total}</span>  Inc VAT</div> 
                     </div>
                     <div className='text-center mt-5 '>
-                        <button  className=' disabled:bg-gray-400 hover:bg-red-400 duration-100  bg-redd px-8 py-3 rounded font-semibold text-white text-'>Proceed to check out</button>
+                        <Link to={"/checkout"}  className=' disabled:bg-gray-400 hover:bg-red-400 duration-100  bg-redd px-8 py-3 rounded font-semibold text-white text-'>Proceed to check out</Link>
                     </div>
 
                 </div>

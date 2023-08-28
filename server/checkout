@@ -1,0 +1,35 @@
+
+Transaction
+    senderFirstName
+    senderLastName
+    senderEmail
+    senderPhoneNumber
+    reciverFirstName
+    reciverLastName
+    reciverEmail
+    reciverPhoneNumber
+    reciverPhoneNumber2
+    reciverCity
+    reciverRegion
+    message
+    cart [ {productId,amount} ]
+    total 
+
+
+Form
+    sender
+        - first name
+        - last name
+        - email
+        - phone number
+    reciver
+        - first name
+        - last name
+        - email
+        - phone number 1
+        - phone number 2 
+        - city
+        - region/sefer 
+    
+    - description
+     

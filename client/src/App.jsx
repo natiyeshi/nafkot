@@ -10,6 +10,7 @@ import AboutUs from "./pages/AboutUs"
 import HowTo from "./pages/HowTo"
 import Products from "./pages/Products"
 import Nav from './pages/common/components/Nav'
+import Checkout from "./pages/checkout/"
 
 import Dashbord from './Admin/pages/Dashbord/components/Dashbord'
 import Product from './Admin/pages/Products'
@@ -40,6 +41,7 @@ function App() {
         <Route path="/aboutus" element={<>{nav}<AboutUs /></>}  />
         <Route path="/howto" element={<>{nav}<HowTo /></>}  />
         <Route path="/products" element={<>{nav}<Products /></>}  />
+        <Route path="/checkout" element={<>{nav}<Checkout /></>}  />
         <Route path="/admin">
           <Route path=""  element={<Dashbord />} />
           <Route path="products"  element={<Product />} />
