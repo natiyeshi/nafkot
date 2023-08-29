@@ -10,7 +10,7 @@ import { useDispatch } from 'react-redux'
 
 const Carts = () => {
   const {total,cartItems} = useSelector(getCart)
-  console.log(cartItems,"...items")
+
   let cartsDiv = [];
   
   const dispatch = useDispatch()
@@ -41,10 +41,12 @@ const Carts = () => {
                 <div className='border px-2 py-5 max-lg:px-c14 max-sm:px-5'>
                     <div className='flex justify-between'>
                        <h1 className='font-semibold text-lg'>Total Estimate</h1>
-                       <div className=''> <span className='font-semibold text-xl'>${total}</span>  Inc VAT</div> 
+                       <div className=''> <span className='font-semibold text-xl'>${total.toLocaleString()}</span>  Inc VAT</div> 
                     </div>
                     <div className='text-center mt-5 '>
-                        <Link to={"/checkout"}  className=' disabled:bg-gray-400 hover:bg-red-400 duration-100  bg-redd px-8 py-3 rounded font-semibold text-white text-'>Proceed to check out</Link>
+                        <Link to={"/checkout"}  className=' disabled:bg-gray-400 hover:bg-red-400 duration-100  bg-redd px-8 py-3 rounded font-semibold text-white text-'>
+                            Proceed to check out
+                        </Link>
                     </div>
 
                 </div>

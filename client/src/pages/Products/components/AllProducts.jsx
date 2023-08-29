@@ -13,7 +13,7 @@ const AllProducts = () => {
   },[])
   
   return (
-    <div className=' pb-20 w-c72 max-md:w-full mx-auto mt-10 flex flex-col gap-3 overflow-x-hidden'>
+    <div className=' pb-20 w-c72 max-w-7xl max-md:w-full mx-auto mt-10 flex flex-col gap-3 overflow-x-hidden'>
        
        <h1 className='text-center font-bold text-redd text-2xl'>Products</h1>
         <h1 className='text-lg  max-md:text-lg text-center mt-3'>

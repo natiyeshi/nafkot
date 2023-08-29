@@ -22,8 +22,8 @@ const Nav = ({pass}) => {
   const [show,setShow] = useState(false)
 
   return (
-    <div className={'z-10 bg-white font-semibold shadow-sm '+pass}>
-
+    <div className={'z-10 bg-white font-semibold shadow-sm  '+pass}>
+        
         <Mobile show={show} setShow={setShow} loginNow={loginNow} setLoginNow={setLoginNow} setRegisterNow={setRegisterNow}/>
         
         <div className=" bg-dark w-full font-medium text-small text-white text-center py-1">
@@ -33,8 +33,8 @@ const Nav = ({pass}) => {
         {loginNow && <Login setLoginNow={setLoginNow} />  }
         {registerNow && <Register setRegisterNow={setRegisterNow} />  }
 
-        <div className='w-full  px-c14 max-xl:px-3 py-3 flex uppercase  border-b border-red border-opacity-10' >
-            
+        <div className='w-full px-c14 max-xl:px-3 py-3 flex uppercase justify-center border-b border-red border-opacity-10' >
+            <div className='flex w-full max-w-7xl'>
             <img src={Logo} width="100px" alt="" />
 
             <div className='w-3/4 justify-center flex gap-12 '>
@@ -75,7 +75,7 @@ const Nav = ({pass}) => {
 
                 <Menu className='text-4xl xl:hidden' onClick={() => {setShow(!show)}}/>
             </div>
-
+            </div>
         </div>
     </div>
   )

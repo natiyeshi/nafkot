@@ -9,10 +9,10 @@ const Footer = () => {
   return (<>
         {loginNow && <Login setLoginNow={setLoginNow} />  }
         {registerNow && <Register setRegisterNow={setRegisterNow} />  }
-    <div className='w-full px-c14 font-semibold max-lg:px-4 pt-7' style={{background: "#F7F7F7"}}>
+    <div className='w-full px-c14  font-semibold max-lg:px-4 pt-7' style={{background: "#F7F7F7"}}>
         
 
-        <div className='flex  max-lg:grid '>
+        <div className='flex max-w-7xl mx-auto max-lg:grid '>
 
             <div className='flex flex-col gap-10 basis-1/4'>
                 <h1 className='font-bold text-lg   max-lg:text-center'>Navigation</h1>

@@ -32,7 +32,7 @@ const Product = () => {
 
 
   return (
-    <div className="py-2">
+    <div className="py-2 ">
         {/* <div className="w-full ">
             <div className='w-6/12 max-lg:w-11/12 mx-auto border-2 flex p-1 rounded'>
                 <input type="text" className='grow focus:outline-none' placeholder='Search if you have something in mind' />

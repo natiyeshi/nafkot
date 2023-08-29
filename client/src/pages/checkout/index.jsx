@@ -25,8 +25,8 @@ const index = () => {
         <div className='w-5/12 bg-gray-50 h-fit rounded '>
 
           <div className='flex justify-between rounded-t bg-redd p-2 py-3 text-white '>
-            <div className='font-bold'>Your order</div>
-            <Link to={"/cart"} className=''>Edit</Link>
+            <div className='font-bold text-lg'>Your order</div>
+            <Link to={"/cart"} className='my-auto '>Edit</Link>
           </div>
 
           <div className=' pt-2'>
@@ -48,9 +48,9 @@ const index = () => {
 
         </div>
 
-        <div className='w-6/12 bg-gray-100  mb-20 p-2 rounded h-fit '>
+        <div className='w-6/12 bg-gray-100  mb-20  rounded h-fit '>
 
-          <h1 className='text-xl p-3 font-bold text-center'>Checkout</h1>
+          <h1 className='text-lg text-white p-3 font-bold text-start bg-redd rounded-t'>Checkout</h1>
           
           <form className=' px-4' onSubmit={(e) => e.preventDefault()}>
               

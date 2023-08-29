@@ -9,10 +9,12 @@ const Box = ({ data, toCart }) => {
   let desc = editDesc(items);
 
   return (
-    <div className={`border rounded hover:shadow-xl hover:shadow-slate-300 duration-200 hover:-translate-y-[2px] `}>
+    <div className="border rounded hover:shadow-xl  h-fit hover:shadow-slate-300 duration-200 hover:-translate-y-[2px]">
       <div className="relative flex flex-col">
-      <Link to={`/detail/${data._id}`} style={{ height: '225px'}} className=' borderb '>
-          <img src={items[0].img} alt="loading" className="w-full h-full  cursor-pointer" />
+        <Link to={`/detail/${data._id}`} className="borderb">
+          <div className="w-full h-[200px] max-lg:h-[300px] overflow-hidden">
+            <img src={items[0].img} alt="loading" className="object-cover rounded-t w-full h-full cursor-pointer" />
+          </div>
         </Link>
         <span className="absolute top-3 right-3 bg-white rounded-2xl p-1 flex place-items-center gap-1 font-semibold">
           <Star className="text-yellow-500" />
@@ -27,7 +29,10 @@ const Box = ({ data, toCart }) => {
 
       <div className="flex justify-between mt-2 text-large">
         <div className="grow py-2 text-center font-bold">${price}</div>
-        <Link to={`/detail/${data._id}`} className="grow py-2 text-center font-semibold duration-100 text-redd hover:text-red-400">
+        <Link
+          to={`/detail/${data._id}`}
+          className="grow py-2 text-center font-semibold duration-100 text-redd hover:text-red-400"
+        >
           View details
         </Link>
         <button

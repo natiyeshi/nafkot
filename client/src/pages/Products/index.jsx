@@ -5,7 +5,7 @@ import AllProducts from './components/AllProducts'
 
 const index = () => {
   return (
-    <div className='text-normal font-medium'>
+    <div className='text-normal font-medium ' >
         <Nav />
         <AllProducts />
         <Footer />
