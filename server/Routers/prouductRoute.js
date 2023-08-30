@@ -1,8 +1,8 @@
 const express = require("express")
 const router = express.Router()
-const ProductSchema = require("../Models/Db/Product")
+const ProductSchema = require("../Models/Db/Product.model")
 const createError = require("http-errors")
-const { productJoi } = require("../Models/Joi/product")
+const { productJoi } = require("../Models/Joi/product.joi")
 const cloudinary = require('cloudinary').v2;
 const multer = require("multer")
 const path = require('path');
@@ -50,12 +50,11 @@ router.post('/uploadItem',upload.single('img'), (req, res,next) => {
 router.post('/addproduct', async (req, res, next) => {
     try {
         const product = req.body
-        console.log(product)
         // const value = await productJoi.validateAsync(product)
         const newProduct = await ProductSchema.create(product)
         res.send(newProduct._id)
     } catch (err) {
-        console.log(err," --- error found")
+        console.log(err)
         if(err.isJoi) return next(createError.BadRequest(err.message))
         next(err.message)
     }
@@ -67,6 +66,7 @@ router.post("/getproducts",async (req,res,next)=>{
         const newProducts = await ProductSchema.find({ $expr: { $gt: [{ $size: "$items" }, 0] } }).sort({ _id: -1 });
         res.send(newProducts)
     }catch(e){
+        console.log("error")
         next(e)
     }
 

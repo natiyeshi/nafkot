@@ -14,10 +14,12 @@ app.use(express.urlencoded({extended:true}))
 app.use(morgan("dev"))
 
 const productRoute = require("./Routers/prouductRoute")
+const transactionRoute = require("./Routers/transactionRoute")
 
 const PORT = process.env.PORT || 5000
 //configs
 app.use("/",productRoute)
+app.use("/transaction/",transactionRoute)
 
 app.get("/",(req,res,next)=>{
     res.send("okkkk") 

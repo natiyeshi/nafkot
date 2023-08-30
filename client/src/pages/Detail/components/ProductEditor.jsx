@@ -41,20 +41,21 @@ const productEdit = ({ProductData}) => {
   
   
   return (
-    <div className='grid grid-cols-2 max-md:grid-cols-1 max-md:px-4 px-c14 h-scree select-none h-sreen mt-14 gap-5'>
+    <div className='grid grid-cols-2 max-w-7xl m-auto max-md:grid-cols-1 max-md:px-4 px-c14 h-scree select-none h-sreen mt-14 gap-5'>
        
-        <div className='  flex  flex-col gap-6'>
-          <div className='relative shower bg--300 flex w-full  gap-3 '>
+        <div className='flex  flex-col gap-6 '>
+          <div className='relative showe flex w-full h-[300px] gap-3 overflow-hidden '>
                 <LeftArrow onClick={() => changeImg(-1)} className='absolute cursor-pointer text-3xl top-1/2 left-2 bg-white bg-opacity-60 hover:bg-opacity-100 transform duration-500 text-redd rounded-full '/>
-                <img src={productItems[curr].img}  className='mx-auto rounded w-full' alt="" />
+                <img src={productItems[curr].img}  className='mx-auto rounded w-full h-full object-cover ' alt="" />
                 <RightArrow onClick={() => changeImg(1)} className='absolute cursor-pointer right-2 text-3xl top-1/2  text-redd bg-white bg-opacity-60 hover:bg-opacity-100 transform duration-500 rounded-full '/>
           </div>
-          <div className='flex w-full overflow-x-scroll gap-5 mb-3 justify-center' >
+          <div className='flex w-full overflow-x-scroll gap-5 mb-3 justify-center h-[100px]' >
+              
               <div style={{minWidth:pad+"px"}} className=''></div>
 
               {productItems.map((data,i) =>
                  <img 
-                 onClick={() => setCurr(i)} key={i} src={data.img} width={"110px"} className='rounded cursor-pointer' alt="" />
+                 onClick={() => setCurr(i)} key={i} src={data.img} width={"110px"} className='rounded object-cover cursor-pointer' alt="" />
               )}
 
               <div className='w-98'></div>

@@ -3,14 +3,14 @@ import {AiTwotoneStar as Star} from "react-icons/ai"
 
 const Testimonial = () => {
   return (
-    <div className='relative px-c14  max-lg:px-2 bg-gray-100 mx-auto pb-10'>
+    <div className='relative px-c14   max-lg:px-2 bg-gray-100 mx-auto pb-10'>
             
         <h1 className='py-3 text-center text-xl mt-10 mb-5 font-semibold capitalize'>customers review</h1>
 
         <div className='absolute max-lg:hidden h-full left-0 bottom-0 bg-gradient-to-r from-gray-100 via-gray-100 w-2/6'></div>
         <div className='absolute max-lg:hidden right-0 h-full bottom-0 bg-gradient-to-l from-gray-100 via-gray-100 w-2/6'></div>
-
-        <div className=' flex overflow-auto  py-3 gap-2 testimonial-scroll z-50 mb-3'>
+        {/* <div></div> */}
+        <div className=' max-w-7xl m-auto flex overflow-auto  py-3 gap-2 testimonial-scroll z-50 mb-3'>
             
             <div className='max-lg:hidden flex-shrink-0 p-2 px-3 flex flex-col basis-2/12 gap-2 rounded-sm'>
                
@@ -93,9 +93,10 @@ const Testimonial = () => {
             
             <div className='max-lg:hidden flex-shrink-0 p-2 px-3 flex flex-col basis-1/3 gap-2 rounded-sm'>
                
-               </div>
+            </div>
 
-        </div>  
+        </div>
+
     </div>
   )
 }

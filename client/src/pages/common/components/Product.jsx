@@ -7,6 +7,7 @@ import { getProducts,getTag,filterDatas,getError,getIsLoading } from '../../../s
 import { getCartIds,addToCart } from '../../../store/features/cartslice/cartSlice'
 import { useDispatch } from 'react-redux'
 import { fetchContent } from '../../../store/features/productslice/productsSlice'
+import Skeleton from './skeleton'
 
 const Product = () => {
   const dispatch = useDispatch()
@@ -30,9 +31,9 @@ const Product = () => {
     dispatch(fetchContent())
   },[])
 
-
+  const dummy = ["","","","","","","","","","","","","","","","","","","","","","","","",""]
   return (
-    <div className="py-2 ">
+    <div className="py-2  ">
         {/* <div className="w-full ">
             <div className='w-6/12 max-lg:w-11/12 mx-auto border-2 flex p-1 rounded'>
                 <input type="text" className='grow focus:outline-none' placeholder='Search if you have something in mind' />
@@ -50,20 +51,20 @@ const Product = () => {
             {/* <p onClick={() => getTaggedOnes()}  className={`hover:text-redd cursor-pointer text-large  ${tag == "others" && "font-semibold text-redd"}`}>others</p> */}
         </div>
 
-        <div className={`${products.length > 0 && "grid"} mt-2 pt-4 grid-cols-3  max-lg:px-4 gap-7 max-md:grid-cols-2 max-sm:grid-cols-1 justify-around`}>
+        <div className={`${(products.length > 0 || loading)&& "grid"} mt-2 pt-4 grid-cols-3  max-lg:px-4 gap-7 max-md:grid-cols-2 max-sm:grid-cols-1 justify-around`}>
             {   
                 error ? 
               <div className='w-full m-auto col-span-3 flex h-64'>
                 <div className='m-auto'>
                 {error}
                 </div>
-             </div> :
+             </div> 
+            :
               loading ? 
-              <div className='w-full m-auto col-span-3 flex h-64'>
-                  <div className='m-auto'>
-                  loading
-                  </div>
-              </div> :
+              
+              dummy.map(data => <Skeleton />)
+            
+               :
                  products.length == 0 || products.length == 0 
                 ? 
                 <div className='w-full m-auto col-span-3 flex h-64'>

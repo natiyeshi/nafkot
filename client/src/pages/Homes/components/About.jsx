@@ -24,43 +24,46 @@ const About = () => {
 
             </div>
 
-            <div className='py-3 px-c14 max-lg:px-3 w-full flex mt-16 bg-gray-100 justify-around place-items-center max-lg:flex-col'>
+            <div className='bg-gray-100 flex justify-center mt-16 px-c14'>
 
-
-                    <div className='text-lg  font-semibold w-5/12 max-lg:text-center max-lg:w-full '>
-                        WHAT WE SERVE
-                    </div>
-
-                    <div className='grid font-medium max-[350px]:grid-cols-1 grid-cols-4 max-lg:mt-8 max-lg:grid-cols-2 max-lg:gap-5  w-full justify-between grow flex-wrap'>
-
-                        <div className='flex gap-2 max-lg:justify-center'>
-                            <img src={Logo}
-                                className='w-[25px] h-[25px]'
-                                alt=""
-                                loading='lazy'/>
-                            <p className='my-auto'>Fast, Free Delivery</p>
+                    <div className='py-3 max-w-7xl  max-lg:px-3  w-full flex   justify-around place-items-center max-lg:flex-col'>
+                            
+                        <div className='text-lg  font-semibold w-5/12 max-lg:text-center max-lg:w-full '>
+                            WHAT WE SERVE
                         </div>
 
-                        <div className='flex gap-2  max-lg:justify-center'>
-                            <img src={Logo}
-                                className='w-[25px] h-[25px]'
-                                alt=""
-                                loading='lazy'/>
-                            <p className='my-auto'>Fast, Free Delivery</p>
-                        </div>
-                        <div className='flex gap-2  max-lg:justify-center'>
-                            <img src={Logo}
-                                className='w-[25px] h-[25px]'
-                                alt=""
-                                loading='lazy'/>
-                            <p className='my-auto'>Fast, Free Delivery</p>
-                        </div>
-                        <div className='flex gap-2  max-lg:justify-center'>
-                            <img src={Logo}
-                                className='w-[25px] h-[25px]'
-                                alt=""
-                                loading='lazy'/>
-                            <p className='my-auto'>Fast, Free Delivery</p>
+                        <div className='grid font-medium max-[350px]:grid-cols-1 grid-cols-4 max-lg:mt-8 max-lg:grid-cols-2 max-lg:gap-5  w-full justify-between grow flex-wrap'>
+
+                            <div className='flex gap-2 max-lg:justify-center'>
+                                <img src={Logo}
+                                    className='w-[25px] h-[25px]'
+                                    alt=""
+                                    loading='lazy'/>
+                                <p className='my-auto'>Fast, Free Delivery</p>
+                            </div>
+
+                            <div className='flex gap-2  max-lg:justify-center'>
+                                <img src={Logo}
+                                    className='w-[25px] h-[25px]'
+                                    alt=""
+                                    loading='lazy'/>
+                                <p className='my-auto'>Fast, Free Delivery</p>
+                            </div>
+                            <div className='flex gap-2  max-lg:justify-center'>
+                                <img src={Logo}
+                                    className='w-[25px] h-[25px]'
+                                    alt=""
+                                    loading='lazy'/>
+                                <p className='my-auto'>Fast, Free Delivery</p>
+                            </div>
+                            <div className='flex gap-2  max-lg:justify-center'>
+                                <img src={Logo}
+                                    className='w-[25px] h-[25px]'
+                                    alt=""
+                                    loading='lazy'/>
+                                <p className='my-auto'>Fast, Free Delivery</p>
+                            </div>
+
                         </div>
 
                     </div>

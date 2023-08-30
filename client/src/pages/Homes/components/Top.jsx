@@ -9,8 +9,8 @@ const Top = () => {
     <div className=''>
         
         <Nav />
-        <div className='flex overflow-x-hidden '>
-          <img src={Image} alt="" className='max-md:hidden w-full' loading='lazy'/>
+        <div className='flex overflow-x-hidden justify-center '>
+          <img src={Image} alt="" className='max-md:hidden  w-full' loading='lazy'/>
           <img src={mobPeople} alt=""  className='md:hidden w-full' loading='lazy'/>
         </div>
           
@@ -18,7 +18,7 @@ const Top = () => {
 
         <div className='w-full relative bottom-10 flex justify-center'>
             
-            <div className="max-xl:w-[55%] max-xl:mx-2 w-[40%] max-md:w-[85%] px-4 py-5 rounded-md bg-gray-100 flex gap-3 place-items-center justify-center">
+            <div className="max-xl:w-[55%] max-xl:mx-2  w-[40%] max-md:w-[85%] px-4 py-5 rounded-md bg-gray-100 flex gap-3 place-items-center justify-center">
                 <img src={people} alt="" loading='lazy'/>
                 <p>
                     100+ users are actively using this platform

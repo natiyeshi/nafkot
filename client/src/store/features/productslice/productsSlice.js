@@ -42,7 +42,12 @@ const productsSlice = createSlice({
         })
         builder.addCase(fetchContent.rejected, (state, action) => {
           state.isLoading = false
-          state.error = action.error.message
+          console.log(action,"action")
+          if (action.payload && action.payload.response) {
+            state.error = action.payload.response.data.error.message;
+          } else {
+            state.error = action.error.message;
+          }
         })
       },
 });

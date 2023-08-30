@@ -1,0 +1,15 @@
+@keyframes colorAnimation {
+  0% {
+    background-color: #D3D3D3;
+  }
+  50% {
+    background-color: 	#B2BEB5;
+  }
+  100% {
+    background-color: #D3D3D3;
+  }
+}
+
+.element {
+  animation: colorAnimation 1s infinite;
+}

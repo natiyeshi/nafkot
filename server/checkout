@@ -12,8 +12,8 @@ Transaction
     reciverCity
     reciverRegion
     message
-    cart [ {productId,amount} ]
-    total 
+    cart [ { productId , amount } ]
+    totalPrice 
 
 
 Form
