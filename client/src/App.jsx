@@ -15,10 +15,14 @@ import Checkout from "./pages/checkout/"
 import Dashbord from './Admin/pages/Dashbord/components/Dashbord'
 import Product from './Admin/pages/Products'
 import AddProduct from "./Admin/pages/add-product"
+import { getUser } from './store/features/userSlice/userSlice'
+import { useDispatch } from 'react-redux'
 
 function App() {
+  const dispatch = useDispatch()
   const [displayElement, setDisplayElement] = useState(false);
   useEffect(() => {
+    dispatch(getUser())
     const handleScroll = () => {
       if (window.scrollY > 300) {
         setDisplayElement(true);

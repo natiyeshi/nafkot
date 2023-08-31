@@ -56,7 +56,7 @@ router.post('/addproduct', async (req, res, next) => {
     } catch (err) {
         console.log(err)
         if(err.isJoi) return next(createError.BadRequest(err.message))
-        next(err.message)
+        next(err)
     }
 });
 

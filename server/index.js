@@ -15,11 +15,13 @@ app.use(morgan("dev"))
 
 const productRoute = require("./Routers/prouductRoute")
 const transactionRoute = require("./Routers/transactionRoute")
+const authRoute = require("./Routers/auth")
 
 const PORT = process.env.PORT || 5000
 //configs
 app.use("/",productRoute)
 app.use("/transaction/",transactionRoute)
+app.use("/auth/",authRoute)
 
 app.get("/",(req,res,next)=>{
     res.send("okkkk") 

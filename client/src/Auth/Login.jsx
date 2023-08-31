@@ -4,11 +4,16 @@ import Close from "../assets/images/Vector (7).svg"
 import css from "./css/css.module.css"
 import {useState} from 'react'
 import {validateObject} from '../core/functions/common'
+import axios from '../core/hooks/axios'
+import { useDispatch } from 'react-redux'
+import { loginUser } from '../store/features/userSlice/userSlice'
 
 const Login = ({setLoginNow}) => {
 
+    const dispatch = useDispatch()
+
     const initialData = {
-        username: "",
+        email: "",
         password: ""
     }
     const [formData, setFormData] = useState(initialData)
@@ -25,8 +30,18 @@ const Login = ({setLoginNow}) => {
     }
 
 
-    const submit = () => {
+    const submit = async () => {
         if(!validateDate()) return
+        try{
+            let data = formData
+            delete data.confirm
+            const res = await axios.post("/auth/loginuser",formData)
+            const response = res.data
+            dispatch(loginUser(response))
+            setLoginNow(false)
+        }catch(err){
+            setErr(err.response.data.error.message || "wow")
+        }
     }
 
     const changeInput = ({target}) => {
@@ -72,14 +87,14 @@ const Login = ({setLoginNow}) => {
 
                     <div className='flex flex-col mt-4 gap-1'>
                         <label htmlFor="" className='font-semibold text-[17px]'>
-                            username
+                            Email
                         </label>
                         <input type="text"
                             value={
                                 formData.username
                             }
                             onChange={changeInput}
-                            name='username'
+                            name='email'
                             className='w-10/12 focus:outline-none border border-gray-300 p-2 rounded-md'
                             placeholder='example@gmail.com'/>
                     </div>

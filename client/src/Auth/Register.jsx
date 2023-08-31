@@ -4,13 +4,18 @@ import Close from "../assets/images/Vector (7).svg"
 import css from "./css/css.module.css"
 import {useState} from 'react'
 import { validateObject } from '../core/functions/common'
+import axios from "../core/hooks/axios"
+import { useDispatch } from 'react-redux'
+import { loginUser,logoutUser } from '../store/features/userSlice/userSlice'
 
 const Register = ({setRegisterNow}) => {
+    const dispatch = useDispatch()
 
     const initialData = {
-        username: "",
+        firstName: "",
+        lastName: "",
         email: "",
-        phone: "",
+        phoneNumber: "",
         password: "",
         confirm: ""
     }
@@ -38,16 +43,25 @@ const Register = ({setRegisterNow}) => {
         return true
     }
 
-    const submit = () => {
+    const submit = async () =>  {
         if(!validateForm()) return
-        // api call
+        try{
+            let data = formData
+            delete data.confirm
+            const res = await axios.post("/auth/registeruser",formData)
+            const response = res.data
+            dispatch(loginUser(response))
+            setRegisterNow(false)
+        }catch(err){
+            setErr(err.response.data.error.message || "wow")
+        }
     }
 
     return (
-        <div className='fixed flex  w-full h-full font- bg-gray-900 bg-opacity-90 top-0 z-10'>
+        <div className='fixed flex  w-full h-full bg-gray-900 bg-opacity-90 top-0 z-10'>
 
             <div className={
-                'mx-auto  max-lg:w-1/2 max-md:w-4/6 max-sm:w-full max-sm:h-full w-1/3 my-1 p-3 bg-white ' + css.show
+                'mx-auto  max-lg:w-1/2 max-md:w-4/6 max-sm:w-full max-sm:h-full w-1/3 my-2 overflow-scroll rounded p-3 bg-white ' + css.show
             }>
 
                 <div className='flex justify-between p-5'>
@@ -76,10 +90,21 @@ const Register = ({setRegisterNow}) => {
                     <p className='text-redd font-semibold'>{err}</p>
 
                     <div className='flex flex-col mt-4 gap-1'>
-                        <label htmlFor="" className='font-bold'>Username</label>
-                        <input type="text" name='username'
+                        <label htmlFor="" className='font-bold'>First Name</label>
+                        <input type="text" name='firstName'
                             value={
-                                formData.username
+                                formData.firstName
+                            }
+                            onChange={changeInput}
+                            className='w-10/12 focus:outline-none border border-gray-300 p-2 rounded-md'
+                            placeholder='username'/>
+                    </div>
+
+                    <div className='flex flex-col mt-4 gap-1'>
+                        <label htmlFor="" className='font-bold'>Last Name</label>
+                        <input type="text" name='lastName'
+                            value={
+                                formData.lastName
                             }
                             onChange={changeInput}
                             className='w-10/12 focus:outline-none border border-gray-300 p-2 rounded-md'
@@ -99,10 +124,10 @@ const Register = ({setRegisterNow}) => {
 
                     <div className='flex flex-col mt-4 gap-1'>
                         <label htmlFor="" className='font-bold'>Phone</label>
-                        <input type="number" name='phone'
+                        <input type="number" name='phoneNumber'
                             onChange={changeInput}
                             value={
-                                formData.phone
+                                formData.phoneNumber
                             }
                             className='w-10/12 focus:outline-none border border-gray-300 p-2 rounded-md'
                             placeholder='example@gmail.com'/>
