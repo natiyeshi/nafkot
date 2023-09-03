@@ -17,6 +17,7 @@ import Product from './Admin/pages/Products'
 import AddProduct from "./Admin/pages/add-product"
 import { getUser } from './store/features/userSlice/userSlice'
 import { useDispatch } from 'react-redux'
+import AdminLogin from "./Admin/pages/login"
 
 function App() {
   const dispatch = useDispatch()
@@ -47,7 +48,8 @@ function App() {
         <Route path="/products" element={<>{nav}<Products /></>}  />
         <Route path="/checkout" element={<>{nav}<Checkout /></>}  />
         <Route path="/admin">
-          <Route path=""  element={<Dashbord />} />
+          <Route path=""  element={<AdminLogin />} />
+          <Route path="dashbord"  element={<Dashbord />} />
           <Route path="products"  element={<Product />} />
           <Route path="addproduct"  element={<AddProduct />} />
         </Route>

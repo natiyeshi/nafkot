@@ -4,6 +4,7 @@ import {Link} from 'react-router-dom'
 import {useSelector} from 'react-redux'
 import {getCart} from '../../store/features/cartslice/cartSlice'
 import FormDiv from './components/FormDiv'
+import Footer from '../common/components/Footer'
 
 const index = () => {
     const carts = useSelector(getCart)
@@ -29,9 +30,9 @@ const index = () => {
     return (
         <>
             <Nav/>
-            <div className='w-full flex justify-center pt-10 px-[10em] gap-5 pb-20  '>
+            <div className='w-full flex justify-center max-md:flex-col pt-10 max-md:px-[1em] px-[10em] max-w-7xl mx-auto gap-5 pb-20  '>
 
-                <div className='w-5/12 bg-gray-50 h-fit rounded '>
+                <div className='w-5/12 bg-gray-50 h-fit rounded  max-md:mx-auto max-md:w-full '>
 
                     <div className='flex justify-between rounded-t bg-redd p-2 py-3 text-white '>
                         <div className='font-bold text-lg'>Your order</div>
@@ -65,7 +66,7 @@ const index = () => {
 
                 </div>
 
-                <div className='w-6/12 bg-gray-100  mb-20  rounded h-fit '>
+                <div className='w-6/12 bg-gray-100  mb-20  max-md:mx-auto max-md:w-full  rounded h-fit '>
 
                     <h1 className='text-lg text-white p-3 font-bold text-start bg-redd rounded-t'>Checkout</h1>
 
@@ -73,6 +74,7 @@ const index = () => {
                     
                 </div>
             </div>
+            <Footer />
         </>
     )
 }

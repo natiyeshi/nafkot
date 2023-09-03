@@ -5,7 +5,7 @@ import css from "../css/abouts.module.css"
 
 const about = () => {
   return (
-    <div className='relative px-c14 max-md:px-4'>
+    <div className='relative px-c14 max-md:px-4 max-w-7xl mx-auto '>
         
         <img src={Svg} alt="" className={'absolute -left-52 -top-60 -z-50 max-lg:hidden '+css.slide} />
 
@@ -29,7 +29,7 @@ const about = () => {
           
           <div className='w-1/2 max-md:w-full mt-3 flex flex-col gap-5 '>
              <h1 className='text-lg  text-redd  text-center font-semibold'>WHO WE ARE ?</h1>
-             <p className='max-md:max-w-xl mx-auto max-md:text-center w-full'>
+             <p className='max-md:max-w-xl  mx-auto max-md:text-center w-full'>
                 Lorem*4It is a long established fact that a reade
                 r will be dis versions have evolved over the years, sometimes 
                 by accident, sometimes on purp4It is a long

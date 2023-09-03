@@ -3,9 +3,10 @@ import CustomeInput from './CustomeInput'
 import { useSelector } from 'react-redux'
 import { getCart } from '../../../store/features/cartslice/cartSlice'
 import axios from '../../../core/hooks/axios'
+import { useNavigate } from 'react-router-dom'
 
 const FormDiv = () => {
-
+    const navitator = useNavigate()
     const carts = useSelector(getCart)
     const cart = []
     carts.cartItems.forEach( elem => { 
@@ -46,15 +47,13 @@ const FormDiv = () => {
 
     const sendData  = async (data) => {
         try{
-            console.log(data)
             const result = await axios.post("/transaction/buyitems",data)
             const res = result.data
-            console.log(res)
-            alert("ok")
+            alert("Your file is saved!")
+            navitator("/")
         }catch(e){
             console.log(e)
             setErr(e.response.data.error.message)
-            // alert("fuck")
         }
     }
 
@@ -144,7 +143,7 @@ const FormDiv = () => {
             </div>
 
 
-            <div className='flex ps-4 py-2 justify-around gap-10 my-7'>
+            {/* <div className='flex ps-4 py-2 justify-around gap-10 my-7'>
 
                 <button className='w-full bg-blue-500 text-white py-3 rounded font-bold capitalize'>
                     pay pal
@@ -158,7 +157,7 @@ const FormDiv = () => {
                     pay pal
                 </button>
 
-            </div>
+            </div> */}
 
             <div className="text-center  my-10 ">
                 <button onClick={submit} className='bg-redd px-8 rounded text-white font-bold te py-2'>

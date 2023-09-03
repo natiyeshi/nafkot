@@ -5,7 +5,8 @@ import css from "../css/mobild.module.css"
 import Close from "../../../assets/images/Vector (7).svg"
 
 const Mobile = ({show,setShow,loginNow,setLoginNow,setRegisterNow,registerNow}) => {
-
+  
+  
   let checkLink = ({isActive}) =>  isActive ? 'my-auto duration-100 hover:translate-x-[1%] hover:text-redd text-redd':'my-auto  duration-200 hover:translate-x-[1%] hover:text-redd'
 
   return (

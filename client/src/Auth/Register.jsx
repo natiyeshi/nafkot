@@ -7,10 +7,11 @@ import { validateObject } from '../core/functions/common'
 import axios from "../core/hooks/axios"
 import { useDispatch } from 'react-redux'
 import { loginUser,logoutUser } from '../store/features/userSlice/userSlice'
+import gif  from "../assets/gif/rotatebg.gif"
 
 const Register = ({setRegisterNow}) => {
     const dispatch = useDispatch()
-
+    const [loading,setLoading] = useState(false)
     const initialData = {
         firstName: "",
         lastName: "",
@@ -46,14 +47,16 @@ const Register = ({setRegisterNow}) => {
     const submit = async () =>  {
         if(!validateForm()) return
         try{
-            let data = formData
+            setLoading(true)
+            let data = {...formData}
             delete data.confirm
-            const res = await axios.post("/auth/registeruser",formData)
+            const res = await axios.post("/auth/registeruser",data)
             const response = res.data
             dispatch(loginUser(response))
             setRegisterNow(false)
         }catch(err){
-            setErr(err.response.data.error.message || "wow")
+            setLoading(false)
+            setErr(err.response?.data?.error?.message || err.message)
         }
     }
 
@@ -61,8 +64,11 @@ const Register = ({setRegisterNow}) => {
         <div className='fixed flex  w-full h-full bg-gray-900 bg-opacity-90 top-0 z-10'>
 
             <div className={
-                'mx-auto  max-lg:w-1/2 max-md:w-4/6 max-sm:w-full max-sm:h-full w-1/3 my-2 overflow-scroll rounded p-3 bg-white ' + css.show
-            }>
+                'mx-auto relative max-lg:w-1/2 max-md:w-4/6 max-sm:w-full max-sm:h-full w-1/3 my-2 overflow-auto rounded p-3 bg-white ' + css.show
+            }>  
+                <div className={`bg-gray-100 duration-700 ${loading ? "bg-opacity-60"  :"hidden"  } flex justify-center items-center absolute left-0 right-0 top-0 bottom-0`}>
+                    <img src={gif} className='w-1/4' alt="" />
+                </div>
 
                 <div className='flex justify-between p-5'>
 
@@ -86,30 +92,34 @@ const Register = ({setRegisterNow}) => {
                     </div>
                 </div>
 
-                <form className='ps-5 mt-1' onSubmit={(e) => e.preventDefault()}>
-                    <p className='text-redd font-semibold'>{err}</p>
+                <form className='ps-5 my-1' onSubmit={(e) => e.preventDefault()}>
+                    <p className='text-redd font-semibold mb-2'>{err}</p>
+                    
+                    <div className='flex w-10/12 gap-3'>
 
-                    <div className='flex flex-col mt-4 gap-1'>
-                        <label htmlFor="" className='font-bold'>First Name</label>
-                        <input type="text" name='firstName'
-                            value={
-                                formData.firstName
-                            }
-                            onChange={changeInput}
-                            className='w-10/12 focus:outline-none border border-gray-300 p-2 rounded-md'
-                            placeholder='username'/>
+                        <div className='flex flex-col  gap-1'>
+                            <label htmlFor="" className='font-bold'>First Name</label>
+                            <input type="text" name='firstName'
+                                value={
+                                    formData.firstName
+                                }
+                                onChange={changeInput}
+                                className='w-full focus:outline-none border border-gray-300 p-2 rounded-md'
+                                placeholder='username'/>
+                        </div>
+
+                        <div className='flex flex-col  gap-1'>
+                            <label htmlFor="" className='font-bold'>Last Name</label>
+                            <input type="text" name='lastName'
+                                value={
+                                    formData.lastName
+                                }
+                                onChange={changeInput}
+                                className='w-full focus:outline-none border border-gray-300 p-2 rounded-md'
+                                placeholder='username'/>
+                        </div>
                     </div>
 
-                    <div className='flex flex-col mt-4 gap-1'>
-                        <label htmlFor="" className='font-bold'>Last Name</label>
-                        <input type="text" name='lastName'
-                            value={
-                                formData.lastName
-                            }
-                            onChange={changeInput}
-                            className='w-10/12 focus:outline-none border border-gray-300 p-2 rounded-md'
-                            placeholder='username'/>
-                    </div>
 
                     <div className='flex flex-col mt-4 gap-1'>
                         <label htmlFor="" className='font-bold'>Email</label>

@@ -25,10 +25,10 @@ const Bar = () => {
 
              
                   
-              <NavLink to={"/admin"} className={`${path == "/admin" && "bg-red-400 bg-opacity-20 "} relative group ps-10 transition  duration-200 flex font-bold hover:bg-red-400 hover:bg-opacity-20 cursor-pointer gap-5 px-4 py-3`}>
-                <div className={`${path == "/admin" && "opacity-80 translate-x-0"} absolute left-0  duration-200  top-0 w-1 opacity-0 group-hover:translate-x-0 translate-x-3 group-hover:opacity-80  bg-red-500 h-full`}></div>
-                <D className={`${path == "/admin" && "text-red-700"} my-auto text-xl duration-200 group-hover:text-red-700 `} />
-                <p className={`${path == "/admin" && "text-redd"} group-hover:text-redd duration-200`}>Dashbord</p>
+              <NavLink to={"/admin"} className={`${path == "/admin/dashbord" && "bg-red-400 bg-opacity-20 "} relative group ps-10 transition  duration-200 flex font-bold hover:bg-red-400 hover:bg-opacity-20 cursor-pointer gap-5 px-4 py-3`}>
+                <div className={`${path == "/admin/dashbord" && "opacity-80 translate-x-0"} absolute left-0  duration-200  top-0 w-1 opacity-0 group-hover:translate-x-0 translate-x-3 group-hover:opacity-80  bg-red-500 h-full`}></div>
+                <D className={`${path == "/admin/dashbord" && "text-red-700"} my-auto text-xl duration-200 group-hover:text-red-700 `} />
+                <p className={`${path == "/admin/dashbord" && "text-redd"} group-hover:text-redd duration-200`}>Dashbord</p>
               </NavLink>
 
               <NavLink to={"/admin/products"} className={`${path == "/admin/products" && "bg-red-400 bg-opacity-20 "} relative group ps-10 transition  duration-200 flex font-bold hover:bg-red-400 hover:bg-opacity-20 cursor-pointer gap-5 px-4 py-3`}>

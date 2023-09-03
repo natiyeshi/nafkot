@@ -5,7 +5,7 @@ import cart from "../../../assets/images/cart.svg"
 import { NavLink,Link,Router } from 'react-router-dom'
 import Login from '../../../Auth/Login'
 import Register from '../../../Auth/Register'
-import Mobile from '../../Homes/components/Mobile'
+import Mobile from './Mobile'
 
 import { getCart } from '../../../store/features/cartslice/cartSlice'
 import { useDispatch, useSelector } from 'react-redux'

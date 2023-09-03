@@ -1,10 +1,10 @@
 import React from 'react'
-import Shoa from "../../../assets/images/shoa.svg"
+import Shoa from "../../../assets/images/Shoa.svg"
 import Hilton from "../../../assets/images/Hilton.svg"
 
 const Partners = () => {
   return (
-    <div className=' px-c14 my-5 max-sm:mt-12 text-2xl font-bold  text-center flex flex-col gap-10'>
+    <div className=' px-c14 max-w-7xl mx-auto my-5 max-sm:mt-12 text-2xl font-bold  text-center flex flex-col gap-10'>
         <h1>Partners</h1>
         <div className='flex justify-around'>
             <div>

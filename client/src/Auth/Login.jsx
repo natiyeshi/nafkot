@@ -7,10 +7,12 @@ import {validateObject} from '../core/functions/common'
 import axios from '../core/hooks/axios'
 import { useDispatch } from 'react-redux'
 import { loginUser } from '../store/features/userSlice/userSlice'
+import gif  from "../assets/gif/rotatebg.gif"
 
 const Login = ({setLoginNow}) => {
 
     const dispatch = useDispatch()
+    const [loading,setLoading] = useState(false)
 
     const initialData = {
         email: "",
@@ -33,14 +35,15 @@ const Login = ({setLoginNow}) => {
     const submit = async () => {
         if(!validateDate()) return
         try{
-            let data = formData
-            delete data.confirm
+            setLoading(true)
             const res = await axios.post("/auth/loginuser",formData)
             const response = res.data
             dispatch(loginUser(response))
             setLoginNow(false)
         }catch(err){
-            setErr(err.response.data.error.message || "wow")
+            setLoading(false)
+            console.log(err)
+            setErr(err.response?.data?.error?.message || err.message)
         }
     }
 
@@ -56,8 +59,12 @@ const Login = ({setLoginNow}) => {
         <div className='fixed flex  w-screen h-screen  bg-gray-900 bg-opacity-90 top-0 z-10'>
 
             <div className={
-                'm-auto w-1/3 max-lg:w-1/2 max-md:w-4/6 max-sm:w-11/12 h-4/6 p-3 bg-white ' + css.show
+                'm-auto w-1/3 relative max-lg:w-1/2 max-md:w-4/6 max-sm:w-11/12 h-4/6 p-3 bg-white ' + css.show
             }>
+                
+                <div className={`bg-gray-100 duration-700 ${loading ? "bg-opacity-60"  :"hidden"  } flex justify-center items-center absolute left-0 right-0 top-0 bottom-0`}>
+                    <img src={gif} className='w-1/4' alt="" />
+                </div>
 
                 <div className='flex justify-between p-5'>
 
