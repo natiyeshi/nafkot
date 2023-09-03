@@ -8,6 +8,8 @@ const createError = require("http-errors")
 
 const app = express()
 
+const PORT = process.env.PORT || 5000
+
 app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
@@ -16,15 +18,16 @@ app.use(morgan("dev"))
 const productRoute = require("./Routers/prouductRoute")
 const transactionRoute = require("./Routers/transactionRoute")
 const authRoute = require("./Routers/auth")
+const adminRoute = require("./Routers/adminAuth")
 
-const PORT = process.env.PORT || 5000
 //configs
 app.use("/",productRoute)
 app.use("/transaction/",transactionRoute)
 app.use("/auth/",authRoute)
+app.use("/admin/",adminRoute)
 
 app.get("/",(req,res,next)=>{
-    res.send("okkkk") 
+    res.send("working fine!!") 
 })
 
 app.use((req,res,next) => {

@@ -13,4 +13,4 @@ const productJoi = Joi.object({
   items: Joi.array().min(1).items(itemSchema).required(),
 });
 
-module.exports = { productJoi } 
+module.exports =  productJoi  
