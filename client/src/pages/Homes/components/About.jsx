@@ -24,7 +24,7 @@ const About = () => {
 
             </div>
 
-            <div className='bg-gray-100 flex justify-center mt-16 px-c14'>
+            <div className='bg-gray-100 flex justify-center mt-16 md:px-c14'>
 
                     <div className='py-3 max-w-7xl  max-lg:px-3  w-full flex   justify-around place-items-center max-lg:flex-col'>
                             

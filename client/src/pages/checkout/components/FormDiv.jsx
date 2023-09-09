@@ -69,7 +69,7 @@ const FormDiv = () => {
 
             </div>
 
-            <div className='flex ps-4 py-2 justify-around gap-10'>
+            <div className='flex gap-10 max-md:gap-3 max-md:flex-col ps-4 py-2 justify-around '>
 
                 <CustomeInput name={"senderFirstName"}
                     label={"First Name"}
@@ -80,7 +80,7 @@ const FormDiv = () => {
 
             </div>
 
-            <div className='flex ps-4 py-2 justify-around gap-10'>
+            <div className='flex max-md:gap-3 max-md:flex-col ps-4 py-2 justify-around gap-10'>
 
                 <CustomeInput name={"senderEmail"}
                     label={"Email"}
@@ -93,7 +93,7 @@ const FormDiv = () => {
             </div>
 
 
-            <div className='flex ps-4 py-2 justify-around gap-10'>
+            <div className='flex max-md:gap-3 max-md:flex-col ps-4 py-2 justify-around gap-10'>
 
                 <CustomeInput name={"reciverFirstName"}
                     label={"Reciver First Name"}
@@ -103,7 +103,7 @@ const FormDiv = () => {
                     onChangeFunc={onChangeFunc}/>
             </div>
 
-            <div className='flex ps-4 py-2 justify-around gap-10'>
+            <div className='flex max-md:gap-3 max-md:flex-col ps-4 py-2 justify-around gap-10'>
 
                 <CustomeInput name={"reciverPhoneNumber"}
                     label={"Reciver Phone Number"}
@@ -114,7 +114,7 @@ const FormDiv = () => {
 
             </div>
 
-            <div className='flex ps-4 py-2 justify-around gap-10'>
+            <div className='flex ps-4 max-md:gap-3 max-md:flex-col py-2 justify-around gap-10'>
 
                 <CustomeInput name={"reciverCity"}
                     label={"Reciver City"}
@@ -126,7 +126,7 @@ const FormDiv = () => {
 
             </div>
 
-            <div className='flex ps-4 py-2 justify-around gap-10'>
+            <div className='flex ps-4 py-2 max-md:gap-3 max-md:flex-col justify-around gap-10'>
 
 
                 <CustomeInput name={"reciverEmail"}

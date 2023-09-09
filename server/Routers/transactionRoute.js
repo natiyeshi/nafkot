@@ -9,6 +9,8 @@ router.post("/buyitems",async (req,res,next) =>  {
     try{
         const transactionRequest = req.body
         const transactionData = await TransactionJoi.validateAsync(transactionRequest)
+        
+        
         await TransactionModel.create(transactionData)
         res.send({ ok : "ok"})
     }catch(err){

@@ -14,8 +14,8 @@ const Cart = ({data,amount,removeItemAmount,addItemAmount,removeCart}) => {
 
   desc = desc.slice(0,-2)
   return (
-    <div className='relative basis-1/2  flex border rounded gap-4'>
-        <Link to={`/detail/${data._id}`} className='w-[200px] relative group'>
+    <div className='relative basis-1/2  flex border rounded gap-4 '>
+        <Link to={`/detail/${data._id}`} className='w-[200px] relative group bg-gray-300'>
           <div className='absolute hover:duration-700  justify-center items-center left-0 right-0 top-1/2 bottom-0  bg-gradient-to-t bg-opacity-50 group-hover:from-slate-100 flex hover:bg-opacity-50  hover:flex   z-10'>
             <p className='group-hover:opacity-100 translate-y-2 opacity-0  group-hover:duration-500 duration-300 group-hover:translate-y-0   font-bold'>
               see mored

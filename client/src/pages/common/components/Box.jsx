@@ -3,11 +3,20 @@ import { AiTwotoneStar as Star } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
 import { editDesc } from '../../../core/functions/common';
 import skeletonCss from "../css/skeleton.module.css"
+import { getCartIds,addToCart } from '../../../store/features/cartslice/cartSlice'
+import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
+import cart from "../../../assets/images/cart.svg"
 
 const Box = ({ data, toCart }) => {
-  const { title, price, items } = data;
-
+  const { title, price, items, _id } = data;
+  const dispatch = useDispatch()
+  
+  const cartIds = useSelector(getCartIds);
+  
+  let temp = cartIds.includes(_id)
   let desc = editDesc(items);
+
 
   return (
     <div className="border rounded hover:shadow-xl  h-fit hover:shadow-slate-300 duration-200 hover:-translate-y-[2px]">
@@ -21,6 +30,12 @@ const Box = ({ data, toCart }) => {
           <Star className="text-yellow-500" />
           4.7 (391)
         </span>
+
+       {temp &&  <span className="absolute shadow-2xl px-2 top-0 left-0 bg-gray-50 rounded-br p-1 flex place-items-center gap-1 font-semibold">
+           <img src={cart} alt="" />
+        </span>
+        }
+
       </div>
 
       <div className="w-full text-center my-2">
@@ -36,7 +51,7 @@ const Box = ({ data, toCart }) => {
         >
           View details
         </Link>
-        <button
+       {!temp && <button
           onClick={() => {
             toCart(data);
           }}
@@ -44,6 +59,7 @@ const Box = ({ data, toCart }) => {
         >
           Add to cart
         </button>
+        }
       </div>
     </div>
   );

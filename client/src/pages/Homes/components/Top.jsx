@@ -9,7 +9,7 @@ const Top = () => {
     <div className=''>
         
         <Nav />
-        <div className='flex overflow-x-hidden justify-center '>
+        <div className='flex overflow-x-hidden justify-center min-h-[500px] bg-gray-300'>
           <img src={Image} alt="" className='max-md:hidden  w-full' loading='lazy'/>
           <img src={mobPeople} alt=""  className='md:hidden w-full' loading='lazy'/>
         </div>

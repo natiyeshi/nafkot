@@ -25,7 +25,7 @@ router.post("/registeruser",async (req,res,next)=>{
 
 router.post("/getallusers",async (req,res,next)=>{
     try{
-        const users = await UserSchema.find()
+        const users = await UserSchema.find({},{password: 0})
         res.json(users)
     }catch(err){
         next(err)
@@ -61,8 +61,5 @@ router.post("/isuserlogedin",isUserLogedIn,async (req,res,next) => {
         next(e)
     }
 })
-
-
-
 
 module.exports = router

@@ -33,8 +33,8 @@ const Box = ({title,price,tag,_id,items,deleteItem}) => {
   return (
     <div className='border shrink-0 rounded w-72 h-fit shadow-sm shadow-slate-500  duration-200  '>
         <div className="relative flex flex-col">
-            <div className='w-full relative h-[230px] '>
-                <img src={items[currItem].img} alt="" className='absolute top-0 left-0 w-full h-full' loading='lazy' />
+            <div className='w-full relative h-[200px] '>
+                <img src={items[currItem].img} alt="" className='absolute object-cover w-full h-full' loading='lazy' />
             </div>
             <div onClick={() => changeImage(false)} className='absolute left-2 top-1/2 bg-slate-900 opacity-80 hover:opacity-100 cursor-pointer p-0.5 rounded-full'>
                {currItem > 0 && <LeftIcon className='text-xl text-white' /> }

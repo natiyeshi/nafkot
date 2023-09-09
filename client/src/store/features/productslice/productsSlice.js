@@ -55,7 +55,8 @@ const productsSlice = createSlice({
 
 
 export const getProducts = (state, cartIds) => {
-    return state.products.filteredData.filter(product => !cartIds.includes(product._id))
+    return state.products.filteredData
+    // .filteredData.filter(product => !cartIds.includes(product._id))
 }
 
 export const getIsLoading = (state) => state.products.isLoading

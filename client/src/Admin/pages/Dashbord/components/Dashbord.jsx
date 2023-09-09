@@ -1,8 +1,18 @@
-import React from 'react'
+import {useEffect} from 'react'
 import Products from './products'
 import Bar from '../../common/Bar'
+import axios from "../../../hooks/axios"
 
 const Dashbord = () => {
+
+  useEffect(()=>{
+    const fetch = async () => {
+      const result = await axios.post("/auth/getallusers")
+      result
+    }
+
+  },[])
+
   return (
     <div className='flex  bg-blue-50 '>
         <Bar />

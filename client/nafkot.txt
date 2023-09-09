@@ -14,6 +14,24 @@
 
 
 ///
+* finished
+    1. link the logo
+    2. dont hide the cart items
+    4. add admin link
+    5. edit the mobile login and registration
+    6. frequently ask question
+    8. loading show front page photo
+    10. loading the cart image 
 
-user
+* in progress
+    7. refresh should work
 
+* tasks
+    3. check the responsivity
+        - checkout
+        - cart  
+        - detail
+    9. documentation github
+    11. loged in user setup
+    12. setup admin page in different link 
+    13. make route middleware the admin pages 

@@ -10,9 +10,11 @@ import Mobile from './Mobile'
 import { getCart } from '../../../store/features/cartslice/cartSlice'
 import { useDispatch, useSelector } from 'react-redux'
 import { getUserData, isUserLogedIn,loadingUser,logoutUser } from '../../../store/features/userSlice/userSlice'
+import { useNavigate } from 'react-router-dom'
 
 
 const Nav = ({pass}) => {
+  const navigator = useNavigate()
   const dispatch = useDispatch()
   const {cartItems,_} = useSelector(getCart)
   const isLogedIn = useSelector(isUserLogedIn)
@@ -46,7 +48,7 @@ const Nav = ({pass}) => {
         
         <div className='w-full px-c14 max-xl:px-3 py-3 flex uppercase justify-center border-b border-red border-opacity-10' >
             <div className='flex w-full max-w-7xl '>
-                <img src={Logo} width="100px" alt="" />
+                <img src={Logo} width="100px" alt="" onClick={()=>navigator("/")} />
 
                 <div className='w-3/4 justify-center flex gap-12 '>
 
