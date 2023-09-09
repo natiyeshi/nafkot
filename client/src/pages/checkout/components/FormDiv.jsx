@@ -10,7 +10,7 @@ const FormDiv = () => {
     const carts = useSelector(getCart)
     const cart = []
     carts.cartItems.forEach( elem => { 
-        cart.push({productId : elem.data._id , amount : elem.amount})
+        cart.push({product : elem.data , amount : elem.amount})
     })
     const intialFormData = {
       totalPrice : carts.total,
@@ -47,6 +47,15 @@ const FormDiv = () => {
 
     const sendData  = async (data) => {
         try{
+            
+            /*
+                data ->  totalPrice 
+                     ->  cart [ {amount , product } , {} , {}] data.cart[0].product.
+                     ->  information
+            
+            */ 
+
+
             const result = await axios.post("/transaction/buyitems",data)
             const res = result.data
             alert("Your file is saved!")
