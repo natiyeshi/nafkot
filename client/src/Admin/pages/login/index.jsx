@@ -36,6 +36,7 @@ const index = () => {
             const res = await axios.post("/admin/loginadmin",formData)
             const response = res.data
             setLoading(false)
+            localStorage.setItem("admin-token",res.data.token)
             setErr("")
             navigate("/admin/products")
         }catch(err){

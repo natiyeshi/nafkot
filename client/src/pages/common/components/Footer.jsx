@@ -35,7 +35,7 @@ const Footer = () => {
                         <div className='flex flex-col gap-1.5'>
                             <Link className='hover:text-redd duration-200 hover:translate-x-[4%]' to={"/howto"} > How to Order</Link>
                             <Link className='hover:text-redd duration-200 hover:translate-x-[4%]' to={"/cart"}> Cart </Link>
-                            <Link className='hover:text-redd duration-200 hover:translate-x-[4%]' to={"/admin"}> Admin </Link>
+                            <Link className='hover:text-redd duration-200 hover:translate-x-[4%]' to={"/login-admin"}> Admin </Link>
                         </div>
 
                     </ul>

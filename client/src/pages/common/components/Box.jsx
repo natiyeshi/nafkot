@@ -19,11 +19,11 @@ const Box = ({ data, toCart }) => {
 
 
   return (
-    <div className="border rounded hover:shadow-xl  h-fit hover:shadow-slate-300 duration-200 hover:-translate-y-[2px]">
+    <div className="border rounded hover:shadow-xl  group  h-fit hover:shadow-slate-300 duration-200 hover:-translate-y-[2px]">
       <div className="relative flex flex-col">
         <Link to={`/detail/${data._id}`} className="borderb">
           <div className={"w-full h-[200px] max-lg:h-[300px] overflow-hidden relative " + skeletonCss.element}>
-            <img src={items[0].img} className="object-cover rounded-t w-full h-full cursor-pointer" />
+            <img src={items[0].img} className="object-cover group-hover:scale-110  duration-300 00 rounded-t w-full h-full cursor-pointer" />
           </div>
         </Link>
         <span className="absolute top-3 right-3 bg-white rounded-2xl p-1 flex place-items-center gap-1 font-semibold">

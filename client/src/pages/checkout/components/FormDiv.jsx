@@ -9,6 +9,7 @@ const FormDiv = () => {
     const navitator = useNavigate()
     const carts = useSelector(getCart)
     const cart = []
+    const [loading,setLoading] = useState(false)
     carts.cartItems.forEach( elem => { 
         cart.push({product : elem.data , amount : elem.amount})
     })
@@ -27,7 +28,6 @@ const FormDiv = () => {
     }
 
     const submit = () => {
-        console.log(formData)
         for(let i in formData){
             if(typeof formData[i] == "string" && formData[i].length < 3){
                 setErr(`${i} should be at least 3 letter`)
@@ -55,14 +55,20 @@ const FormDiv = () => {
             
             */ 
 
+            setLoading(true)
+            const result = await axios.post("/transaction/checkout-session",data)
+            const url = result.data.url
+            setLoading(false)
+            window.location.href = url
 
-            const result = await axios.post("/transaction/buyitems",data)
-            const res = result.data
-            alert("Your file is saved!")
-            navitator("/")
+            // const result = await axios.post("/transaction/buyitems",data)
+            // const res = result.data
+            // alert("Your file is saved!")
+            // navitator("/")
         }catch(e){
+            setLoading(false)
             console.log(e)
-            setErr(e.response.data.error.message)
+            setErr(e.response.data?.error?.message || "something goes wrong")
         }
     }
 
@@ -169,9 +175,14 @@ const FormDiv = () => {
             </div> */}
 
             <div className="text-center  my-10 ">
+                {loading ?
+                <button className='bg-gray-400 cursor-wait px-8 rounded text-white font-bold te py-2'>
+                    loading
+                </button> : 
                 <button onClick={submit} className='bg-redd px-8 rounded text-white font-bold te py-2'>
                     Place order
                 </button>
+                }
             </div>
 
 

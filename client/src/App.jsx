@@ -18,6 +18,9 @@ import AddProduct from "./Admin/pages/add-product"
 import { getUser } from './store/features/userSlice/userSlice'
 import { useDispatch } from 'react-redux'
 import AdminLogin from "./Admin/pages/login"
+import CheckAdmin from './Admin/hooks/CheckAdmin'
+import PaymentSuccess from "./pages/payment_success"
+import PaymentCanceled from "./pages/payment_failure"
 
 function App() {
   const dispatch = useDispatch()
@@ -47,14 +50,17 @@ function App() {
         <Route path="/howto" element={<>{nav}<HowTo /></>}  />
         <Route path="/products" element={<>{nav}<Products /></>}  />
         <Route path="/checkout" element={<>{nav}<Checkout /></>}  />
-        <Route path="/admin">
-          <Route path=""  element={<AdminLogin />} />
+        <Route path="/success" element={<>{nav}<PaymentSuccess /></>}  />
+        
+        <Route path="/login-admin"  element={<AdminLogin />} />
+        
+        <Route path="/admin" element={<CheckAdmin />}>
           <Route path="dashbord"  element={<Dashbord />} />
           <Route path="products"  element={<Product />} />
           <Route path="addproduct"  element={<AddProduct />} />
         </Route>
         
-        <Route path="*" element={<h1 className='text-xl m-10'>Are you lost ? go to <a href="/" className='text-blue-400'>home</a> </h1>}/>
+        <Route path="*" element={<h1 className='text-xl m-10'>Are you lost? go to <a href="/" className='text-blue-400'>home</a> </h1>}/>
       </Routes>
   </div>
   )
