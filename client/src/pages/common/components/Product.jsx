@@ -7,7 +7,7 @@ import { getProducts,getTag,filterDatas,getError,getIsLoading } from '../../../s
 import { getCartIds,addToCart } from '../../../store/features/cartslice/cartSlice'
 import { useDispatch } from 'react-redux'
 import { fetchContent } from '../../../store/features/productslice/productsSlice'
-import Skeleton from './skeleton'
+import Skeleton from './Skeleton'
 
 const Product = () => {
   const dispatch = useDispatch()
