@@ -15,8 +15,8 @@ const schema = Joi.object({
   message: Joi.string().required(),
   cart: Joi.array().items(
     Joi.object({
-      productId: Joi.string().required(),
-      amount: Joi.number().min(1).required()
+      product: Joi.object().required(),
+      amount: Joi.number().required()
     })
   ).required(),
   totalPrice: Joi.number().required()

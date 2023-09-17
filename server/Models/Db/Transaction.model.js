@@ -5,19 +5,6 @@ const Type = {
     required: true
 }
 
-const cartItemSchema = new mongoose.Schema({
-    productId: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Product',
-        required: true
-    },
-    amount: {
-        type: Number,
-        required: true,
-        min: 1
-    }
-});
-
 const transactionSchema = new mongoose.Schema({
     senderLastName : Type,
     senderEmail: Type,
@@ -30,10 +17,8 @@ const transactionSchema = new mongoose.Schema({
     reciverCity: Type,
     reciverRegion: Type,
     message: Type,
-    cart : {
-        type : [cartItemSchema],
-        required : true,
-    },
+    currency:Type,
+    status:Type,
     totalPrice : {
         type : Number,
         required : true
