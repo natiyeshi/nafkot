@@ -1,5 +1,5 @@
 import React from 'react'
-import Logo from "../../../assets/images/vector (6).svg"
+// import Logo from "../../../assets/images/vector (6).svg"
 import {RxDashboard as D} from "react-icons/rx"
 import {BsCartDash as P} from "react-icons/bs"
 import {IoMdLogOut as T} from "react-icons/io"
@@ -17,7 +17,7 @@ const Bar = () => {
     <div className='relative basis-3/12  h-screen bg-white pt-4 '>
 
           <div className='flex gap-4 ps-6 '>
-            <img src={Logo} className='w-8 my-auto' alt="" />
+            {/* <img src={Logo} className='w-8 my-auto' alt="" /> */}
             <p className=' my-auto mt- text-2xl font-bold text-gray-600'>Nafkot</p>
           </div>
 
