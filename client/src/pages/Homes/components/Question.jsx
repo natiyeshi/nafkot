@@ -5,18 +5,16 @@ import {FiPlusCircle as Plus} from "react-icons/fi"
 import {BiMinusCircle as Minus} from "react-icons/bi"
 import css from "../css/faq.module.css"
 
-const Question = ({bool,setBool,num}) => {
+const Question = ({bool,setBool,num,question,answer}) => {
   let data = num == bool ? css.show : "h-0"
   return (
     
     <div className='flex-shrink-0  overflow-hidden relative bgredd w-9/12  max-md:w-10/12 flex gap-2'>
           
         <div className='flex flex-col gap-2'>
-            <h1 className='font-semibold'>Ce alergeni conțin produsele Ohvăz?</h1>
+            <h1 className='font-semibold'>{question}</h1>
             <p className={`w-11/12 duration-200  `+ data }>
-                Consultă lista de ingrediente pentru produsele noastre.
-                Cu excepția ingredientelor listate nu există posibilitatea
-                ca produsele noastre să conțină urme de alte materii prime.
+                {answer}
             </p>
         </div>
 

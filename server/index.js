@@ -11,8 +11,8 @@ mongoose.connection.on("connected",() => {
     console.log("DB connection sucessfully started :)")
 })
 
-mongoose.connection.on("error",()=>{
-    console.log("connection failed :(");
+mongoose.connection.on("error",(err)=>{
+    console.log("connection failed :(",err);
 })
 
 mongoose.connection.on("disconnected",() => {

@@ -32,6 +32,7 @@ router.post('/uploadItem',upload.single('img'), (req, res,next) => {
             return res.json({passed:true,datas})
         }).catch(async (err)  => {
             try{
+                 console.log(err)
                  await ProductSchema.findByIdAndDelete({_id:id})
                  return next(createError[400]("week connection, file not saved!!"))
             }catch(e){

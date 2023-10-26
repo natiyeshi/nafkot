@@ -37,7 +37,7 @@ const Home = () => {
         <div ref={ref} className={`${isIntersecting ? " duration-700 opacity-100 translate-x-0  " : " duration-700 opacity-0 translate-x-[70em] "}` }>
         </div> 
           
-          <About />
+        <About />
         <HomeProduct />
         <Testimonial />
         <Faq />

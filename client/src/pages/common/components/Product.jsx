@@ -51,7 +51,7 @@ const Product = () => {
             {/* <p onClick={() => getTaggedOnes()}  className={`hover:text-redd cursor-pointer text-large  ${tag == "others" && "font-semibold text-redd"}`}>others</p> */}
         </div>
 
-        <div className={`${(products.length > 0 || loading)&& "grid"} mt-2 pt-4 grid-cols-3  max-lg:px-4 gap-7 max-md:grid-cols-2 max-sm:grid-cols-1 justify-around`}>
+        <div className={`${(products.length > 0 || loading)&& "grid"} mt-2 pt-4 grid-cols-3   max-lg:px-4 gap-7 max-md:grid-cols-2 max-sm:grid-cols-1 justify-around`}>
             {   
                 error ? 
               <div className='w-full m-auto col-span-3 flex h-64'>
@@ -73,7 +73,8 @@ const Product = () => {
 
                     </div>
                 </div>
-                : products.map(values => <Box key={values._id} data={values} toCart={toCart} />)
+                :
+                products.map(values => <Box key={values._id} data={values} toCart={toCart} />)
             }
         </div>
         

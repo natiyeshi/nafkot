@@ -22,11 +22,17 @@
     6. frequently ask question
     8. loading show front page photo
     10. loading the cart image 
+    7. refresh should work
+    13. make route middleware the admin pages 
 
 * in progress
-    7. refresh should work
 
 * tasks
+    14. resolve adding product issue
+    15. make ui for top-up in user
+    16. make ui for top-up in admin
+
+
     3. check the responsivity
         - checkout
         - cart  
@@ -34,4 +40,3 @@
     9. documentation github
     11. loged in user setup
     12. setup admin page in different link 
-    13. make route middleware the admin pages 

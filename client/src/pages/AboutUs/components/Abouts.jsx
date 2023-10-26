@@ -13,11 +13,10 @@ const about = () => {
 
           <h1 className=' text-center text-lg text-redd font-semibold  '>ABOUT US</h1>
           <p className={' text-center max-w-xl mx-auto '} >
-            Lorem Ipsum is simply dummy text of the printing and typesetting 
-            industry. Lorem Ipsum is sLorem Ipsum is simply 
-            dummy text of the printing and typesetting industry. Lorem Ipsum is
-             sLorem Ipsum is simply dummy text of the printing and typesetting industry. 
-             Lorem Ipsum is s
+          Welcome to Nafkot, the ultimate destination for authentic Ethiopian gifts and souvenirs.
+           At Nafkot, we are passionate about 
+          bringing Ethiopians together and connecting them with their homeland,
+           no matter where they are in the world.
           </p>
 
         </div>
@@ -30,10 +29,8 @@ const about = () => {
           <div className='w-1/2 max-md:w-full mt-3 flex flex-col gap-5 '>
              <h1 className='text-lg  text-redd  text-center font-semibold'>WHO WE ARE ?</h1>
              <p className='max-md:max-w-xl  mx-auto max-md:text-center w-full'>
-                Lorem*4It is a long established fact that a reade
-                r will be dis versions have evolved over the years, sometimes 
-                by accident, sometimes on purp4It is a long
-                established fact that a reade is a long established fact that a reade
+             Our story began with a simple idea – to create a brand that celebrates the rich and vibrant culture of Ethiopia and connects Ethiopians across the globe. As a team of young and talented individuals, we understand the importance of staying connected with your roots and your loved ones, no matter where life takes you.
+
              </p>
              <button className='bg-redd hover:bg-red-400 duration-100 w-fit py-2 px-6 font-semibold text-white mx-auto' style={{borderRadius:"5px"}}>
               Contact us
