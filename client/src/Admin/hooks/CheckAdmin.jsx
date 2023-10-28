@@ -17,7 +17,6 @@ const CheckAdmin = () => {
 
   return (
     <div className=''>
-         
          {access == true ? <Outlet /> : "Checking admin...."  }
     </div>
   )

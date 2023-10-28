@@ -13,6 +13,7 @@ import Nav from './pages/common/components/Nav'
 import Checkout from "./pages/checkout/"
 
 import Dashbord from './Admin/pages/Dashbord/components/Dashbord'
+import TopupsAdmin from './Admin/pages/topups'
 import Product from './Admin/pages/Products'
 import AddProduct from "./Admin/pages/add-product"
 import { getUser } from './store/features/userSlice/userSlice'
@@ -58,6 +59,7 @@ function App() {
           <Route path="dashbord"  element={<Dashbord />} />
           <Route path="products"  element={<Product />} />
           <Route path="addproduct"  element={<AddProduct />} />
+          <Route path="topups"  element={<TopupsAdmin />} />
         </Route>
         
         <Route path="*" element={<h1 className='text-xl m-10'>Are you lost? go to <a href="/" className='text-blue-400'>home</a> </h1>}/>
