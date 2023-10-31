@@ -4,13 +4,16 @@ import WorkWith from '../../common/components/WorkWith'
 import { fetchContent } from '../../../store/features/productslice/productsSlice'
 import { useDispatch } from 'react-redux'
 import Topups from './topups'
+import { Link } from 'react-router-dom'
+import { useLocation } from 'react-router-dom';
 
 const AllProducts = () => {
+  const location = useLocation();
+  const currentUrl = location.pathname;
   const dispatch = useDispatch()
-  const [isTopup,setIsTopup] = useState(false) 
+  const [isTopup,setIsTopup] = useState(currentUrl == "/products/topup") 
 
   useEffect(()=>{
-    console.log("-----")
     dispatch(fetchContent())
   },[])
   
@@ -19,7 +22,7 @@ const AllProducts = () => {
        
        <h1 className='text-center font-bold text-redd text-2xl'>Products</h1>
         <h1 className='text-lg  max-md:text-lg text-center mt-3'>
-            FILL THE CART WITH YOUR CHOSEN GIFTS AND MAKE YOUR LOVED ONES HAPPY
+          FILL THE CART WITH YOUR CHOSEN GIFTS AND MAKE YOUR LOVED ONES HAPPY
         </h1>
 
         {/* <div className="w-full ">
@@ -32,16 +35,15 @@ const AllProducts = () => {
         <div className='flex relative gap-10 ps-0 py-4 '>
           <div></div>
           {/* <div className=' absolute left-9'></div> */}
-          <div onClick={()=>setIsTopup(false)} className={`${!isTopup && 'border rounded-tr-lg border-b-white  z-10 text-redd  rounded-tl-lg'} font-bold w-20  h-[35px] py-2 px-2  cursor-pointer`}>Products</div>
-          <div onClick={()=>setIsTopup(true)} className={`${isTopup && 'border rounded-tr-lg border-b-white border-b-4 z-10 text-redd  rounded-tl-lg'} font-bold cursor-pointer  py-2 px-2`}>Topup</div>
+          <Link to={"/products"} onClick={()=>setIsTopup(false)} className={`${!isTopup && 'border rounded-tr-lg border-b-white border-b-4 z-10 text-redd  rounded-tl-lg'} font-semibold w-fit  h-[35px] py-2 px-2  cursor-pointer`}>Products</Link>
+          <Link to={"/products/topup"} onClick={()=>setIsTopup(true)} className={`${isTopup && 'border rounded-tr-lg border-b-white border-b-4 z-10 text-redd  rounded-tl-lg'} font-semibold w-fit  h-[35px] cursor-pointer  py-2 px-2`}>Topup</Link>
           <div className='border-t absolute bottom-4 w-full'></div>
         </div>
         {
           isTopup ? 
-          <Topups />
+            <Topups />
           :
-
-         <Product main={true}/> 
+            <Product main={true}/> 
         }
         <WorkWith />
         

@@ -1,0 +1,12 @@
+
+Topup
+    - Amount of the card in birr (minimun 5 birr)
+Request
+    - Amount of the card in birr (minimun 5 birr)
+    - sender full name
+    - email
+    - reciver full name
+    - reciever phone number 1 and 2
+    - current time
+Settings 
+    - dollar

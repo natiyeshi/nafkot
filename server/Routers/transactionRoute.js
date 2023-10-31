@@ -1,8 +1,13 @@
 const express = require("express")
 const router = express.Router()
 const TransactionModel = require("../Models/Db/Transaction.model")
+const TopupRequestModel = require("../Models/Db/TopupRequest.model")
 const TransactionJoi = require("../Models/Joi/TransactionRequest.joi")
+const TopupTransactionJoi = require("../Models/Joi/topupTransactionRequest.joi")
+const TopupDbTransactionJoi = require("../Models/Joi/topupDbRequest.joi")
 const { decodeOrderJwt,generateOrderJwt } = require("../Config/core/jwtFunc")
+const SettingSchema = require("../Models/Db/setting.model")
+
 
 const stripe = require("stripe")(process.env.STRIPE_PRIVATE_KEY)
 const createError = require("http-errors")
@@ -28,7 +33,6 @@ router.post("/checkout-session",async (req,res,next)=>{
                         },
                     },
                     quantity : data.amount
-    
                 }
             }),
             
@@ -38,6 +42,40 @@ router.post("/checkout-session",async (req,res,next)=>{
         res.json({url:session.url})
     }catch(err){  
         // console.log(err)
+        if(err.isJoi){
+            next(createError.BadRequest(err.message))
+        } else {
+            next(err)
+        }
+    }
+})
+
+router.post("/checkout-session-topup",async (req,res,next)=>{
+    try{    
+        
+       const order = await TopupTransactionJoi.validateAsync(req.body)
+       const token = generateOrderJwt(order)
+       const data = await SettingSchema.find()
+       const setting = data[0]
+       const session = await stripe.checkout.sessions.create({
+            payment_method_types : ["card"],
+            mode : "payment",
+            line_items : [{
+                price_data : {
+                    unit_amount : parseFloat((order.amount / setting.currency).toFixed(2))  * 100,
+                    currency : "usd",
+                    product_data : {
+                        name : `${order.amount} birr card`,
+                    },
+                },
+                quantity : 1
+            }],
+            success_url : `${process.env.SERVER_URL_DEV}/success/topup?session_id={CHECKOUT_SESSION_ID}&order=${token}`,
+            cancel_url : `${process.env.SERVER_URL_DEV}/products/topup`,
+        })
+        res.json({url:session.url})
+    }catch(err){  
+        console.log(err)
         if(err.isJoi){
             next(createError.BadRequest(err.message))
         } else {
@@ -69,6 +107,29 @@ router.post("/save_payment",async (req,res,next) =>  {
 })
 
 
+router.post("/save_payment_topup",async (req,res,next) =>  {
+    try{
+        const {session_id,token} = req.body
+        const session = await stripe.checkout.sessions.retrieve(session_id)
+        const [pass,payload] = decodeOrderJwt(token)
+        if(pass == false) throw createError.Unauthorized("invalid token")
+        let savedData = {...payload,currency:session.currency,status:session.status,totalPrice:session.amount_total}
+        delete savedData.iat
+        const validatedData = await TopupDbTransactionJoi.validateAsync(savedData)
+        const data = await TopupRequestModel.create(validatedData)
+        console.log(payload,data,savedData)
+        res.send(data)
+    }catch(err){
+        console.log(err)
+        if(err.isJoi){
+            next(createError.BadRequest(err.message))
+        } else {
+            next(err)
+        }
+    }
+})
+
+
 router.post("/gettransactions",async  (req,res,next) =>  {
     try{
        const data = await TransactionModel.find()
@@ -86,11 +147,12 @@ router.post("/deleteAllTransaction",async  (req,res,next) =>  {
        throw createError.BadRequest("feature disabled")
        const data = await TransactionModel.deleteMany({})
        return res.json(data)
-    
     } catch(err) {
         next(err)
     }
 
 })
+
+
 
 module.exports = router

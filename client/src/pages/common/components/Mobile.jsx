@@ -1,14 +1,16 @@
 import React,{useState} from 'react'
 import Logo from "../../../assets/images/Logo.svg"
-import {NavLink} from "react-router-dom"
+import {NavLink, useNavigate} from "react-router-dom"
 import css from "../css/mobild.module.css"
 import Close from "../../../assets/images/Vector (7).svg"
 import { useSelector } from 'react-redux'
 import { isUserLogedIn,loadingUser, logoutUser } from '../../../store/features/userSlice/userSlice'
 import { useDispatch } from 'react-redux'
+import {MdKeyboardArrowDown as ListIcon} from "react-icons/md"
 
 const Mobile = ({show,setShow,loginNow,setLoginNow,setRegisterNow,registerNow}) => {
-  
+
+  const navigator = useNavigate()
   const dispatch = useDispatch()
   const isLogedIn = useSelector(isUserLogedIn)
   const isLoadingUser = useSelector(loadingUser)
@@ -18,6 +20,8 @@ const Mobile = ({show,setShow,loginNow,setLoginNow,setRegisterNow,registerNow}) 
   const logout = () =>{
     dispatch(logoutUser())
   }
+  const [toggleOption , setToggleOption] = useState(true)
+  const flip = () => setToggleOption(data => !data)
   
   return (
     <div className={`${show !== true && 'hidden' }`}>
@@ -33,7 +37,16 @@ const Mobile = ({show,setShow,loginNow,setLoginNow,setRegisterNow,registerNow}) 
             <div className=' flex flex-col font-semibold text-lg text-black '>
 
                 <NavLink    to="/"  className={checkLink} >Home</NavLink >
-                <NavLink    to="/products" className={checkLink}>Products</NavLink >
+                <div className='my-auto relative'>
+                        <div className='flex gap-1'>
+                        <NavLink  to="/products"  className={checkLink} >Products</NavLink >
+                            <button onClick={flip}><ListIcon  className={`${!toggleOption && '-rotate-180 '} duration-300`} /></button>
+                        </div>
+                        <div className={`${toggleOption && 'hidden '} pb-1 rounded-lg capitalize duration-300 absolute shadow-lg border  bg-white w-28 mt-2 flex flex-col `}>
+                            <div onClick={()=>{ setToggleOption(true); navigator("/products")}} className='font-normal border-b mt-1  hover:bg-gray-50 py-1 cursor-pointer text-center'>items</div>
+                            <div onClick={()=> { setToggleOption(true); navigator("/products/topup")}} className='font-normal hover:bg-gray-50 pt-1 cursor-pointer text-center'>topup</div>
+                        </div>
+                    </div>
                 <NavLink    to="/aboutus" className={checkLink}>About us</NavLink >
                 <NavLink    to="/howto" className   ={checkLink}>How to order</NavLink > 
                 <a onClick={()=>setShow(false)} href="/#faq" className={"my-auto duration-100  hover:translate-x-[1%] hover:text-redd"}>FAQS</a >

@@ -14,8 +14,6 @@ Transaction
     message
     cart [ { productId , amount } ]
     totalPrice 
-
-
 Form
     sender
         - first name

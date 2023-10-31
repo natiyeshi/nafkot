@@ -49,12 +49,11 @@ const Testimonial = () => {
         <div className=' max-w-7xl m-auto flex overflow-auto  py-3 gap-2 testimonial-scroll z-50 mb-3'>
             
             <div className='max-lg:hidden flex-shrink-0 p-2 px-3 flex flex-col basis-2/12 gap-2 rounded-sm'>
-               
             </div>
 
             {tests.map(({message,person}) => (<Testimony message={message} person={ person   } />))} 
+            
             <div className='max-lg:hidden flex-shrink-0 p-2 px-3 flex flex-col basis-1/3 gap-2 rounded-sm'>
-               
             </div>
 
         </div>

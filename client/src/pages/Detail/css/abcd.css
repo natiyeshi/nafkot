@@ -1,0 +1,14 @@
+
+
+.slick-slide img {
+   height:300px;
+   width:200px;
+   object-fit: cover;
+
+}
+
+.thumbnail-slider-wrap img {
+   height:100px;
+   width:100px;
+   object-fit: cover;
+}

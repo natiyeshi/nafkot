@@ -91,7 +91,6 @@ router.post("/findproduct/:id",async (req,res,next)=>{
         res.send(newProducts)
     }catch(e){
         next(createError.NotFound("product not found"))
-        next(e)
     }
 
 })  

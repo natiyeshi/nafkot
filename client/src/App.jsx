@@ -11,6 +11,7 @@ import HowTo from "./pages/HowTo"
 import Products from "./pages/Products"
 import Nav from './pages/common/components/Nav'
 import Checkout from "./pages/checkout/"
+import CheckoutTopup from "./pages/checkout_topup/"
 
 import Dashbord from './Admin/pages/Dashbord/components/Dashbord'
 import TopupsAdmin from './Admin/pages/topups'
@@ -21,6 +22,7 @@ import { useDispatch } from 'react-redux'
 import AdminLogin from "./Admin/pages/login"
 import CheckAdmin from './Admin/hooks/CheckAdmin'
 import PaymentSuccess from "./pages/payment_success"
+import PaymentSuccessTopup from "./pages/payment_success_topup"
 import PaymentCanceled from "./pages/payment_failure"
 
 function App() {
@@ -49,10 +51,12 @@ function App() {
         <Route path="/cart" element={<>{nav}<Cart /></>}  />
         <Route path="/aboutus" element={<>{nav}<AboutUs /></>}  />
         <Route path="/howto" element={<>{nav}<HowTo /></>}  />
-        <Route path="/products" element={<>{nav}<Products /></>}  />
+        <Route path="/products" element={<>{nav}<Products  /></>}  />
+        <Route path="/products/topup" element={<>{nav}<Products  /></>}  />
         <Route path="/checkout" element={<>{nav}<Checkout /></>}  />
+        <Route path="/checkout/topup/:id" element={<>{nav}<CheckoutTopup /></>}  />
         <Route path="/success" element={<>{nav}<PaymentSuccess /></>}  />
-        
+        <Route path="/success/topup" element={<>{nav}<PaymentSuccessTopup /></>}  />
         <Route path="/login-admin"  element={<AdminLogin />} />
         
         <Route path="/admin" element={<CheckAdmin />}>

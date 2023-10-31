@@ -2,14 +2,16 @@ import React,{useEffect, useState} from 'react'
 import {BiLeftArrowAlt as LeftArrow} from "react-icons/bi"
 import {BiRightArrowAlt as RightArrow} from "react-icons/bi"
 import {AiOutlineCheck as Check} from "react-icons/ai"
-
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 import plus from "../../../assets/images/faq plus (1).svg"
 import minus from "../../../assets/images/faq minus.svg"
 import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { getCart,addToCart,increaseAmount,decreaseAmount,getSingleCart } from '../../../store/features/cartslice/cartSlice'
-
+import "../css/abcd.css"
 
 const productEdit = ({ProductData}) => {
 
@@ -18,7 +20,6 @@ const productEdit = ({ProductData}) => {
   const dispatch = useDispatch()
 
   const cart= useSelector(state => getSingleCart(state,ProductData._id))
-  console.log("mycart",cart)
   
   const increaseAmt = () => dispatch(increaseAmount(ProductData._id))
   const decreaseAmt = () => dispatch(decreaseAmount(ProductData._id))
@@ -29,38 +30,72 @@ const productEdit = ({ProductData}) => {
 
 
   const productItems = ProductData.items
-  const [curr,setCurr] = useState(0)
   
-  const changeImg = tar =>{
-    if(curr + tar > -1 && curr + tar < productItems.length){
-      setCurr(curr + tar)
-    }
-  }
-  var pad = productItems.length > 4 ? parseInt((productItems).length - 4) * 115 + 120 : 100
-  pad = productItems.length < 4 ? 0 : pad
-  
+  const [nav1, setNav1] = useState(null);
+  const [nav2, setNav2] = useState(null);
+  const [slider1, setSlider1] = useState(null);
+  const [slider2, setSlider2] = useState(null);
+
+  useEffect(() => {
+
+    setNav1(slider1);
+    setNav2(slider2);
+
+  });
+  const settingsMain = {
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    arrows: false,
+    fade: true,
+    asNavFor: '.slider-nav',
+    adaptiveHeight: true,
+  };
+
+  const settingsThumbs = {
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    asNavFor: '.slider-fokr',
+    dots: false,
+    swipeToSlide: true,
+    focusOnSelect: true,
+    infinite: true,
+    adaptiveHeight: true,
+
+  };
+
   
   return (
     <div className='grid grid-cols-2 max-w-7xl m-auto max-md:grid-cols-1 max-md:px-4 px-c14 h-scree select-none h-sreen mt-14 gap-5'>
        
         <div className='flex  flex-col gap-6 '>
-          <div className='relative showe flex w-full h-[300px] gap-3 overflow-hidden '>
-                <LeftArrow onClick={() => changeImg(-1)} className='absolute cursor-pointer text-3xl top-1/2 left-2 bg-white bg-opacity-60 hover:bg-opacity-100 transform duration-500 text-redd rounded-full '/>
-                <img src={productItems[curr].img}  className='mx-auto rounded w-full h-full object-cover ' alt="" />
-                <RightArrow onClick={() => changeImg(1)} className='absolute cursor-pointer right-2 text-3xl top-1/2  text-redd bg-white bg-opacity-60 hover:bg-opacity-100 transform duration-500 rounded-full '/>
-          </div>
-          <div className='flex w-full overflow-x-scroll gap-5 mb-3 justify-center h-[100px]' >
-              
-              <div style={{minWidth:pad+"px"}} className=''></div>
+          <div className="App">
+                <div className="slider-wrapper">
+                  <Slider
+                        {...settingsMain}
+                        asNavFor={nav2}
+                        ref={slider => (setSlider1(slider))}
+                    >
+                    {productItems.map((data) =>
+                      <img className="slick-slide-image rounded"  src={`${data.img}`} />
+                    )}
 
-              {productItems.map((data,i) =>
-                 <img 
-                 onClick={() => setCurr(i)} key={i} src={data.img} width={"110px"} className='rounded object-cover cursor-pointer' alt="" />
-              )}
+                  </Slider>
+                  <div className="thumbnail-slider-wrap ">
+                    <Slider
+                      {...settingsThumbs}
+                      asNavFor={nav1}
+                      ref={slider => (setSlider2(slider))}
+                    >
 
-              <div className='w-98'></div>
-          </div>
+                      {productItems.map((data,ind) =>
+                        <img key={ind} className="slick-slide-image p-2 rounded-xl"  src={`${data.img}`} />
+                      )}
 
+                    </Slider>
+                  </div>
+                </div>
+
+                </div>
         </div>
 
         <div className='bg-green-00 md:ms-14 flex flex-col gap-3 '>

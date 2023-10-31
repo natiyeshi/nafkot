@@ -7,14 +7,16 @@ import AddTopup from './components/addTopup'
 import Currency from './components/currency'
 import EditTopup from "./components/EditTopup"
 import DeleteTopup from "./components/deleteTopup"
+import axios from '../../hooks/axios'
+import { useDispatch, useSelector } from 'react-redux'
+import { getCurrency, setCurrency } from "../../../store/features/adminsettingslice/adminSettingSlice"
 
 const index = () => {
+  const dispatch = useDispatch()
   const [page,setPage] =  useState(0)
   const [alerting,setAlerting] = useState('')
   const [showAaddTopup,setShowAaddTopup] = useState(false)
   const [showCurrency,setShowCurrency] = useState(false)
-  const [showEditTopup,setShowEditTopup] = useState(false)
-  const [showDeleteTopup,setShowDeleteTopup] = useState(false)
   
   useEffect(() => {
     setAlerting(alerting);
@@ -25,8 +27,23 @@ const index = () => {
       clearTimeout(timeout);
     };
   }, [alerting]);
+
+  useEffect(() => {
+    async function fetch() {
+      try{
+        const data = await axios.post("setting/getcurrency")
+        dispatch(setCurrency(data.data))
+        console.log(data)
+      }catch(err){
+        console.log(err)
+        const AE = err.response?.data?.error.message
+        dispatch(setError( AE ? AE : err.message))
+      }
+    }
+    fetch()
+  }, [])
   
-  const pages = [<AdminTopups setShowEditTopup={setShowEditTopup} setShowDeleteTopup={setShowDeleteTopup} />,<Requests setAlerting={setAlerting} />]
+  const pages = [<AdminTopups />,<Requests setAlerting={setAlerting} />]
   
   return (
     <div className='flex relative bg-blue-50 '>
@@ -36,7 +53,7 @@ const index = () => {
           <h1 className='text-lg font-bold mt- mb-4'>Topup</h1>
           <div className={` flex relative gap-10 ps-0 py-4   `}>
             <div></div>
-            <div onClick={()=>setPage(0)} className={`${page == 0 && 'border border-gray-300 rounded-tr-lg border-b-blue-50 border-b-4 z-10 text-redd  rounded-tl-lg font-bold'}  w-20  h-[35px] py-2 px-2  cursor-pointer`}>Products</div>
+            <div onClick={()=>setPage(0)} className={`${page == 0 && 'border border-gray-300 rounded-tr-lg border-b-blue-50 border-b-4 z-10 text-redd  rounded-tl-lg font-bold'}   h-[35px] py-2 px-2  cursor-pointer`}>Topups</div>
             <div onClick={()=>setPage(1)} className={`${page == 1 && 'border border-gray-300 rounded-tr-lg border-b-blue-50 border-b-4 z-10 text-redd  rounded-tl-lg font-bold'}  h-[35px] cursor-pointer  py-2 px-2`}>Requests</div>
             <div onClick={()=>setShowAaddTopup(true)} className={`${page == 2 && 'border border-gray-300 rounded-tr-lg border-b-blue-50 border-b-4 z-10 text-redd  rounded-tl-lg font-bold'}  h-[35px] cursor-pointer  py-2 px-2`}>Add Topup</div>
             <div onClick={()=>setShowCurrency(true)} className={`${page == 3 && 'border border-gray-300 rounded-tr-lg border-b-blue-50 border-b-4 z-10 text-redd  rounded-tl-lg font-bold'}  h-[35px] cursor-pointer  py-2 px-2`}>Currency</div>
@@ -46,8 +63,6 @@ const index = () => {
               {pages[page]}
               {showAaddTopup && <AddTopup setShowAaddTopup={setShowAaddTopup} />}
               {showCurrency && <Currency setShowCurrency={setShowCurrency} />}
-              {showEditTopup && <EditTopup setShowEditTopup={setShowEditTopup} />}
-              {showDeleteTopup && <DeleteTopup setShowDeleteTopup={setShowDeleteTopup} />}
           </div>
         </div>
     </div>

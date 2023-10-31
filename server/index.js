@@ -3,7 +3,7 @@ require("dotenv").config()
 const mongoose = require("mongoose")
 
 mongoose
-    .connect(process.env.DB_URL_REMOTE,{dbName : process.env.DB_NAME})
+    .connect(process.env.DB_URL_DEV,{dbName : process.env.DB_NAME})
     .then(() => console.log("connected to Db"))
     .catch(err => console.log(err.message))
 
@@ -42,12 +42,18 @@ const productRoute = require("./Routers/prouductRoute")
 const transactionRoute = require("./Routers/transactionRoute")
 const authRoute = require("./Routers/auth")
 const adminRoute = require("./Routers/adminAuth")
+const topupRoute = require("./Routers/topupRoute")
+const topupRequestRoute = require("./Routers/requestRoute")
+const settingRoute = require("./Routers/settingRoute")
 
 //configs
 app.use("/",productRoute)
 app.use("/transaction/",transactionRoute)
 app.use("/auth/",authRoute)
 app.use("/admin/",adminRoute)
+app.use("/topup/",topupRoute)
+app.use("/request/",topupRequestRoute)
+app.use("/setting/",settingRoute)
 
 app.get("/",(req,res,next)=>{
     res.send("working fine!!") 

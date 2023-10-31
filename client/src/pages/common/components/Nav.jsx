@@ -2,7 +2,7 @@ import React,{useState} from 'react'
 import { FiMenu as Menu } from "react-icons/fi"
 import Logo from "../../../assets/images/Logo.svg"
 import cart from "../../../assets/images/cart.svg"
-import { NavLink,Link,Router } from 'react-router-dom'
+import { NavLink,Link,Router, useLocation } from 'react-router-dom'
 import Login from '../../../Auth/Login'
 import Register from '../../../Auth/Register'
 import Mobile from './Mobile'
@@ -10,16 +10,18 @@ import { getCart } from '../../../store/features/cartslice/cartSlice'
 import { useDispatch, useSelector } from 'react-redux'
 import { getUserData, isUserLogedIn,loadingUser,logoutUser } from '../../../store/features/userSlice/userSlice'
 import { useNavigate } from 'react-router-dom'
-import { removeCartItem } from '../../../store/features/cartslice/cartSlice'
+import {MdKeyboardArrowDown as ListIcon} from "react-icons/md"
+import Profile from "./profile"
 
 const Nav = ({pass}) => {
+  const location = useLocation();
+  const currentUrl = location.pathname;
   const navigator = useNavigate()
   const dispatch = useDispatch()
   const {cartItems,_} = useSelector(getCart)
   const isLogedIn = useSelector(isUserLogedIn)
   const user = useSelector(getUserData)
   const isLoadingUser = useSelector(loadingUser)
-  console.log(cartItems)
   const cartLength = Object.keys(cartItems).length
   
   let checkLink = ({isActive}) =>  isActive ? 'my-auto max-xl:hidden text-redd duration-200 hover:text-redd' : ' duration-200  hover:text-redd my-auto max-xl:hidden'
@@ -38,10 +40,9 @@ const Nav = ({pass}) => {
     return (
         <div className='shrink-0 capitalize font-normal gap-3 flex w-full h-[60px]  border  rounded'>
             <div className='w-[70px] relative'>
-                <img src={data.items[0].img} className='rounded h-full w-full  absolute left-0 bottom-0 top-0 right-0 max-sm:hidden' width={""} height={""} alt="" />
+                <img src={data.items[0].img} className='rounded h-full w-full object-cover absolute left-0 bottom-0 top-0 right-0 max-sm:hidden' width={""} height={""} alt="" />
             </div>
             <div className='flex flex-col gap-1 pt-1'>
-
                 <p className='font-semibold text-small'>{data.title} </p>
                 <p className='text-small'> ${data.price} </p>
             </div>
@@ -52,6 +53,8 @@ const Nav = ({pass}) => {
      cartsDiv.push(<Cart key={i}  {...cartItems[i]} />)  
   }
 
+  const [toggleOption , setToggleOption] = useState(true)
+  const flip = () => setToggleOption(data => !data)
   return (
     <div className={'z-10 bg-white font-semibold shadow-sm  '+pass}>
         
@@ -64,21 +67,29 @@ const Nav = ({pass}) => {
         {loginNow && <Login setLoginNow={setLoginNow} />  }
         {registerNow && <Register setRegisterNow={setRegisterNow} />  }
         
-        <div className='w-full px-c14 max-xl:px-3 py-3 flex uppercase justify-center border-b border-red border-opacity-10' >
+        <div className={`${isLogedIn ? "py-2" : "py-3" } w-full px-c14 max-xl:px-3   flex uppercase justify-center border-b border-red border-opacity-10`} >
             <div className='flex w-full max-w-7xl '>
                 <img src={Logo} width="100px" alt="" onClick={()=>navigator("/")} />
 
                 <div className='w-3/4 justify-center flex gap-12 '>
 
-                    <NavLink    to="/"  className={checkLink} >Home</NavLink >
-                    <NavLink    to="/products" className={checkLink}>Products</NavLink >
-                    <NavLink    to="/aboutus" className={checkLink}>About us</NavLink >
-                    <NavLink    to="/howto" className={checkLink}>How to order</NavLink >
-                    <a href="/#faq" className={"my-auto max-xl:hidden duration-200  hover:text-redd "}>FAQS</a >
+                    <NavLink  to="/"  className={checkLink} >Home</NavLink >
+                    <div className='my-auto relative max-xl:hidden'>
+                        <div className='flex gap-1'>
+                        <NavLink  to="/products"  className={checkLink} >Products</NavLink >
+                            <button onClick={flip}><ListIcon  className={`${!toggleOption && '-rotate-180 '} duration-300`} /></button>
+                        </div>
+                        <div className={`${toggleOption && 'hidden '} pb-1 rounded-lg capitalize duration-300 absolute shadow-lg border  bg-white w-28 mt-2 flex flex-col `}>
+                            <div onClick={()=>{ setToggleOption(true); navigator("/products")}} className='font-normal border-b mt-1  hover:bg-gray-50 py-1 cursor-pointer text-center'>items</div>
+                            <div onClick={()=> { setToggleOption(true); navigator("/products/topup")}} className='font-normal hover:bg-gray-50 pt-1 cursor-pointer text-center'>topup</div>
+                        </div>
+                    </div>
+                    <NavLink  to="/aboutus" className={checkLink}>About us</NavLink >
+                    <NavLink  to="/howto" className={checkLink}>How to order</NavLink >
                 
                 </div>
 
-                <div className='w-1/4 max-xl:w-2/4 flex justify-around max-xl:justify-end max-xl:gap-7 '>
+                <div className={`${isLogedIn ? 'w-1/6' : 'w-1/4'}  max-xl:w-2/4 flex justify-around  max-xl:justify-end max-xl:gap-7 `}>
                     
                     <div className="flex max-xl:hidden">
                         {isLogedIn == false ? 
@@ -89,17 +100,13 @@ const Nav = ({pass}) => {
                         :   isLoadingUser ? 
                         <div className='my-auto opacity-30 duration-200'> loading </div> 
                         : <div className='my-auto relative cursor-pointer text-white rounded-full duration-200'>
-                                <div className='bg-redd px-1 rounded '  onClick={() => setShowLogout(a => !a)}>
-                                    {(user.firstName).substring(0,10)}
+                                <div className='bg-redd  w-8 h-8 flex rounded-full  '  onClick={() => setShowLogout(a => !a)}>
+                                  <div className='m-auto'>
+                                    {(user.firstName).substring(0,1)}
+                                  </div>
                                 </div>
-                                <div className={` ${!showLogout && "hidden"} shadow shadow-slate-700 gray-500 absolute -left-24 rounded-b rounded-l py-2 px-1 font-normal text-normal bg-gray-600 w-24`}>
+                                {showLogout && <Profile user={user} logoutNow={logoutNow} />}
                                 
-                                    <div className='w-full ps-1 ' onClick={logoutNow}>
-                                     Logout
-                                   </div>
-                                   
-                                   
-                                </div>
                             </div>
                         }
                     </div>
