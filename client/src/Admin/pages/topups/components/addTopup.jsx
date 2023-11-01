@@ -17,14 +17,14 @@ const AddTopup = ({setShowAaddTopup}) => {
   const addData = async () =>{
     setLoading(true)
     try{
-      const data = parseInt(amount)  
-      if(!data || typeof data == 'notnumber'){
+      const data = parseInt(amount) 
+
+      if(!data || typeof data != 'number'){
         throw(Error("wrong input"))
       }
       const response = await axios.post("topup/addtopup/",{amount : data})
       setSuccess(true)
     }catch(err){
-      console.log(err)
       const AE = err.response?.data?.error.message
       setError( AE ? AE : err.message)
     }finally{

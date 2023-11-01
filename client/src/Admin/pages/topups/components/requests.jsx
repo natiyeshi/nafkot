@@ -9,6 +9,7 @@ const Requests = ({setAlerting}) => {
   
   const [requests,setRequests] = useState([])
   const [loading,setLoading] = useState(true)
+  const [error,setError] = useState(null)
   const [reloadData,setReloadData] = useState(false)
   const [filter,setFilter] = useState(0)
 
@@ -18,9 +19,10 @@ const Requests = ({setAlerting}) => {
         setLoading(true)
         const result = await axios.post("request/getrequests/") 
         setRequests(result.data)
+        setError(null)
       }catch(err){
         const AE = err.response?.data?.error.message
-        alert( AE ? AE : err.message)
+        setError( AE ? AE : err.message)
       }finally{
         setLoading(false)
       }
@@ -36,7 +38,7 @@ const Requests = ({setAlerting}) => {
   }
   return (
     <div>
-      <div className='flex flex-row-reverse mr-2 gap-5'>
+      <div className='flex flex-row-reverse mr-2 gap-5 '>
             <div onClick={() => setReloadData(data => !data)} className='flex mr-5 bg-white p-2 shadow rounded-full cursor-pointer hover:shadow-xl' title='reload'>
               <Reload className='text-lg' />
             </div>
@@ -51,6 +53,9 @@ const Requests = ({setAlerting}) => {
     <div className='grid mt-2 relative max-lg:grid-cols-2 max-md:grid-cols-1 px-3 grid-cols-3 gap-x-4 gap-y-3'>
         
         {
+        error ?
+          <div className='text-center w-full absolute text-lg'>{error}</div>  
+        :
         loading ? 
           arr.map((data,ind) => <TopupSkeleton key={ind} />)  
         :

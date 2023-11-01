@@ -37,7 +37,7 @@ const index = () => {
       }catch(err){
         console.log(err)
         const AE = err.response?.data?.error.message
-        dispatch(setError( AE ? AE : err.message))
+        setAlerting( AE ? AE : err.message)
       }
     }
     fetch()
