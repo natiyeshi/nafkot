@@ -1,28 +1,24 @@
 import React from 'react'
 import {CgClose as Close} from 'react-icons/cg'
-import { Link } from 'react-router-dom'
+import { Link,NavLink, useNavigate } from 'react-router-dom'
 import plus from "../../../assets/images/faq plus (1).svg"
 import minus from "../../../assets/images/faq minus.svg"
 
 
 const Cart = ({data,amount,removeItemAmount,addItemAmount,removeCart}) => {
-  
+  const navigator = useNavigate()
   let desc = "";
   for(let item of data.items){
     desc += item.amount +" "+ item.name+", "  
   }
 
   desc = desc.slice(0,-2)
+  console.log(data.items[0].img,"---")
   return (
-    <div className='relative basis-1/2  flex border rounded gap-4 '>
-        <Link to={`/detail/${data._id}`} className='w-[200px] relative group bg-gray-300'>
-          <div className='absolute hover:duration-700  justify-center items-center left-0 right-0 top-1/2 bottom-0  bg-gradient-to-t bg-opacity-50 group-hover:from-slate-100 flex hover:bg-opacity-50  hover:flex   z-10'>
-            <p className='group-hover:opacity-100 translate-y-2 opacity-0  group-hover:duration-500 duration-300 group-hover:translate-y-0   font-bold'>
-              see mored
-            </p>
-          </div>
-          <img src={data.items[0].img} className='rounded h-full w-full  absolute left-0 bottom-0 top-0 right-0 max-sm:hidden' width={""} height={""} alt="" />
-        </Link>
+    <div  className='relative basis-1/2  flex border rounded gap-4  '>
+        <div onClick={()=>navigator(`/detail/${data._id}`)} className='w-[200px] hover:cursor-pointer relative group bg-gray-300'>
+            <img src={data.items[0].img} className='rounded h-full w-full object-cover absolute left-0 bottom-0 top-0 right-0 max-sm:hidden' width={""} height={""} alt="" />
+        </div>
         <div className='flex flex-col gap-2 max-lg:p-2 w-full'>
             <h1 className='font-semibold  text-lg  w-10/12 capitalize' style={{}}>{data.title}</h1>
             <p className=''>{desc}</p>

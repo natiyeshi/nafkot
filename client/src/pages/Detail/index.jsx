@@ -41,40 +41,17 @@ const index = () => {
         <Navigator ProductData={productData} />
         {
           loading  ? 
-          <div className="px-c14 ">
-            {/* <SkeletonTheme >
-              <div className='flex gap-3 py-10 max-md:flex-col  h-full'>
-                <div className='w-1/2 px-2'>
-                  <Skeleton height={"300px"}/>
-                  <div className='flex justify-around mt-2'>
-                    <Skeleton width={"100px"} height={"70px"} />
-                    <Skeleton width={"100px"} height={"70px"} />
-                    <Skeleton width={"100px"} height={"70px"} />
-                    <Skeleton width={"100px"} height={"70px"} />
-                  </div>
-                </div>
-                <div className='w-1/2'>
-                  <Skeleton width={"50%"} className='mb-10'/>
-                  <Skeleton count={6} width={"80%"}/>
-                  <div width={"50%"} className='mb-5'/>
-                  <div className='flex gap-2'>
-                    <Skeleton width={"150px"} height={"40px"}/>
-                    <Skeleton width={"150px"} height={"40px"}/>
-                  </div>
-                </div>
-                
-              </div>
-            </SkeletonTheme> */}
-            loading..
-          </div>
+          <SkeletonTheme >
+            <Skeleton width={"100%"} height={"300px"}/> 
+          </SkeletonTheme >
           :
           <ProductEditor ProductData={productData} />
         }
-        <Testimonial />
+        <DetailProducts/>
         <div className='px-c14 max-md:px-1 my-5'>
           <TopupRow />
         </div>
-        <DetailProducts/>
+        <Testimonial />
         <Footer />
     </div>
   )

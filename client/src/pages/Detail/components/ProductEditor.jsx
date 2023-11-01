@@ -60,7 +60,7 @@ const productEdit = ({ProductData}) => {
     focusOnSelect: true,
     infinite: true,
     adaptiveHeight: true,
-
+    
   };
 
   

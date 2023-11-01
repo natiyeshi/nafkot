@@ -12,7 +12,7 @@ const index = () => {
         <Nav />
         <About />
         <Partners />
-        <Teams />
+        {/* <Teams /> */}
         <Footer />
     </div>
   )

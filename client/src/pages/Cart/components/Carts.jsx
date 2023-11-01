@@ -18,10 +18,10 @@ const Carts = () => {
   const addItemAmount = (id) => dispatch(increaseAmount(id))
   const removeItemAmount = (id) => dispatch(decreaseAmount(id))
   const removeCart = (id) => dispatch(removeCartItem(id))
-  
   for(let i in cartItems){
      cartsDiv.push(<Cart key={i}  {...cartItems[i]} removeCart={removeCart} removeItemAmount={removeItemAmount} addItemAmount={addItemAmount} />)  
   }
+  cartsDiv.reverse();
   
   return (
     <div className='w-full px-c14 max-lg:px-3 mb-6'>

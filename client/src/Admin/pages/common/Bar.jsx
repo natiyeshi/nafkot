@@ -3,7 +3,7 @@ import React from 'react'
 import {RxDashboard as D} from "react-icons/rx"
 import {BsCartDash as P} from "react-icons/bs"
 import {IoMdLogOut as T} from "react-icons/io"
-import {CiLogout as L} from "react-icons/ci"
+import {CiLogout as L,CiCreditCard1 as TopupIcon} from "react-icons/ci"
 import { Outlet } from 'react-router-dom'
 
 import { NavLink,useLocation } from 'react-router-dom'
@@ -45,7 +45,7 @@ const Bar = () => {
               
               <NavLink to={"/admin/topups"} className={`${path == "/admin/topups" && "bg-red-400 bg-opacity-20 "} relative group ps-10 transition  duration-200 flex font-bold hover:bg-red-400 hover:bg-opacity-20 cursor-pointer gap-5 px-4 py-3`}>
                 <div className={`${path == "/admin/topups" && "opacity-80 translate-x-0"} absolute left-0  duration-200  top-0 w-1 opacity-0 group-hover:translate-x-0 translate-x-3 group-hover:opacity-80  bg-red-500 h-full`}></div>
-                <T className={`${path == "/admin/topups" && "text-red-700"} my-auto text-xl duration-200 group-hover:text-red-700 `} />
+                <TopupIcon className={`${path == "/admin/topups" && "text-red-700"} my-auto text-xl duration-200 group-hover:text-red-700 `} />
                 <p className={`${path == "/admin/topups" && "text-redd"} group-hover:text-redd duration-200`}>topups</p>
               </NavLink>
         

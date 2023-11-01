@@ -1,0 +1,14 @@
+
+
+
+
+
+
+
+.testimony .slick-slide > div {
+  transform: scale(.8);
+  transition: transform .3s cubic-bezier(.4,0,.2,1);
+}
+.testimony .slick-center > div {
+  transform: scale(1);
+}

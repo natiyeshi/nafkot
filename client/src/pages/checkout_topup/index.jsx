@@ -16,7 +16,7 @@ const index = () => {
     return (
         <>
             <Nav/>
-            <div className='w-full  flex justify-center max-md:flex-col pt-10 max-md:px-[1em] px-[10em] max-w-7xl mx-auto gap-5 pb-20  '>
+            <div className='w-full  flex justify-center max-md:flex-col pt-10 max-md:px-[1em] px-[10em] max-w-7xl mx-auto gap-5 pb-5  '>
 
                 <div className='w-6/12 bg-gray-100 shadow-lg  mb-20  max-md:mx-auto max-md:w-full  rounded h-fit '>
                     <h1 className='text-lg text-white p-3 font-bold text-start bg-redd rounded-t'>Checkout</h1>

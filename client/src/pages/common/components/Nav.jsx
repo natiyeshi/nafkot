@@ -52,6 +52,8 @@ const Nav = ({pass}) => {
   for(let i in cartItems){
      cartsDiv.push(<Cart key={i}  {...cartItems[i]} />)  
   }
+  cartsDiv.reverse();
+
 
   const [toggleOption , setToggleOption] = useState(true)
   const flip = () => setToggleOption(data => !data)

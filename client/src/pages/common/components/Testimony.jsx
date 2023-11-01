@@ -3,8 +3,8 @@ import {AiTwotoneStar as Star} from "react-icons/ai"
 
 const Testimony = ({message,person}) => {
   return (
-    <div className='bg-white py-1  justify-center  flex-shrink-0  px-3 max-sm:basis-3/4 flex flex-col basis-1/3 max-lg:basis-7/12 gap-2 w-full rounded-sm'>
-                <div className='flex gap-3 '>
+    <div className='bg-white py-3 justify-center px-6  gap-2  rounded'>
+                <div className='flex gap-3 my-2 '>
                     <div className='flex my-auto'>
                         <Star className='text-yellow-300 my-auto text-lg' />
                         <Star className='text-yellow-300 my-auto text-lg' />
@@ -17,7 +17,7 @@ const Testimony = ({message,person}) => {
                 <p>
                 {message}
                 </p>
-                <h3 className='text-normal font-bold'>{person}</h3>
+                <h3 className='text-normal font-bold my-2'>{person}</h3>
             </div>
   )
 }

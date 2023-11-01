@@ -12,7 +12,7 @@ const TopupRow = () => {
   
   const [topups,setTopups] = useState([])
   const [loading,setLoading] = useState(true)
-  const [deleteTopup,setDeleteTopup] = useState(null)
+  const [error,setError] = useState(null)
   const [reloadData,setReloadData] = useState(false)
   const [currency,setCurrency] = useState(1)
   const arr = ['','','','','','','','','','','','','']
@@ -50,7 +50,8 @@ const TopupRow = () => {
     autoplay: true,
     centerMode: true,
     pauseOnHover: true,
-    autoplaySpeed: 2000,
+    autoplaySpeed: 3000,
+    focusOnSelect: true,
     responsive: [
       {
         breakpoint: 1024,
@@ -91,9 +92,10 @@ const TopupRow = () => {
         setTopups(result.data)
         setSize(result.data.length - 3)
         setCurrency(data.data.currency)
-      }catch(e){
-        alert("error")
-        console.log(e)
+        setError(null)
+      }catch(err){
+        const AE = err.response?.data?.error.message
+        setError( AE ? AE : err.message)
       }finally{
         setLoading(false)
       }
@@ -115,13 +117,17 @@ const TopupRow = () => {
         </div>
         </div>
 
-        <Slider afterChange={(e)=>setCanSlide(e)} ref={slider} {...settings} className='absolute'>
-        {loading  ? 
-          arr.map((data, ind) => <TopupSkeleton key={ind} data={data} home={true} />)
-        : 
-          topups.map((data, ind) =>  <Topup home={true} key={ind} data={data} currency={currency} />)
-        }
-      </Slider>
+        {
+          error ? 
+          <div className='text-center'> {error} </div>
+          :
+          <Slider afterChange={(e)=>setCanSlide(e)} ref={slider} {...settings} className='absolute'>
+          {loading  ? 
+            arr.map((data, ind) => <TopupSkeleton key={ind} data={data} home={true} />)
+          : 
+            topups.map((data, ind) =>  <Topup home={true} key={ind} data={data} currency={currency} />)
+          }
+      </Slider>}
     </div>
   )
 }

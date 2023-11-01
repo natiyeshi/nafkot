@@ -1,7 +1,9 @@
-import React from 'react'
+import React,{useState,useRef} from 'react'
 import Testimony from './Testimony'
-
-
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import "../css/testimonial.css"
 
 const Testimonial = () => {
    
@@ -38,24 +40,60 @@ const Testimonial = () => {
         person: "Mark S"
       }
    ];
+   const slider = useRef(null);
+   var settings = {
+    dots: true,
+    infinite: true,
+    className:"bg-redd",
+    speed:600,
+    slidesToShow: 3,
+    prevArrow: false,
+    nextArrow: false,
+    slidesToScroll: 3,
+    autoplay: true,
+    centerMode: true,
+    pauseOnHover: true,
+    autoplaySpeed: 3000,
+    focusOnSelect: true,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          infinite: true,
+          dots: true
+        }
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          initialSlide: 2
+        }
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        }
+      }
+    ]
+  };
+
   return (
-    <div className='relative px-c14   max-lg:px-2 bg-gray-100 mx-auto pb-10'>
+    <div className='relative px-c14 pt-6 mt-10 mb-4 max-lg:px-2 bg-gray-100 mx-auto pb-10'>
             
         <h1 className='py-3 text-center text-xl mt-10 mb-5 font-semibold capitalize'>customers review</h1>
 
         <div className='absolute max-lg:hidden h-full left-0 bottom-0 bg-gradient-to-r from-gray-100 via-gray-100 w-2/6'></div>
         <div className='absolute max-lg:hidden right-0 h-full bottom-0 bg-gradient-to-l from-gray-100 via-gray-100 w-2/6'></div>
-        {/* <div></div> */}
-        <div className=' max-w-7xl m-auto flex overflow-auto  py-3 gap-2 testimonial-scroll z-50 mb-3'>
-            
-            <div className='max-lg:hidden flex-shrink-0 p-2 px-3 flex flex-col basis-2/12 gap-2 rounded-sm'>
-            </div>
-
-            {tests.map(({message,person}) => (<Testimony message={message} person={ person   } />))} 
-            
-            <div className='max-lg:hidden flex-shrink-0 p-2 px-3 flex flex-col basis-1/3 gap-2 rounded-sm'>
-            </div>
-
+        <div className='testimony'>
+            <Slider ref={slider} {...settings} className='absolute'>
+              {tests.map(({message,person}) => (<Testimony message={message} person={ person   } />))} 
+            </Slider>
         </div>
 
     </div>

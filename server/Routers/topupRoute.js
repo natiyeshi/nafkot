@@ -27,7 +27,7 @@ router.post("/gettopups",async (req,res,next)=>{
         const topups = await TopupSchema.find();
         res.json(topups)
     }catch(err){
-        next(createError.NotFound("Something goes Wrong"))
+        next(err)
     }
 
 })  
