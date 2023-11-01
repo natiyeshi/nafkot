@@ -70,8 +70,8 @@ router.post("/checkout-session-topup",async (req,res,next)=>{
                 },
                 quantity : 1
             }],
-            success_url : `${process.env.SERVER_URL_DEV}/success/topup?session_id={CHECKOUT_SESSION_ID}&order=${token}`,
-            cancel_url : `${process.env.SERVER_URL_DEV}/products/topup`,
+            success_url : `${process.env.SERVER_URL}/success/topup?session_id={CHECKOUT_SESSION_ID}&order=${token}`,
+            cancel_url : `${process.env.SERVER_URL}/products/topup`,
         })
         res.json({url:session.url})
     }catch(err){  
