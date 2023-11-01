@@ -31,7 +31,7 @@ const Requests = ({setAlerting}) => {
     fetch()
   }, [reloadData])
   
-  const arr = ['','','','','','','','','','','','']
+  const arr = ['','','','','','','']
   const filterData = ({target}) =>{
     const val = parseInt(target.value)
     setFilter(val)

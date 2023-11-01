@@ -12,7 +12,7 @@ const AdminTopups = () => {
   const dispatch = useDispatch()
   const [topups,setTopups] = useState([])
   const [loading,setLoading] = useState(true)
-  const [error,setError] = useState("fdsa")
+  const [error,setError] = useState(null)
   const [deleteTopup,setDeleteTopup] = useState(null)
   const [reloadData,setReloadData] = useState(false)
   const [showEditTopup,setShowEditTopup] = useState(null)
@@ -37,7 +37,7 @@ const AdminTopups = () => {
     fetch()
   }, [reloadData])
   
-  const skeletons = ["","","","","","","","","","","","","","",""]
+  const skeletons = ["","","","","","","",""]
   
 
   return (
@@ -54,7 +54,7 @@ const AdminTopups = () => {
               error ? 
               <div className='absolute text-center capitalize w-full mt-10 text-lg'> {error} </div>        
               :
-              loading  ? 
+              loading ? 
                 <>
                 { skeletons.map((a,ind) => <TopupSkeleton key={ind} /> ) }
                   </>
