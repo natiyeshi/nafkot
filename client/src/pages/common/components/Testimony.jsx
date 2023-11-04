@@ -14,7 +14,7 @@ const Testimony = ({message,person}) => {
                     </div>
                     <span className='text-gray-400'>2 days ago</span>
                 </div>
-                <p>
+                <p className='text-[14px]'>
                 {message}
                 </p>
                 <h3 className='text-normal font-bold my-2'>{person}</h3>

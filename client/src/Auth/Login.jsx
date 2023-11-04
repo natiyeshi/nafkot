@@ -9,13 +9,13 @@ import { useDispatch } from 'react-redux'
 import { loginUser } from '../store/features/userSlice/userSlice'
 import gif  from "../assets/gif/rotatebg.gif"
 
-const Login = ({setLoginNow}) => {
+const Login = ({setLoginNow,initialEmail}) => {
 
     const dispatch = useDispatch()
     const [loading,setLoading] = useState(false)
 
     const initialData = {
-        email: "",
+        email: initialEmail ?? "",
         password: ""
     }
     const [formData, setFormData] = useState(initialData)
@@ -98,7 +98,7 @@ const Login = ({setLoginNow}) => {
                         </label>
                         <input type="text"
                             value={
-                                formData.username
+                                formData.email
                             }
                             onChange={changeInput}
                             name='email'

@@ -6,6 +6,7 @@ const productJoi = require("../Models/Joi/product.joi")
 const cloudinary = require('cloudinary').v2;
 const multer = require("multer")
 const path = require('path');
+const { emit } = require("../Models/Db/setting.model")
 // Configuration 
 cloudinary.config({
     cloud_name: process.env.CLOUD_NAME,
@@ -34,16 +35,16 @@ router.post('/uploadItem',upload.single('img'), (req, res,next) => {
             try{
                  console.log(err)
                  await ProductSchema.findByIdAndDelete({_id:id})
-                 return next(createError[400]("week connection, file not saved!!"))
+                 return next(err)
             }catch(e){
-                return next(createError[400]("week connection"))
+                return next(emit)
             }
             
         });  
 
     } catch(e) {
         console.log(e)
-        return next(e.message)
+        return next(e)
     }
 });
   

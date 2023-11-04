@@ -41,14 +41,14 @@ const Product = () => {
             </div>
         </div> */}
 
-        <div className='flex justify-around mt-3 capitalize px-32 max-lg:px-0 max-lg:pe-10  max-lg:hidden max-lg:ps-72 gap-5 '>
+        <div className='flex justify-around mt-3 capitalize px-32 max-lg:pe-5  max-lg:ps-5 gap-5 flex-wrap'>
             <p onClick={() => getTaggedOnes("") } className={`hover:text-redd cursor-pointer text-large ${tag == "" && "font-semibold text-redd"}`}>mostly ordered</p>
             <p onClick={() => getTaggedOnes("holiday")}  className={`hover:text-redd cursor-pointer text-large  ${tag == "holiday" && "font-semibold text-redd"}`}>holiday</p>
             <p onClick={() => getTaggedOnes("birthday")}  className={`hover:text-redd cursor-pointer text-large  ${tag == "birthday" && "font-semibold text-redd"}`}>birthday</p>
             <p onClick={() => getTaggedOnes("valentine")}  className={`hover:text-redd cursor-pointer text-large  ${tag == "valentine" && "font-semibold text-redd"}`}>valentine</p>
             <p onClick={() => getTaggedOnes("special day")}  className={`hover:text-redd cursor-pointer text-large  ${tag == "special day" && "font-semibold text-redd"}`}>special day</p>
             <p onClick={() => getTaggedOnes("groceries")}  className={`hover:text-redd cursor-pointer text-large  ${tag == "groceries" && "font-semibold text-redd"}`}>groceries</p>
-            {/* <p onClick={() => getTaggedOnes()}  className={`hover:text-redd cursor-pointer text-large  ${tag == "others" && "font-semibold text-redd"}`}>others</p> */}
+            <p onClick={() => getTaggedOnes()}  className={`hover:text-redd cursor-pointer text-large  ${tag == "others" && "font-semibold text-redd"}`}>others</p>
         </div>
 
         <div className={`${(products.length > 0 || loading)&& "grid"} mt-2 pt-4 grid-cols-3   max-lg:px-4 gap-7 max-md:grid-cols-2 max-sm:grid-cols-1 justify-around`}>

@@ -2,10 +2,20 @@ import React from 'react'
 import {AiOutlineShoppingCart as CartIcon} from "react-icons/ai"
 import {CiLogout  as LogoutIcon} from "react-icons/ci"
 import { Link } from 'react-router-dom'
-function profile({user,logoutNow}) {
+import { useDispatch } from 'react-redux'
+import { logoutUser } from '../../../store/features/userSlice/userSlice'
+
+function profile({user,footer}) {
+  const style = footer ? "w-full" : " w-[300px] z-20  absolute right-0 mt-2 "
+  const dispatch = useDispatch()
+  const logoutNow = () =>{
+    dispatch(logoutUser())
+  }
+  
   return (
-    <div className={`capitalize w-[300px] z-20 px-3 text-black shadow-lg border absolute right-0 mt-2 rounded-lg py-2  font-normal text-normal bg-white `}>
-        
+    
+    <div className={ `${style} capitalize font-normal px-3 text-black rounded-lg py-2 shadow-lg border text-normal bg-white `}>
+      
         <div className='flex gap-4'>
           <div className=' rounded-full bg-redd flex w-10 h-10'>
              <div className='m-auto font-bold text-white'>{user.firstName[0]}</div> 

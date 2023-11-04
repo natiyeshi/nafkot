@@ -22,7 +22,7 @@ export default {
         "c28" : "28%",
       },
       padding:{
-        "c14" : "14%"
+        "c14" : "8%"
       },
       fontSize:{
         "normal" : "13px",
