@@ -3,3 +3,4 @@ task
 checkout
 user
 .env
+/uploads
