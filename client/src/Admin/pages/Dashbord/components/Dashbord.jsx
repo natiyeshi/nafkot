@@ -2,7 +2,7 @@ import {useEffect} from 'react'
 import Products from './products'
 import Bar from '../../common/Bar'
 import axios from "../../../hooks/axios"
-
+import ProductTransaction from "./product_transaction"
 const Dashbord = () => {
 
   useEffect(()=>{
@@ -24,9 +24,7 @@ const Dashbord = () => {
             </h1>
             <p>24 hours 7 days 365 days working </p>
             </div>
-            <Products />
-
-
+            <ProductTransaction />
             <div className='bt-red\\'>
                 <h1 className='my-3 font-bold text-lg'>Transactions</h1>
                 <p>Money builds business</p>

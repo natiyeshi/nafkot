@@ -114,6 +114,7 @@ const TopupRow = () => {
             <CustomArrowPrev  onClick={() => {
                  slider?.current?.slickNext()
             }} />
+            <Link to={"/products/topup"} className=' my-auto mx-2 text-redd hover:underline'>More</Link>
         </div>
         </div>
 
