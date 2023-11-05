@@ -25,7 +25,7 @@ const Dashbord = () => {
             <p>24 hours 7 days 365 days working </p>
             </div>
             <ProductTransaction />
-            <div className='bt-red\\'>
+            <div className='bt-red'>
                 <h1 className='my-3 font-bold text-lg'>Transactions</h1>
                 <p>Money builds business</p>
                 <div className='relative bg-slate-800 flex pt-12 gap-6 text-white w-2/5 px-8 py-4 rounded-lg mt-3 text-lg'>

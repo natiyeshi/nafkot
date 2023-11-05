@@ -148,12 +148,48 @@ router.post("/gettransactions",async  (req,res,next) =>  {
 
 router.post("/save_transaction",async  (req,res,next) =>  {
     try{
-       const data = await TransactionModel.find()
+    //    const data = await TransactionModel.find()
+       
        return res.json(data)
     }catch(err) {
         next(err)
     }
 })
+const endpointSecret = "whsec_530662c0a9a26d6998f898e08efd3fbae262db25451f76afd504599105d8c5e3";
+
+router.post('/webhook', (request, response) => {
+    const sig = request.headers['stripe-signature'];
+    let event;
+    // console.log(request.body)
+    console.log("------------logged------------")
+    const body = JSON.stringify(request.body, null, 2);
+    try {
+      event = stripe.webhooks.constructEvent(body, sig, endpointSecret);
+    } catch (err) {
+      console.log("--problem----------------------")
+    //   console.log(err)
+
+      response.status(400).send(`Webhook Error: ${err.message}`);
+      return;
+    }
+    console.log("--works----------------------")
+    // console.log(event)
+    // Handle the event
+    switch (event.type) {
+      case 'payment_intent.succeeded':
+        const paymentIntentSucceeded = event.data.object;
+        // Then define and call a function to handle the event payment_intent.succeeded
+        break;
+      // ... handle other event types
+      default:
+        console.log(`Unhandled event type ${event.type}`);
+    }
+    console.log("------------------------")
+    
+    // Return a 200 response to acknowledge receipt of the event
+    response.send();
+  });
+  
  
 router.post("/gettransaction/:id",async  (req,res,next) =>  {
     try{
