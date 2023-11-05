@@ -36,12 +36,11 @@ router.post("/checkout-session",async (req,res,next)=>{
                 }
             }),
             
-            success_url : `${process.env.SERVER_URL}/success?session_id={CHECKOUT_SESSION_ID}&order=${token}`,
-            cancel_url : `${process.env.SERVER_URL}/checkout`,
+            success_url : `${process.env.SERVER_URL_DEV}/success?session_id={CHECKOUT_SESSION_ID}&order=${token}`,
+            cancel_url : `${process.env.SERVER_URL_DEV}/checkout`,
         })
         res.json({url:session.url})
     }catch(err){  
-        // console.log(err)
         if(err.isJoi){
             next(createError.BadRequest(err.message))
         } else {
@@ -90,11 +89,14 @@ router.post("/save_payment",async (req,res,next) =>  {
         const {session_id,token} = req.body
         const session = await stripe.checkout.sessions.retrieve(session_id)
         const [pass,payload] = decodeOrderJwt(token)
+        const isSaved = await TransactionModel.findOne({id:session.id})
+        if(isSaved){
+            return next(createError.BadRequest("session already saved!"))
+        }
         if(pass == false) throw createError.Unauthorized("invalid token")
-        let savedData = {...payload,currency:session.currency,status:session.status,totalPrice:session.amount_total}
+        let savedData = {...payload,currency:session.currency,status:session.status,totalPrice:session.amount_total,id:session.id}
         delete savedData.iat
         await TransactionModel.create(savedData)
-        console.log(savedData)
         res.send({ ok : "ok"})
     }catch(err){
         console.log(err)
@@ -112,8 +114,12 @@ router.post("/save_payment_topup",async (req,res,next) =>  {
         const {session_id,token} = req.body
         const session = await stripe.checkout.sessions.retrieve(session_id)
         const [pass,payload] = decodeOrderJwt(token)
+        const isSaved = await TopupRequestModel.findOne({id:session.id})
+        if(isSaved) {
+            return next(createError.BadRequest("session already saved!"))
+        }
         if(pass == false) throw createError.Unauthorized("invalid token")
-        let savedData = {...payload,currency:session.currency,status:session.status,totalPrice:session.amount_total}
+        let savedData = {...payload,currency:session.currency,status:session.status,totalPrice:session.amount_total,id:session.id}
         delete savedData.iat
         const validatedData = await TopupDbTransactionJoi.validateAsync(savedData)
         const data = await TopupRequestModel.create(validatedData)
@@ -137,7 +143,29 @@ router.post("/gettransactions",async  (req,res,next) =>  {
     }catch(err) {
         next(err)
     }
+})
+ 
 
+router.post("/save_transaction",async  (req,res,next) =>  {
+    try{
+       const data = await TransactionModel.find()
+       return res.json(data)
+    }catch(err) {
+        next(err)
+    }
+})
+ 
+router.post("/gettransaction/:id",async  (req,res,next) =>  {
+    try{
+        const { id } = req.params
+        const data = await stripe.issuing.transactions.list({
+            limit: 3,
+          });
+          
+        return res.json({data,id})
+    }catch(err) {
+        next(err)
+    }
 })
 
 

@@ -40,7 +40,13 @@ const topupRequestSchema = new mongoose.Schema({
   transfered : {
     type : Boolean,
     default : false,
+  },
+  id : {
+    type : String,
+    required : true,
+    unique : true,
   }
+
   
 },{
   timestamps : true

@@ -36,15 +36,15 @@ router.post('/uploadItem',upload.single('img'), (req, res,next) => {
                  console.log(err)
                  await ProductSchema.findByIdAndDelete({_id:id})
                  return next(err)
-            }catch(e){
-                return next(emit)
+            }catch(err){
+                return next(err)
             }
             
         });  
 
-    } catch(e) {
-        console.log(e)
-        return next(e)
+    } catch(err) {
+        console.log(err)
+        return next(err)
     }
 });
   
@@ -67,9 +67,9 @@ router.post("/getproducts",async (req,res,next)=>{
     try{
         const newProducts = await ProductSchema.find({ $expr: { $gt: [{ $size: "$items" }, 0] } }).sort({ _id: -1 });
         res.send(newProducts)
-    }catch(e){
+    }catch(err){
         console.log("error")
-        next(e)
+        next(err)
     }
 
 })  
@@ -79,8 +79,8 @@ router.post("/getproducts/:num",async (req,res,next)=>{
         const num = req.params.num
         const newProducts = await ProductSchema.find({ $expr: { $gt: [{ $size: "$items" }, 0]}}).limit(num).sort({ _id: -1 });
         res.send(newProducts)
-    }catch(e){
-        next(e)
+    }catch(err){
+        next(err)
     }
 
 })  
@@ -90,10 +90,9 @@ router.post("/findproduct/:id",async (req,res,next)=>{
         const id = req.params.id
         const newProducts = await ProductSchema.findById(id);
         res.send(newProducts)
-    }catch(e){
+    }catch(err){
         next(createError.NotFound("product not found"))
     }
-
 })  
 
 
@@ -102,8 +101,8 @@ router.post("/deleteproduct/:id",async (req,res,next)=>{
         const id = req.params.id
         const newProducts = await ProductSchema.findByIdAndDelete(id);
         res.send(newProducts)
-    }catch(e){
-        next(e)
+    }catch(err){
+        next(err)
     }
 
 })  

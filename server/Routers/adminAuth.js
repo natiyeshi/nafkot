@@ -29,7 +29,6 @@ router.post("/registeradmin",async (req,res,next)=>{
         const cleanAdmin = await AdminJoi.validateAsync(admin)
         let savedAdmin = await AdminSchema.create(cleanAdmin)
         savedAdmin.password = null
-        
         res.json(savedAdmin)
     }catch(err){
         console.log(err)

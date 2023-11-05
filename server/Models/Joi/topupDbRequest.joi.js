@@ -8,6 +8,7 @@ const schema = Joi.object({
   receiverPhoneNumber2: Joi.string().allow('').optional(),
   amount: Joi.number().required(),
   totalPrice: Joi.number().required(),
+  id: Joi.string().required(),
   currency: Joi.string().required(),
   status: Joi.string().required(),
   transfered: Joi.boolean().optional(),
