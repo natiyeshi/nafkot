@@ -45,6 +45,7 @@ const FormDiv = () => {
         try{
             setLoading(true)
             data.amount = card.amount
+            data.id = id
             const result = await axios.post("/transaction/checkout-session-topup",data)
             const url = result.data.url
             setLoading(false)

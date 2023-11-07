@@ -6,6 +6,7 @@ const Type = {
 }
 
 const transactionSchema = new mongoose.Schema({
+    senderFirstName : Type,
     senderLastName : Type,
     senderEmail: Type,
     senderPhoneNumber: Type,

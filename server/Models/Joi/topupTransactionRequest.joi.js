@@ -7,6 +7,7 @@ const schema = Joi.object({
   receiverPhoneNumber: Joi.string().required(),
   receiverPhoneNumber2: Joi.string().allow('').optional(),
   amount: Joi.number().required(),
+  id: Joi.string().required(),
 });
 
 module.exports = schema;

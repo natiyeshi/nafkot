@@ -7,6 +7,7 @@ const TopupTransactionJoi = require("../Models/Joi/topupTransactionRequest.joi")
 const TopupDbTransactionJoi = require("../Models/Joi/topupDbRequest.joi")
 const { decodeOrderJwt,generateOrderJwt } = require("../Config/core/jwtFunc")
 const SettingSchema = require("../Models/Db/setting.model")
+const ProductSchema = require("../Models/Db/Product.model")
 
 
 const stripe = require("stripe")(process.env.STRIPE_PRIVATE_KEY)
@@ -23,13 +24,14 @@ router.post("/checkout-session",async (req,res,next)=>{
             payment_method_types : ["card"],
             mode : "payment",
             line_items : cart.map((data) => {
+                console.log(data)
                 return {
                     price_data : {
                         unit_amount : data.product.price * 100,
                         currency : "usd",
                         product_data : {
-                            name : data.product.title,
-                            images : [data.product.items[0].img]
+                            name : data.product._id,
+                            images : [data.product.items[0].img],
                         },
                     },
                     quantity : data.amount
@@ -56,6 +58,7 @@ router.post("/checkout-session-topup",async (req,res,next)=>{
        const token = generateOrderJwt(order)
        const data = await SettingSchema.find()
        const setting = data[0]
+       console.log(order)
        const session = await stripe.checkout.sessions.create({
             payment_method_types : ["card"],
             mode : "payment",
@@ -64,7 +67,8 @@ router.post("/checkout-session-topup",async (req,res,next)=>{
                     unit_amount : parseFloat((order.amount / setting.currency).toFixed(2))  * 100,
                     currency : "usd",
                     product_data : {
-                        name : `${order.amount} birr card`,
+                        name : order.id,
+                        description : `${order.amount} birr card`
                     },
                 },
                 quantity : 1
@@ -93,6 +97,7 @@ router.post("/save_payment",async (req,res,next) =>  {
         if(isSaved){
             return next(createError.BadRequest("session already saved!"))
         }
+        console.log(payload)
         if(pass == false) throw createError.Unauthorized("invalid token")
         let savedData = {...payload,currency:session.currency,status:session.status,totalPrice:session.amount_total,id:session.id}
         delete savedData.iat
@@ -155,6 +160,47 @@ router.post("/save_transaction",async  (req,res,next) =>  {
         next(err)
     }
 })
+
+
+router.post("/getallitemstransaction",async (req,res,next)=>{
+    try{
+        const transactions = await TransactionModel.find()
+        res.json(transactions)
+    }catch(err){
+        next(err)
+    }
+})
+
+
+router.post("/getitemstransactionlist/:session_id",async (req,res,next)=>{
+    try{
+        const { session_id } = req.params
+        await stripe.checkout.sessions.listLineItems(
+            session_id,
+            async function(err, lineItems) {
+                if(err) {
+                    next(createError.BadRequest(err.raw.message))
+                }
+                else{
+                    try{
+                        const products = lineItems.data
+                        let datas = await Promise.all(products.map(async (data) => {
+                            const file = await ProductSchema.find({ _id: data.description });
+                            console.log(file);
+                            return file;
+                        }));
+                        res.send(datas) 
+                    }catch(err){
+                        next(err)
+                    }
+                }
+            }
+        );
+    }catch(err){
+        next(err)
+    }
+})
+
 const endpointSecret = "whsec_530662c0a9a26d6998f898e08efd3fbae262db25451f76afd504599105d8c5e3";
 
 router.post('/webhook', (request, response) => {
@@ -188,9 +234,9 @@ router.post('/webhook', (request, response) => {
     
     // Return a 200 response to acknowledge receipt of the event
     response.send();
-  });
+});
   
- 
+
 router.post("/gettransaction/:id",async  (req,res,next) =>  {
     try{
         const { id } = req.params

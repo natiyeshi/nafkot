@@ -46,9 +46,9 @@ const index = () => {
                     Sorry, {err}
                 </p>
             {err === "session already saved!" ? 
-            <>
+            <div className='text-center my-2'>
                 <button onClick={()=>navigator("/products/topup")} className='bg-redd px-5 py-2 rounded text-white'>Continue</button>
-            </> 
+            </div> 
             :
             <>  
                 <p className='text-center'>
