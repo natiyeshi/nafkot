@@ -36,8 +36,8 @@ router.post('/uploadItem',upload.single('img'), (req, res,next) => {
                  console.log(err)
                  await ProductSchema.findByIdAndDelete({_id:id})
                  return next(err)
-            }catch(err){
-                return next(err)
+            }catch(e){
+                return next(e)
             }
             
         });  

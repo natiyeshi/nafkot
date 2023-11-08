@@ -1,7 +1,6 @@
 require("dotenv").config()
 
 const mongoose = require("mongoose")
-
 mongoose
     .connect(process.env.DB_URL_REMOTE,{dbName : process.env.DB_NAME})
     .then(() => console.log("connected to Db"))
@@ -17,7 +16,7 @@ mongoose.connection.on("error",(err)=>{
 
 mongoose.connection.on("disconnected",() => {
     console.log("Db connection halted !!"); 
-}) 
+})  
 
 process.on("SIGINT",async ()=>{
     await mongoose.connection.close() 
