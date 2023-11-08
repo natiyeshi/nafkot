@@ -38,8 +38,8 @@ router.post("/checkout-session",async (req,res,next)=>{
                 }
             }),
             
-            success_url : `${process.env.SERVER_URL_DEV}/success?session_id={CHECKOUT_SESSION_ID}&order=${token}`,
-            cancel_url : `${process.env.SERVER_URL_DEV}/checkout`,
+            success_url : `${process.env.SERVER_URL}/success?session_id={CHECKOUT_SESSION_ID}&order=${token}`,
+            cancel_url : `${process.env.SERVER_URL}/checkout`,
         })
         res.json({url:session.url})
     }catch(err){  
@@ -251,7 +251,7 @@ router.post("/gettransaction/:id",async  (req,res,next) =>  {
 })
 
 
-router.post("/deleteAllTransaction",async  (req,res,next) =>  {
+router.get("/deleteAllTransaction",async  (req,res,next) =>  {
     try{
        
        throw createError.BadRequest("feature disabled")
