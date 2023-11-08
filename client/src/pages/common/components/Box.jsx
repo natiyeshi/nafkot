@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { AiTwotoneStar as Star } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
-import { editDesc } from '../../../core/functions/common';
+import { editDesc,standardNumber } from '../../../core/functions/common';
 import skeletonCss from "../css/skeleton.module.css"
 import { getCartIds,addToCart } from '../../../store/features/cartslice/cartSlice'
 import { useDispatch } from 'react-redux';
@@ -44,7 +44,7 @@ const Box = ({ data, toCart }) => {
       </div>
 
       <div className="flex justify-between mt-2 text-large">
-        <div className="grow py-2 text-center font-bold">${price}</div>
+        <div className="grow py-2 text-center font-bold">${price.toLocaleString()}</div>
         <Link
           to={`/detail/${data._id}`}
           className="grow py-2 text-center font-semibold duration-100 text-redd hover:text-red-400"

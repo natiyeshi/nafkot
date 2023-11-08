@@ -3,7 +3,7 @@ import {AiTwotoneStar as Star} from "react-icons/ai"
 
 const Testimony = ({message,person}) => {
   return (
-    <div className='bg-white py-3 justify-center px-6  gap-2  rounded'>
+    <div className='bg-white py-3 justify-center px-6  gap-2  rounded hover:cursor-grab'>
                 <div className='flex gap-3 my-2 '>
                     <div className='flex my-auto'>
                         <Star className='text-yellow-300 my-auto text-lg' />

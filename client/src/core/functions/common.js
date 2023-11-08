@@ -79,3 +79,22 @@ export const getCartFromStore  = () => {
     }
 }
 
+export const standardNumber = (number) => {
+    const num = parseFloat(number)
+    const intValue = parseInt(num)
+    const dec = num - intValue
+    let strValue = intValue.toString()
+    let ans = ""
+    let ptr = strValue.length - 1
+    for(let i = strValue.length - 1; i > -1; i--){
+        if(i + 3 == ptr){
+            ptr = i
+            ans += ","
+        }
+        ans += strValue[i]
+    }
+    ans = ans.split('').reverse().join('')
+    return number +"-" +ans 
+    // + dec.toString() 
+}
+

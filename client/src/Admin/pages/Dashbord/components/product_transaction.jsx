@@ -30,7 +30,7 @@ const ProductTransaction = () => {
         setOrders(response.data)
       }catch(e){
         console.log(e)
-        alert("something goes wrong")
+        // alert("something goes wrong")
       }finally{
         setLoading(false)
       }
@@ -43,9 +43,10 @@ const ProductTransaction = () => {
           <div>
                 <div className="mt-2 overflow-x-auto duration-300">
                     <h2 className='text-xl font-semibold my-4'>Product Transaction</h2>
-                    <table className="min-w-full rounded-lg bg-slate-800 text-white divide-y divide-gray-200">
+                    <table className="min-w-full rounde bg-slate-800 text-white divide-y divide-gray-200">
                       <thead className="bg-slate-700 text-white">
                         <tr className='uppercase text-xs'>
+                          <th className="py-3 px-6 text-left  font-medium  tracking-wider">Num</th>
                           <th className="py-3 px-6 text-left  font-medium  tracking-wider">Sender First Name</th>
                           <th className="py-3 px-6 text-left  font-medium  tracking-wider">Sender Last Name</th>
                           <th className="py-3 px-6 text-left  font-medium  tracking-wider">Receiver First Name</th>
@@ -78,7 +79,7 @@ const ProductTransaction = () => {
                     <h1 className='left-0 -top-3 px-3 py-2 shadow-lg  rounded-tl-lg  rounded-br-lg text-xs my-3 bg-redd absolute' >in 3 months</h1>
                     <p className='text-sm'> <b className='text-2xl font-extrabold '>{orders.length}</b>  Transactions </p>
                     <p className='text-sm'> <b className='text-2xl font-extrabold'>{Math.max(1,orders.length - 2)}+ </b>  Customers </p>
-                    <p className='text-sm'> <b className='text-2xl font-extrabold'>${total}</b>  income </p>
+                    <p className='text-sm'> <b className='text-2xl font-extrabold'>${total.toLocaleString()}</b>  income </p>
                 </div>
             </div>
           </div>

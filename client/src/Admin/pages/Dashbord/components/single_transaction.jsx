@@ -34,13 +34,14 @@ const SingleTransaction = ({data,curr,ind,changeCurrent}) => {
 
   return (
     <>
-    <tr onClick={() => changeCurrent(ind)}  className='hover:bg-slate-900 duration-300 cursor-pointer'>
-      <td className="capitalize py-4 px-6 whitespace-nowrap">{data.senderFirstName}</td>
-      <td className="capitalize py-4 px-6 whitespace-nowrap">{data.senderLastName}</td>
-      <td className="capitalize py-4 px-6 whitespace-nowrap">{data.reciverFirstName}</td>
-      <td className="capitalize py-4 px-6 whitespace-nowrap">{data.reciverLastName}</td>
-      <td className="capitalize py-4 px-6 whitespace-nowrap">{data.message}</td>
-      <td className="capitalize py-4 px-6 whitespace-nowrap">${data.totalPrice / 100}</td>
+    <tr onClick={() => changeCurrent(ind)}  className='hover:bg-slate-900   duration-300 cursor-pointer'>
+      <td className="capitalize border border-gray-700 py-4 px-6 whitespace-nowrap">{ind + 1}</td>
+      <td className="capitalize border border-gray-700 py-4 px-6 whitespace-nowrap">{data.senderFirstName}</td>
+      <td className="capitalize border border-gray-700 py-4 px-6 whitespace-nowrap">{data.senderLastName}</td>
+      <td className="capitalize border border-gray-700 py-4 px-6 whitespace-nowrap">{data.reciverFirstName}</td>
+      <td className="capitalize border border-gray-700 py-4 px-6 whitespace-nowrap">{data.reciverLastName}</td>
+      <td className="capitalize border border-gray-700 py-4 px-6 whitespace-nowrap">{data.message}</td>
+      <td className="capitalize border border-gray-700 py-4 px-6 whitespace-nowrap">${(data.totalPrice / 100).toLocaleString()}</td>
   </tr>
   <tr className={ind == curr ? '' : 'hidden'}>
     <td colSpan={7} className='bg-slate-700 text- p-2' > 
@@ -71,7 +72,7 @@ const SingleTransaction = ({data,curr,ind,changeCurrent}) => {
             <div className='font-semibold flex flex-col gap-1'>
               <p>{data.reciverPhoneNumber}</p>
               <p>{data.reciverPhoneNumber2}</p>
-              <p>${data.totalPrice / 100}</p>
+              <p>${(data.totalPrice / 100).toLocaleString()}</p>
             </div>
         </div>
       </div>
