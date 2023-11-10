@@ -2,7 +2,7 @@ require("dotenv").config()
 
 const mongoose = require("mongoose")
 mongoose
-    .connect(process.env.DB_URL_DEV,{dbName : process.env.DB_NAME})
+    .connect(process.env.DB_URL_REMOTE,{dbName : process.env.DB_NAME})
     .then(() => console.log("connected to Db"))
     .catch(err => console.log(err.message)) 
 
