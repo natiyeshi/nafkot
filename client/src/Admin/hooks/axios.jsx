@@ -3,6 +3,7 @@ import axios from "axios"
 
 
 // axios.defaults.baseURL = 'http://localhost:4000'
-axios.defaults.baseURL = 'https://nafkot-us4u.onrender.com/'
+// axios.defaults.baseURL = 'https://nafkot-us4u.onrender.com/'
+axios.defaults.baseURL = window.location.origin;
 
 export default axios
