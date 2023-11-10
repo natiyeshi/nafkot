@@ -65,6 +65,7 @@ router.post('/addproduct', async (req, res, next) => {
 
 router.post("/getproducts",async (req,res,next)=>{
     try{
+        
         const newProducts = await ProductSchema.find({ $expr: { $gt: [{ $size: "$items" }, 0] } }).sort({ _id: -1 });
         res.send(newProducts)
     }catch(err){

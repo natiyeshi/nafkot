@@ -2,7 +2,7 @@ require("dotenv").config()
 
 const mongoose = require("mongoose")
 mongoose
-    .connect(process.env.DB_URL_REMOTE,{dbName : process.env.DB_NAME})
+    .connect(process.env.DB_URL_DEV,{dbName : process.env.DB_NAME})
     .then(() => console.log("connected to Db"))
     .catch(err => console.log(err.message)) 
 
@@ -27,7 +27,7 @@ const express = require("express")
 const morgan = require("morgan")
 const cors = require("cors")
 const createError = require("http-errors")
-
+const path = require('path');
 const app = express()
 
 const PORT = process.env.PORT || 5000
@@ -45,6 +45,7 @@ const topupRoute = require("./Routers/topupRoute")
 const topupRequestRoute = require("./Routers/requestRoute")
 const settingRoute = require("./Routers/settingRoute")
 
+app.use(express.static(path.join(__dirname, 'static')));
 //configs
 app.use("/",productRoute)
 app.use("/transaction/",transactionRoute)
@@ -54,8 +55,9 @@ app.use("/topup/",topupRoute)
 app.use("/request/",topupRequestRoute)
 app.use("/setting/",settingRoute)
 
-app.get("/",(req,res,next)=>{
-    res.send("working fine!!") 
+app.get("*",(req,res,next)=>{
+    
+    res.sendFile(path.join(__dirname, 'static', 'index.html'));
 })
 
 app.use((req,res,next) => {

@@ -38,8 +38,8 @@ router.post("/checkout-session",async (req,res,next)=>{
                 }
             }),
             
-            success_url : `${process.env.SERVER_URL}/success?session_id={CHECKOUT_SESSION_ID}&order=${token}`,
-            cancel_url : `${process.env.SERVER_URL}/checkout`,
+            success_url : `${req.protocol + '://' + req.get('host')}/success?session_id={CHECKOUT_SESSION_ID}&order=${token}`,
+            cancel_url : `${req.protocol + '://' + req.get('host')}/checkout`,
         })
         res.json({url:session.url})
     }catch(err){  
