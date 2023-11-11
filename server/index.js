@@ -30,7 +30,7 @@ const createError = require("http-errors")
 const path = require('path');
 const app = express()
 
-const PORT = process.env.PORT || 5000
+const PORT = process.env.PORT || 1337
 
 app.use(cors())
 app.use(express.json())

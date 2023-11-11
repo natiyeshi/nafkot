@@ -2,7 +2,7 @@ import React, {useState, useEffect, useRef} from 'react'
 import {GrAdd} from "react-icons/gr"
 import {FiRefreshCcw as Reset} from "react-icons/fi"
 import {checkString} from '../../../../core/functions/common'
-import axios from "axios"
+import axios from "../../../hooks/axios"
 import { useNavigate } from 'react-router-dom'
 import Loading from '../../common/components/Loading'
 
@@ -182,7 +182,7 @@ const Form = ({setRemoteErr}) => {
                     tag: mainData.tag,
                     price: mainData.price
                 }
-                const result = await axios.post("http://localhost:4000/addproduct", product)
+                const result = await axios.post("/addproduct", product)
                 const id = result.data
                 // console.log(id)
                 for (let i in mainData.newDatas) {
@@ -194,7 +194,7 @@ const Form = ({setRemoteErr}) => {
                     // console.log(formData)
                     let num = 1 + parseInt(i)
                     setProgressMessage("uploading the " + num + " item....")
-                    const temp = await axios.post("http://localhost:4000/uploadItem", formData)
+                    const temp = await axios.post("/uploadItem", formData)
                     // console.log(temp)
                 }
                 setLoading(false)
