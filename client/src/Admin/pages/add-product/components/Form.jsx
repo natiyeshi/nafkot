@@ -16,7 +16,7 @@ const Form = ({setRemoteErr}) => {
 
     const initialHeaders = {
         title: "",
-        tag: "",
+        tag: "other",
         price: 0
     }
     const initialHeadersErr = {
@@ -253,14 +253,16 @@ const Form = ({setRemoteErr}) => {
                             className='py-1 w-60 px1 focus:outline-none bg-transparent border-b  border-gray-800 '/>
 
                         <label htmlFor="" className='text-[14px]'>product tag</label>
-                        <input type="text" name='tag'
-                            onChange={changeHeader}
-                            value={
-                                headers.tag
-                            }
-                            placeholder='tag'
-                            className='py-1 w-60 px1 focus:outline-none bg-transparent border-b  border-gray-800 '/>
-
+                        <select name="tag" id="tag" onChange={changeHeader} className='border-2 px-2 capitalize py-2 outline-none'>
+                            <option value="other" disabled={true} selected={true}>Catagory</option>
+                            <option value="holiday">holiday</option>
+                            <option value="valentine">valentine</option>
+                            <option value="special-day">Special Day</option>
+                            <option value="groceries">Groceries</option>
+                            <option value="birthday">Birthday</option>
+                            <option value="other">other</option>
+                        </select>
+                     
                         <label htmlFor="" className='text-[14px]'>price</label>
                         <input type="number" name='price'
                             onChange={changeHeader}
