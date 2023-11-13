@@ -28,7 +28,7 @@ const Product = () => {
   }
 
   useEffect(()=>{
-    getTaggedOnes("")
+    fetchContent()
   },[])
 
   const dummy = ["","","","","","","","","","","","","","","","","","","","","","","","",""]
