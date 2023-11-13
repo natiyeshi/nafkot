@@ -28,7 +28,7 @@ const Product = () => {
   }
 
   useEffect(()=>{
-    fetchContent()
+    dispatch(fetchContent())
   },[])
 
   const dummy = ["","","","","","","","","","","","","","","","","","","","","","","","",""]
