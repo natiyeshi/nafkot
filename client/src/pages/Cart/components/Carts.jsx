@@ -41,7 +41,7 @@ const Carts = () => {
                 <div className='border px-2 py-5 max-lg:px-c14 max-sm:px-5'>
                     <div className='flex justify-between'>
                        <h1 className='font-semibold text-lg'>Total Estimate</h1>
-                       <div className=''> <span className='font-semibold text-xl'>${total.toLocaleString()}</span>  Inc VAT</div> 
+                       <div className=''> <span className='font-semibold text-xl'>&pound;{total.toLocaleString()}</span>  Inc VAT</div> 
                     </div>
                     <div className='text-center mt-5 '>
                         <Link to={cartsDiv.length > 0 ? "/checkout" : ""}   className={` ${cartsDiv.length > 0 ? " hover:bg-red-400  bg-redd " :  "bg-gray-400 "} duration-100  px-8 py-3 rounded font-semibold text-white `}>

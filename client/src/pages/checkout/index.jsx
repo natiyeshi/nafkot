@@ -20,7 +20,7 @@ const index = () => {
                     {name}</div>
                 <div className=''>
                     {amount}</div>
-                <div className=''>${
+                <div className=''>&pound;{
                     amount * price
                 }</div>
             </div>
@@ -57,7 +57,7 @@ const index = () => {
                             <p>
                                 Total Price
                             </p>
-                            <p className='font-bold'>${
+                            <p className='font-bold'>&pound;{
                                 carts.total.toLocaleString()
                             }</p>
                         </div>

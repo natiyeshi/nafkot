@@ -8,7 +8,7 @@ const Topup = ({data,currency,home}) => {
             <div className='text-lg font-bold'>{data.amount} birr card</div>
             <div className='mt-2 mb-3'>the cost for {data.amount} birr card is ${cost}  </div>
             <div className='flex my-2 justify-between  bg-gray-30 w-10/12     ' >
-                <div className='font-bold my-auto text-md'>${cost}</div>
+                <div className='font-bold my-auto text-md'>&pound;{cost}</div>
                 <Link to={`/checkout/topup/${data._id}`} className='bg-redd duration-300 rounded px-6 py-[5px] font-bold text-white'>send</Link>
             </div>
         </div>

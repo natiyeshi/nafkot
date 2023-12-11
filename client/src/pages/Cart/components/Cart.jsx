@@ -28,7 +28,7 @@ const Cart = ({data,amount,removeItemAmount,addItemAmount,removeCart}) => {
                 <img onClick={() => addItemAmount(data._id)} src={plus} width={"20px"} className='cursor-pointer' alt="" />
             </div>
             <Close onClick={()=>removeCart(data._id)} className='absolute cursor-pointer right-0 me-2 mt-2 text-xl  text-redd duration-200 hover:rotate-90'/>
-            <div className='absolute bottom-0 right-4 mb-2'> <span className='font-semibold '>${data.price} </span> Inc VAT </div>
+            <div className='absolute bottom-0 right-4 mb-2'> <span className='font-semibold '>&pound;{data.price} </span> Inc VAT </div>
         </div>
     </div>
   )

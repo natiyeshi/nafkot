@@ -28,7 +28,7 @@ router.post("/checkout-session",async (req,res,next)=>{
                 return {
                     price_data : {
                         unit_amount : data.product.price * 100,
-                        currency : "usd",
+                        currency : "gbp",
                         product_data : {
                             name : data.product._id,
                             images : [data.product.items[0].img],
@@ -65,7 +65,7 @@ router.post("/checkout-session-topup",async (req,res,next)=>{
             line_items : [{
                 price_data : {
                     unit_amount : parseFloat((order.amount / setting.currency).toFixed(2))  * 100,
-                    currency : "usd",
+                    currency : "gbp",
                     product_data : {
                         name : order.id,
                         description : `${order.amount} birr card`

@@ -40,7 +40,7 @@ const Box = ({ data, toCart }) => {
 
       <div className="w-full text-center my-2">
         <h4 className="text-lg font-semibold">{title}</h4>
-        <p>{desc}</p>
+        <p>{desc.slice(0,20)}</p>
       </div>
 
       <div className="flex justify-between mt-2 text-large">

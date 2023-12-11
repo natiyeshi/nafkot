@@ -93,7 +93,7 @@ const FormDiv = () => {
                    
                 </div>
                 <div className='bg-gray-200 py-2 ps-1 rounded text-center font-semibold basis-1/2'>
-                    total ${(card?.amount / setting?.currency).toFixed(2)}  
+                    total &pound;{(card?.amount / setting?.currency).toFixed(2)}  
                 </div>
             </div>
             <div className='flex gap-10 max-md:gap-3 max-md:flex-col ps-4 py-2 justify-around '>
