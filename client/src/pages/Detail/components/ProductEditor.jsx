@@ -117,7 +117,7 @@ const productEdit = ({ProductData}) => {
                   <img  onClick={decreaseAmt} src={minus} className='cursor-pointer' alt="" />
                   <div className='text-xl font-semibold'>{cart.amount}</div>
                   <img onClick={increaseAmt} src={plus} className='cursor-pointer' alt="" />
-                  <div className='text-large'><span className='text-xl font-semibold'>${(cart.data.price * cart.amount).toLocaleString()}</span> <span>inc</span> Vat </div>
+                  <div className='text-large'><span className='text-xl font-semibold'>&pound;{(cart.data.price * cart.amount).toLocaleString()}</span> <span>inc</span> Vat </div>
                 </div>
               }
 
