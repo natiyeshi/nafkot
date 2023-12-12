@@ -1,0 +1,6 @@
+server/node_modules
+server/task
+server/checkout
+server/user
+server/.env
+server/uploads
