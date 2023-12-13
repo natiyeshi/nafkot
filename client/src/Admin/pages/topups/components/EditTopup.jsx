@@ -49,7 +49,7 @@ const EditTopup = ({setShowEditTopup,showEditTopup}) => {
               }
               </div>
               <div className='flex my-2 gap-10  bg-gray-30 w-full' >
-                 <div className=' text-gray-900 duration-300 rounded  py-[5px] font-bold '>Amount 8$</div>
+                 <div className=' text-gray-900 duration-300 rounded  py-[5px] font-bold '>Amount 8&pound;</div>
                 {
                   success ? 
                   <button  onClick={()=>{setShowEditTopup(null)}}  className='bg-gray-200 text-gray-600 duration-300 rounded px-4 py-[5px] font-semibold ite'>Finish</button>

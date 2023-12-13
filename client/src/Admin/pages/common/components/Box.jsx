@@ -57,7 +57,7 @@ const Box = ({title,price,tag,_id,items,deleteItem}) => {
                 </div>
             </p>
             
-            <div className="grow py-2 text-center font-bold"> Price ${price}</div>
+            <div className="grow py-2 text-center font-bold"> Price &pound;{price}</div>
         </div>
 
         <div className='flex flex-row justify-between mt-2  text-sm'>

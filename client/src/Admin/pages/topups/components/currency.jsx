@@ -42,7 +42,7 @@ const Currency = ({setShowCurrency}) => {
         {error && <Message message={error} setAlerting={setError} />}
         <div className=' m-auto  bg-white z-30 px-7 pt-2  duration-300 rounded shadow-md border  shrink-0'>
               <div className='text-lg font-bold'>Update currency</div>
-              <div className='text-xs'> $1 is {setting.currency} birr now! </ div>
+              <div className='text-xs'> &pound;1 is {setting.currency} birr now! </ div>
               <div className='flex gap-5 my-2'>
                 { success  ? 
                     <>

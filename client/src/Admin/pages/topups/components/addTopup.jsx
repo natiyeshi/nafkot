@@ -51,7 +51,7 @@ const AddTopup = ({setShowAaddTopup}) => {
               }
               </div>
               <div className='flex my-2 gap-10  bg-gray-30 w-full' >
-                 <div className=' text-gray-900 duration-300 rounded  py-[5px] font-semibold '>Amount ${amount / setting.currency}</div>
+                 <div className=' text-gray-900 duration-300 rounded  py-[5px] font-semibold '>Amount &pound;{amount / setting.currency}</div>
                 {
                   success ? 
                   <button  onClick={()=>{setShowAaddTopup(false)}}  className='bg-gray-200 text-gray-600 duration-300 rounded px-4 py-[5px] font-semibold ite'>Finish</button>

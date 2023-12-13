@@ -22,7 +22,7 @@ const AdminTopup = ({setShowEditTopup,setDeleteTopup,data}) => {
             <div className='mt-2 mb-3 text-redd'>there is issue on loading currency</div>
           </div>
           :
-        <div className='mt-2 mb-3'> the cost for {data.amount} birr card is ${(data.amount / currencyData.currency).toFixed(2)}  </div>
+        <div className='mt-2 mb-3'> the cost for {data.amount} birr card is &pound;{(data.amount / currencyData.currency).toFixed(2)}  </div>
         }
         <div className='flex my-2 gap-10  bg-gray-30 w-10/12     ' >
             <button onClick={()=>{setDeleteTopup(data)}} className='bg-redd duration-300 rounded px-8 py-[5px] font-bold text-white'>Delete</button>

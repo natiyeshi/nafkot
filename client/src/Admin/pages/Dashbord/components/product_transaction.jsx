@@ -79,7 +79,7 @@ const ProductTransaction = () => {
                     <h1 className='left-0 -top-3 px-3 py-2 shadow-lg  rounded-tl-lg  rounded-br-lg text-xs my-3 bg-redd absolute' >in 3 months</h1>
                     <p className='text-sm'> <b className='text-2xl font-extrabold '>{orders.length}</b>  Transactions </p>
                     <p className='text-sm'> <b className='text-2xl font-extrabold'>{Math.max(1,orders.length - 2)}+ </b>  Customers </p>
-                    <p className='text-sm'> <b className='text-2xl font-extrabold'>${total.toLocaleString()}</b>  income </p>
+                    <p className='text-sm'> <b className='text-2xl font-extrabold'>&pound;{total.toLocaleString()}</b>  income </p>
                 </div>
             </div>
           </div>
