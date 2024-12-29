@@ -255,6 +255,7 @@ const Form = ({setRemoteErr}) => {
                         <label htmlFor="" className='text-[14px]'>product tag</label>
                         <select name="tag" id="tag" onChange={changeHeader} className='border-2 px-2 capitalize py-2 outline-none'>
                             <option value="other" disabled={true} selected={true}>Catagory</option>
+                            <option value="Christmas">Christmas</option>
                             <option value="holiday">holiday</option>
                             <option value="valentine">valentine</option>
                             <option value="special-day">Special Day</option>
